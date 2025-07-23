@@ -46,27 +46,27 @@ func OverviewPage(data OverviewData) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"space-y-6\"><!-- Statistics Cards --><div class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"space-y-8 animate-fade-in\"><!-- Welcome Section --><div class=\"bg-gradient-to-r from-primary-500 to-primary-600 rounded-xl p-6 text-white\"><div class=\"flex items-center justify-between\"><div><h2 class=\"text-2xl font-bold mb-2\">Welcome to Nextranet Gateway</h2><p class=\"text-primary-100\">Manage your TR-069 devices with ease</p></div><div class=\"text-6xl opacity-20\"><i class=\"fas fa-network-wired\"></i></div></div></div><!-- Statistics Cards --><div class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = StatCard("Total Devices", data.Stats.TotalDevices, "fa-router", "text-blue-500").Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = StatCard("Total Devices", data.Stats.TotalDevices, "fa-router", "primary").Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = StatCard("Online Devices", data.Stats.OnlineDevices, "fa-wifi", "text-green-500").Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = StatCard("Online Devices", data.Stats.OnlineDevices, "fa-wifi", "success").Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = StatCard("Active Faults", data.Stats.ActiveFaults, "fa-exclamation-triangle", "text-yellow-500").Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = StatCard("Active Faults", data.Stats.ActiveFaults, "fa-exclamation-triangle", "warning").Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = StatCard("Critical Faults", data.Stats.CriticalFaults, "fa-exclamation-circle", "text-red-500").Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = StatCard("Critical Faults", data.Stats.CriticalFaults, "fa-exclamation-circle", "danger").Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div><!-- Health Score and Quick Actions --><div class=\"grid grid-cols-1 lg:grid-cols-2 gap-6\"><!-- Health Score --><div class=\"card p-6\"><h3 class=\"text-lg font-semibold mb-4 text-gray-800 dark:text-dark-text\">System Health</h3><div class=\"relative\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div><!-- Health Score and Quick Actions --><div class=\"grid grid-cols-1 lg:grid-cols-2 gap-8\"><!-- Health Score --><div class=\"card p-8 text-center\"><h3 class=\"text-xl font-bold mb-6 text-gray-800 dark:text-gray-200 flex items-center justify-center gap-2\"><i class=\"fas fa-heartbeat text-primary-500\"></i> System Health</h3><div class=\"relative mb-6\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -74,20 +74,20 @@ func OverviewPage(data OverviewData) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<div class=\"text-center mt-4\"><p class=\"text-3xl font-bold { healthScoreColor(data.Stats.HealthScore) }\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div><div class=\"text-center\"><p class=\"text-4xl font-bold { healthScoreColor(data.Stats.HealthScore) } mb-2\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var3 string
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%d%%", data.Stats.HealthScore))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 27, Col: 53}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 43, Col: 52}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</p><p class=\"text-sm text-gray-600 dark:text-dark-muted\">Overall Health Score</p></div></div></div><!-- Quick Actions --><div class=\"card p-6\"><h3 class=\"text-lg font-semibold mb-4 text-gray-800 dark:text-dark-text\">Quick Actions</h3><div class=\"space-y-2\"><button onclick=\"refreshAllDevices()\" class=\"w-full btn btn-primary\"><i class=\"fas fa-sync-alt mr-2\"></i> Refresh All Devices</button> <a href=\"/devices?status=offline\" class=\"w-full btn btn-secondary block text-center\"><i class=\"fas fa-plug mr-2\"></i> View Offline Devices</a> <a href=\"/faults?severity=critical\" class=\"w-full btn btn-danger block text-center\"><i class=\"fas fa-exclamation-circle mr-2\"></i> View Critical Faults</a></div></div></div><!-- Charts Row --><div class=\"grid grid-cols-1 lg:grid-cols-2 gap-6\"><!-- Device Distribution by Vendor --><div class=\"card p-6\"><h3 class=\"text-lg font-semibold mb-4 text-gray-800 dark:text-dark-text\">Devices by Vendor</h3><div class=\"h-64\"><canvas id=\"vendorChart\"></canvas></div></div><!-- Fault Severity Distribution --><div class=\"card p-6\"><h3 class=\"text-lg font-semibold mb-4 text-gray-800 dark:text-dark-text\">Faults by Severity</h3><div class=\"h-64\"><canvas id=\"faultChart\"></canvas></div></div></div><!-- Recent Activity --><div class=\"grid grid-cols-1 lg:grid-cols-2 gap-6\"><!-- Recent Faults --><div class=\"card p-6\"><div class=\"flex items-center justify-between mb-4\"><h3 class=\"text-lg font-semibold text-gray-800 dark:text-dark-text\">Recent Faults</h3><a href=\"/faults\" class=\"text-sm text-accent hover:text-accent-hover\">View All</a></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</p><p class=\"text-gray-600 dark:text-gray-400\">Overall Health Score</p></div></div><!-- Quick Actions --><div class=\"card p-8\"><h3 class=\"text-xl font-bold mb-6 text-gray-800 dark:text-gray-200 flex items-center gap-2\"><i class=\"fas fa-bolt text-warning-500\"></i> Quick Actions</h3><div class=\"space-y-4\"><button onclick=\"refreshAllDevices()\" class=\"w-full btn btn-primary text-left\"><i class=\"fas fa-sync-alt mr-3\"></i><div><div class=\"font-semibold\">Refresh All Devices</div><div class=\"text-xs opacity-75\">Update device status</div></div></button> <a href=\"/devices?status=offline\" class=\"w-full btn btn-secondary block\"><i class=\"fas fa-plug mr-3\"></i><div><div class=\"font-semibold\">View Offline Devices</div><div class=\"text-xs opacity-75\">Check disconnected devices</div></div></a> <a href=\"/faults?severity=critical\" class=\"w-full btn btn-danger block\"><i class=\"fas fa-exclamation-circle mr-3\"></i><div><div class=\"font-semibold\">View Critical Faults</div><div class=\"text-xs opacity-75\">Resolve urgent issues</div></div></a></div></div></div><!-- Charts Row --><div class=\"grid grid-cols-1 lg:grid-cols-2 gap-8\"><!-- Device Distribution by Vendor --><div class=\"card p-6 hover:shadow-xl transition-all duration-300\"><div class=\"flex items-center justify-between mb-6\"><h3 class=\"text-lg font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2\"><i class=\"fas fa-chart-pie text-primary-500\"></i> Devices by Vendor</h3><button class=\"text-gray-400 hover:text-gray-600 dark:hover:text-gray-300\"><i class=\"fas fa-expand-alt\"></i></button></div><div class=\"h-64 relative\"><canvas id=\"vendorChart\"></canvas></div></div><!-- Fault Severity Distribution --><div class=\"card p-6 hover:shadow-xl transition-all duration-300\"><div class=\"flex items-center justify-between mb-6\"><h3 class=\"text-lg font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2\"><i class=\"fas fa-chart-bar text-warning-500\"></i> Faults by Severity</h3><button class=\"text-gray-400 hover:text-gray-600 dark:hover:text-gray-300\"><i class=\"fas fa-expand-alt\"></i></button></div><div class=\"h-64 relative\"><canvas id=\"faultChart\"></canvas></div></div></div><!-- Recent Activity --><div class=\"grid grid-cols-1 lg:grid-cols-2 gap-8\"><!-- Recent Faults --><div class=\"card p-6\"><div class=\"flex items-center justify-between mb-6\"><h3 class=\"text-lg font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2\"><i class=\"fas fa-history text-danger-500\"></i> Recent Faults</h3><a href=\"/faults\" class=\"text-sm text-primary-500 hover:text-primary-600 font-medium flex items-center gap-1\">View All <i class=\"fas fa-arrow-right text-xs\"></i></a></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -107,17 +107,17 @@ func OverviewPage(data OverviewData) templ.Component {
 					return templ_7745c5c3_Err
 				}
 			} else {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "<p class=\"text-gray-500 dark:text-dark-muted text-center py-8\">No recent faults</p>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "<div class=\"text-center py-12\"><i class=\"fas fa-check-circle text-success-500 text-4xl mb-4\"></i><p class=\"text-gray-500 dark:text-gray-400 font-medium\">No recent faults</p><p class=\"text-sm text-gray-400 dark:text-gray-500\">All systems running smoothly</p></div>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</div></div><!-- Critical Alerts -->")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</div><!-- System Performance --><div class=\"card p-6\"><div class=\"flex items-center justify-between mb-6\"><h3 class=\"text-lg font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2\"><i class=\"fas fa-tachometer-alt text-info-500\"></i> System Performance</h3></div><div class=\"space-y-4\"><div class=\"flex items-center justify-between\"><span class=\"text-sm font-medium text-gray-600 dark:text-gray-400\">CPU Usage</span> <span class=\"text-sm font-bold text-gray-800 dark:text-gray-200\">12%</span></div><div class=\"progress-bar\"><div class=\"progress-bar-fill\" style=\"width: 12%\"></div></div><div class=\"flex items-center justify-between\"><span class=\"text-sm font-medium text-gray-600 dark:text-gray-400\">Memory Usage</span> <span class=\"text-sm font-bold text-gray-800 dark:text-gray-200\">34%</span></div><div class=\"progress-bar\"><div class=\"progress-bar-fill\" style=\"width: 34%\"></div></div><div class=\"flex items-center justify-between\"><span class=\"text-sm font-medium text-gray-600 dark:text-gray-400\">Storage Usage</span> <span class=\"text-sm font-bold text-gray-800 dark:text-gray-200\">67%</span></div><div class=\"progress-bar\"><div class=\"progress-bar-fill\" style=\"width: 67%\"></div></div></div></div></div><!-- Critical Alerts -->")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			if len(data.CriticalFaults) > 0 {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "<div class=\"card p-6 border-2 border-red-500 dark:border-red-600\"><div class=\"flex items-center mb-4\"><i class=\"fas fa-exclamation-circle text-red-500 text-xl mr-3\"></i><h3 class=\"text-lg font-semibold text-gray-800 dark:text-dark-text\">Critical Alerts</h3></div><div class=\"space-y-2\">")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "<div class=\"card p-6 border-2 border-danger-500 bg-danger-50 dark:bg-danger-900/20 animate-pulse\"><div class=\"flex items-center mb-6\"><div class=\"w-12 h-12 bg-danger-500 rounded-full flex items-center justify-center mr-4 animate-bounce\"><i class=\"fas fa-exclamation-circle text-white text-xl\"></i></div><div><h3 class=\"text-lg font-bold text-danger-700 dark:text-danger-300\">Critical Alerts</h3><p class=\"text-sm text-danger-600 dark:text-danger-400\">Immediate attention required</p></div></div><div class=\"space-y-3\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -132,7 +132,7 @@ func OverviewPage(data OverviewData) templ.Component {
 					return templ_7745c5c3_Err
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "</div><!-- Chart Scripts --> <script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script> <script>\n            // Prepare chart data\n            const vendorLabels = [\n                { for vendor, _ := range data.DevicesByVendor }'{ vendor }',{ end }\n            ];\n            const vendorCounts = [\n                { for _, count := range data.DevicesByVendor }{ fmt.Sprintf(\"%d\", count) },{ end }\n            ];\n\n            const faultCounts = {\n                critical: { fmt.Sprintf(\"%d\", data.FaultSeverity[\"critical\"]) },\n                major: { fmt.Sprintf(\"%d\", data.FaultSeverity[\"major\"]) },\n                minor: { fmt.Sprintf(\"%d\", data.FaultSeverity[\"minor\"]) },\n                warning: { fmt.Sprintf(\"%d\", data.FaultSeverity[\"warning\"]) },\n                info: { fmt.Sprintf(\"%d\", data.FaultSeverity[\"info\"]) }\n            };\n\n            // Vendor Chart\n            const vendorCtx = document.getElementById('vendorChart').getContext('2d');\n            const vendorData = {\n                labels: vendorLabels,\n                datasets: [{\n                    data: vendorCounts,\n                    backgroundColor: [\n                        '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'\n                    ]\n                }]\n            };\n\n            new Chart(vendorCtx, {\n                type: 'doughnut',\n                data: vendorData,\n                options: {\n                    responsive: true,\n                    maintainAspectRatio: false,\n                    plugins: {\n                        legend: {\n                            position: 'right',\n                            labels: {\n                                color: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#374151'\n                            }\n                        }\n                    }\n                }\n            });\n\n            // Fault Chart\n            const faultCtx = document.getElementById('faultChart').getContext('2d');\n            const faultData = {\n                labels: ['Critical', 'Major', 'Minor', 'Warning', 'Info'],\n                datasets: [{\n                    label: 'Faults',\n                    data: [\n                        faultCounts.critical,\n                        faultCounts.major,\n                        faultCounts.minor,\n                        faultCounts.warning,\n                        faultCounts.info\n                    ],\n                    backgroundColor: ['#ef4444', '#f97316', '#f59e0b', '#eab308', '#06b6d4'],\n                    borderWidth: 0\n                }]\n            };\n\n            new Chart(faultCtx, {\n                type: 'bar',\n                data: faultData,\n                options: {\n                    responsive: true,\n                    maintainAspectRatio: false,\n                    scales: {\n                        y: {\n                            beginAtZero: true,\n                            ticks: {\n                                color: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#374151'\n                            },\n                            grid: {\n                                color: document.documentElement.classList.contains('dark') ? '#334155' : '#e5e7eb'\n                            }\n                        },\n                        x: {\n                            ticks: {\n                                color: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#374151'\n                            },\n                            grid: {\n                                display: false\n                            }\n                        }\n                    },\n                    plugins: {\n                        legend: {\n                            display: false\n                        }\n                    }\n                }\n            });\n\n            // Update stats function for WebSocket updates\n            function updateStats(data) {\n                // Update stat cards\n                document.querySelector('[data-stat=\"total-devices\"]').textContent = data.devices.total;\n                document.querySelector('[data-stat=\"online-devices\"]').textContent = data.devices.online;\n                document.querySelector('[data-stat=\"active-faults\"]').textContent = data.faults.active;\n                document.querySelector('[data-stat=\"critical-faults\"]').textContent = data.faults.critical;\n\n                // Update navigation badges\n                document.getElementById('device-count').textContent = data.devices.total;\n                if (data.faults.active > 0) {\n                    document.getElementById('fault-count').textContent = data.faults.active;\n                    document.getElementById('fault-count').classList.remove('hidden');\n                } else {\n                    document.getElementById('fault-count').classList.add('hidden');\n                }\n            }\n\n            // Refresh all devices\n            function refreshAllDevices() {\n                if (confirm('Are you sure you want to refresh all devices? This may take some time.')) {\n                    fetch('/api/devices/refresh-all', { method: 'POST' })\n                        .then(res => res.json())\n                        .then(data => {\n                            alert(data.message || 'Refresh initiated');\n                        })\n                        .catch(err => {\n                            alert('Failed to refresh devices');\n                        });\n                }\n            }\n        </script>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "</div><!-- Chart Scripts --> <script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script> <script>\n            // Prepare chart data\n            const vendorLabels = [\n                { for vendor, _ := range data.DevicesByVendor }'{ vendor }',{ end }\n            ];\n            const vendorCounts = [\n                { for _, count := range data.DevicesByVendor }{ fmt.Sprintf(\"%d\", count) },{ end }\n            ];\n\n            const faultCounts = {\n                critical: { fmt.Sprintf(\"%d\", data.FaultSeverity[\"critical\"]) },\n                major: { fmt.Sprintf(\"%d\", data.FaultSeverity[\"major\"]) },\n                minor: { fmt.Sprintf(\"%d\", data.FaultSeverity[\"minor\"]) },\n                warning: { fmt.Sprintf(\"%d\", data.FaultSeverity[\"warning\"]) },\n                info: { fmt.Sprintf(\"%d\", data.FaultSeverity[\"info\"]) }\n            };\n\n            // Vendor Chart\n            const vendorCtx = document.getElementById('vendorChart').getContext('2d');\n            const vendorData = {\n                labels: vendorLabels,\n                datasets: [{\n                    data: vendorCounts,\n                    backgroundColor: [\n                        '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'\n                    ]\n                }]\n            };\n\n            new Chart(vendorCtx, {\n                type: 'doughnut',\n                data: vendorData,\n                options: {\n                    responsive: true,\n                    maintainAspectRatio: false,\n                    plugins: {\n                        legend: {\n                            position: 'right',\n                            labels: {\n                                color: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#374151'\n                            }\n                        }\n                    }\n                }\n            });\n\n            // Fault Chart\n            const faultCtx = document.getElementById('faultChart').getContext('2d');\n            const faultData = {\n                labels: ['Critical', 'Major', 'Minor', 'Warning', 'Info'],\n                datasets: [{\n                    label: 'Faults',\n                    data: [\n                        faultCounts.critical,\n                        faultCounts.major,\n                        faultCounts.minor,\n                        faultCounts.warning,\n                        faultCounts.info\n                    ],\n                    backgroundColor: ['#ef4444', '#f97316', '#f59e0b', '#eab308', '#06b6d4'],\n                    borderWidth: 0\n                }]\n            };\n\n            new Chart(faultCtx, {\n                type: 'bar',\n                data: faultData,\n                options: {\n                    responsive: true,\n                    maintainAspectRatio: false,\n                    scales: {\n                        y: {\n                            beginAtZero: true,\n                            ticks: {\n                                color: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#374151'\n                            },\n                            grid: {\n                                color: document.documentElement.classList.contains('dark') ? '#334155' : '#e5e7eb'\n                            }\n                        },\n                        x: {\n                            ticks: {\n                                color: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#374151'\n                            },\n                            grid: {\n                                display: false\n                            }\n                        }\n                    },\n                    plugins: {\n                        legend: {\n                            display: false\n                        }\n                    }\n                }\n            });\n\n            // Update stats function for WebSocket updates\n            function updateStats(data) {\n                // Update stat cards\n                const totalDevicesEl = document.querySelector('[data-stat=\"total-devices\"]');\n                const onlineDevicesEl = document.querySelector('[data-stat=\"online-devices\"]');\n                const activeFaultsEl = document.querySelector('[data-stat=\"active-faults\"]');\n                const criticalFaultsEl = document.querySelector('[data-stat=\"critical-faults\"]');\n\n                if (totalDevicesEl && data.devices) totalDevicesEl.textContent = data.devices.total || 0;\n                if (onlineDevicesEl && data.devices) onlineDevicesEl.textContent = data.devices.online || 0;\n                if (activeFaultsEl && data.faults) activeFaultsEl.textContent = data.faults.active || 0;\n                if (criticalFaultsEl && data.faults) criticalFaultsEl.textContent = data.faults.critical || 0;\n\n                // Update navigation badges\n                const deviceCountEl = document.getElementById('device-count');\n                const faultCountEl = document.getElementById('fault-count');\n\n                if (deviceCountEl && data.devices) {\n                    const totalDevices = data.devices.total || 0;\n                    deviceCountEl.textContent = totalDevices;\n                    if (totalDevices > 0) {\n                        deviceCountEl.classList.remove('hidden');\n                    }\n                }\n\n                if (faultCountEl && data.faults) {\n                    const activeFaults = data.faults.active || 0;\n                    faultCountEl.textContent = activeFaults;\n                    if (activeFaults > 0) {\n                        faultCountEl.classList.remove('hidden');\n                    } else {\n                        faultCountEl.classList.add('hidden');\n                    }\n                }\n            }\n\n            // Refresh all devices\n            function refreshAllDevices() {\n                if (confirm('Are you sure you want to refresh all devices? This may take some time.')) {\n                    fetch('/api/devices/refresh-all', { method: 'POST' })\n                        .then(res => res.json())\n                        .then(data => {\n                            alert(data.message || 'Refresh initiated');\n                        })\n                        .catch(err => {\n                            alert('Failed to refresh devices');\n                        });\n                }\n            }\n        </script>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -146,7 +146,7 @@ func OverviewPage(data OverviewData) templ.Component {
 	})
 }
 
-func StatCard(title string, value int, icon string, color string) templ.Component {
+func StatCard(title string, value int, icon string, colorType string) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -167,27 +167,27 @@ func StatCard(title string, value int, icon string, color string) templ.Componen
 			templ_7745c5c3_Var4 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "<div class=\"card p-6\"><div class=\"flex items-center justify-between\"><div><p class=\"text-sm text-gray-600 dark:text-dark-muted mb-1\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "<div class=\"card p-6 hover:shadow-lg transition-all duration-300 group\"><div class=\"flex items-center justify-between\"><div class=\"flex-1\"><p class=\"text-sm font-medium text-gray-600 dark:text-gray-400 mb-2\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 241, Col: 70}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 349, Col: 80}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "</p><p class=\"text-2xl font-bold text-gray-800 dark:text-dark-text\" data-stat=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "</p><p class=\"text-3xl font-bold text-gray-800 dark:text-gray-200 group-hover:scale-105 transition-transform\" data-stat=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(toDataAttr(title))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 242, Col: 97}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 350, Col: 139}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
@@ -200,7 +200,7 @@ func StatCard(title string, value int, icon string, color string) templ.Componen
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%d", value))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 243, Col: 31}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 351, Col: 31}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
@@ -210,7 +210,7 @@ func StatCard(title string, value int, icon string, color string) templ.Componen
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var8 = []any{"p-3 rounded-full " + bgColorClass(color)}
+		var templ_7745c5c3_Var8 = []any{"p-4 rounded-xl shadow-lg " + getStatCardBg(colorType)}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var8...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -232,7 +232,7 @@ func StatCard(title string, value int, icon string, color string) templ.Componen
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var10 = []any{"fas " + icon + " text-white text-xl"}
+		var templ_7745c5c3_Var10 = []any{"fas " + icon + " text-white text-2xl"}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var10...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -250,7 +250,42 @@ func StatCard(title string, value int, icon string, color string) templ.Componen
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "\"></i></div></div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "\"></i></div></div>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var12 = []any{"mt-4 px-3 py-1 rounded-full text-xs font-semibold inline-block " + getStatCardTextBg(colorType)}
+		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var12...)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, "<div class=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var13 string
+		templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(templ.CSSClasses(templ_7745c5c3_Var12).String())
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 1, Col: 0}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var14 string
+		templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(getStatCardLabel(colorType))
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 359, Col: 32}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 22, "</div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -274,40 +309,40 @@ func ServiceStatus(name string, connected bool) templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var12 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var12 == nil {
-			templ_7745c5c3_Var12 = templ.NopComponent
+		templ_7745c5c3_Var15 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var15 == nil {
+			templ_7745c5c3_Var15 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, "<div class=\"flex items-center justify-between\"><span class=\"text-gray-700 dark:text-dark-text\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, "<div class=\"flex items-center justify-between\"><span class=\"text-gray-700 dark:text-gray-700\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var13 string
-		templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(name)
+		var templ_7745c5c3_Var16 string
+		templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(name)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 255, Col: 56}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 366, Col: 55}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "</span> <span class=\"flex items-center\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "</span> <span class=\"flex items-center\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		if connected {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 22, "<i class=\"fas fa-check-circle text-success mr-2\"></i> <span class=\"text-success\">Connected</span>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 25, "<i class=\"fas fa-check-circle text-success mr-2\"></i> <span class=\"text-success\">Connected</span>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		} else {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, "<i class=\"fas fa-times-circle text-danger mr-2\"></i> <span class=\"text-danger\">Disconnected</span>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 26, "<i class=\"fas fa-times-circle text-danger mr-2\"></i> <span class=\"text-danger\">Disconnected</span>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "</span></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "</span></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -331,86 +366,130 @@ func FaultItem(fault *models.Fault) templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var14 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var14 == nil {
-			templ_7745c5c3_Var14 = templ.NopComponent
+		templ_7745c5c3_Var17 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var17 == nil {
+			templ_7745c5c3_Var17 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 25, "<div class=\"flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-dark-bg transition-colors\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "<div class=\"flex items-start gap-4 p-4 rounded-xl border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-gray-200 dark:hover:border-gray-600 transition-all duration-300\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var15 = []any{"fas fa-exclamation-triangle mt-1 " + severityColor(fault.Severity)}
-		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var15...)
+		var templ_7745c5c3_Var18 = []any{"w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 " + getSeverityBg(fault.Severity)}
+		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var18...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 26, "<i class=\"")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var16 string
-		templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(templ.CSSClasses(templ_7745c5c3_Var15).String())
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 1, Col: 0}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "\"></i><div class=\"flex-1 min-w-0\"><p class=\"text-sm font-medium text-gray-800 dark:text-dark-text truncate\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var17 string
-		templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinStringErrs(fault.DeviceSerial)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 273, Col: 24}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var17))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, " - ")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var18 string
-		templ_7745c5c3_Var18, templ_7745c5c3_Err = templ.JoinStringErrs(fault.Code)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 273, Col: 41}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var18))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 29, "</p><p class=\"text-xs text-gray-600 dark:text-dark-muted\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 29, "<div class=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var19 string
-		templ_7745c5c3_Var19, templ_7745c5c3_Err = templ.JoinStringErrs(fault.Message)
+		templ_7745c5c3_Var19, templ_7745c5c3_Err = templ.JoinStringErrs(templ.CSSClasses(templ_7745c5c3_Var18).String())
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 276, Col: 19}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 1, Col: 0}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var19))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 30, "</p><p class=\"text-xs text-gray-500 dark:text-dark-muted mt-1\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 30, "\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var20 string
-		templ_7745c5c3_Var20, templ_7745c5c3_Err = templ.JoinStringErrs(timeAgo(fault.Timestamp))
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 279, Col: 30}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var20))
+		var templ_7745c5c3_Var20 = []any{"fas fa-exclamation-triangle text-white text-sm"}
+		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var20...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 31, "</p></div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 31, "<i class=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var21 string
+		templ_7745c5c3_Var21, templ_7745c5c3_Err = templ.JoinStringErrs(templ.CSSClasses(templ_7745c5c3_Var20).String())
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 1, Col: 0}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var21))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 32, "\"></i></div><div class=\"flex-1 min-w-0\"><div class=\"flex items-center gap-2 mb-1\"><p class=\"text-sm font-semibold text-gray-800 dark:text-gray-200 truncate\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var22 string
+		templ_7745c5c3_Var22, templ_7745c5c3_Err = templ.JoinStringErrs(fault.DeviceSerial)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 387, Col: 25}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var22))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 33, "</p>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var23 = []any{"px-2 py-0.5 rounded-full text-xs font-medium " + getSeverityBadge(fault.Severity)}
+		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var23...)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 34, "<span class=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var24 string
+		templ_7745c5c3_Var24, templ_7745c5c3_Err = templ.JoinStringErrs(templ.CSSClasses(templ_7745c5c3_Var23).String())
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 1, Col: 0}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var24))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 35, "\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var25 string
+		templ_7745c5c3_Var25, templ_7745c5c3_Err = templ.JoinStringErrs(fault.Severity)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 390, Col: 21}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var25))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 36, "</span></div><p class=\"text-sm text-gray-600 dark:text-gray-400 mb-2 line-clamp-2\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var26 string
+		templ_7745c5c3_Var26, templ_7745c5c3_Err = templ.JoinStringErrs(fault.Message)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 394, Col: 19}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var26))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 37, "</p><div class=\"flex items-center justify-between\"><p class=\"text-xs text-gray-500 dark:text-gray-500 flex items-center gap-1\"><i class=\"fas fa-clock\"></i> ")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var27 string
+		templ_7745c5c3_Var27, templ_7745c5c3_Err = templ.JoinStringErrs(timeAgo(fault.Timestamp))
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 399, Col: 31}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var27))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 38, "</p><button class=\"text-xs text-primary-500 hover:text-primary-600 font-medium\">View Details</button></div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -434,64 +513,64 @@ func CriticalFaultAlert(fault *models.Fault) templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var21 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var21 == nil {
-			templ_7745c5c3_Var21 = templ.NopComponent
+		templ_7745c5c3_Var28 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var28 == nil {
+			templ_7745c5c3_Var28 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 32, "<div class=\"bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-3\"><div class=\"flex items-start\"><i class=\"fas fa-exclamation-circle text-red-500 mt-0.5 mr-3\"></i><div class=\"flex-1\"><p class=\"text-sm font-medium text-red-800 dark:text-red-200\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 39, "<div class=\"bg-red-50 dark:bg-red-900 border border-red-200 dark:border-red-800 rounded-lg p-3\"><div class=\"flex items-start\"><i class=\"fas fa-exclamation-circle text-red-500 mt-0.5 mr-3\"></i><div class=\"flex-1\"><p class=\"text-sm font-medium text-red-800 dark:text-red-200\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var22 string
-		templ_7745c5c3_Var22, templ_7745c5c3_Err = templ.JoinStringErrs(fault.DeviceSerial)
+		var templ_7745c5c3_Var29 string
+		templ_7745c5c3_Var29, templ_7745c5c3_Err = templ.JoinStringErrs(fault.DeviceSerial)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 291, Col: 25}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 415, Col: 25}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var22))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 33, " - ")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var29))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var23 string
-		templ_7745c5c3_Var23, templ_7745c5c3_Err = templ.JoinStringErrs(fault.Code)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 291, Col: 42}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var23))
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 40, " - ")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 34, "</p><p class=\"text-sm text-red-700 dark:text-red-300 mt-1\">")
+		var templ_7745c5c3_Var30 string
+		templ_7745c5c3_Var30, templ_7745c5c3_Err = templ.JoinStringErrs(fault.Code)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 415, Col: 42}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var30))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var24 string
-		templ_7745c5c3_Var24, templ_7745c5c3_Err = templ.JoinStringErrs(fault.Message)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 294, Col: 20}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var24))
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 41, "</p><p class=\"text-sm text-red-700 dark:text-red-300 mt-1\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 35, "</p><div class=\"mt-2\"><a href=\"")
+		var templ_7745c5c3_Var31 string
+		templ_7745c5c3_Var31, templ_7745c5c3_Err = templ.JoinStringErrs(fault.Message)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 418, Col: 20}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var31))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var25 templ.SafeURL
-		templ_7745c5c3_Var25, templ_7745c5c3_Err = templ.JoinURLErrs(templ.URL(fmt.Sprintf("/faults/%s", fault.ID)))
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 297, Col: 61}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var25))
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 42, "</p><div class=\"mt-2\"><a href=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 36, "\" class=\"text-xs text-red-600 dark:text-red-400 hover:underline\">View Details →</a></div></div></div></div>")
+		var templ_7745c5c3_Var32 templ.SafeURL
+		templ_7745c5c3_Var32, templ_7745c5c3_Err = templ.JoinURLErrs(templ.URL(fmt.Sprintf("/faults/%s", fault.ID)))
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 421, Col: 61}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var32))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 43, "\" class=\"text-xs text-red-600 dark:text-red-400 hover:underline\">View Details →</a></div></div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -515,38 +594,38 @@ func HealthGauge(score int) templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var26 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var26 == nil {
-			templ_7745c5c3_Var26 = templ.NopComponent
+		templ_7745c5c3_Var33 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var33 == nil {
+			templ_7745c5c3_Var33 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 37, "<div class=\"relative w-32 h-32 mx-auto\"><svg class=\"transform -rotate-90 w-32 h-32\"><circle cx=\"64\" cy=\"64\" r=\"56\" stroke=\"#e5e7eb\" stroke-width=\"12\" fill=\"none\" class=\"dark:stroke-dark-border\"></circle> <circle cx=\"64\" cy=\"64\" r=\"56\" stroke=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 44, "<div class=\"relative w-32 h-32 mx-auto\"><svg class=\"transform -rotate-90 w-32 h-32\"><circle cx=\"64\" cy=\"64\" r=\"56\" stroke=\"#e5e7eb\" stroke-width=\"12\" fill=\"none\" class=\"dark:stroke-dark-border\"></circle> <circle cx=\"64\" cy=\"64\" r=\"56\" stroke=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var27 string
-		templ_7745c5c3_Var27, templ_7745c5c3_Err = templ.JoinStringErrs(healthScoreColor(score))
+		var templ_7745c5c3_Var34 string
+		templ_7745c5c3_Var34, templ_7745c5c3_Err = templ.JoinStringErrs(healthScoreColor(score))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 314, Col: 36}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 438, Col: 36}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var27))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 38, "\" stroke-width=\"12\" fill=\"none\" stroke-dasharray=\"")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var34))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var28 string
-		templ_7745c5c3_Var28, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%d 352", int(float64(score)*3.52)))
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 317, Col: 70}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var28))
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 45, "\" stroke-width=\"12\" fill=\"none\" stroke-dasharray=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 39, "\" stroke-linecap=\"round\"></circle></svg></div>")
+		var templ_7745c5c3_Var35 string
+		templ_7745c5c3_Var35, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%d 352", int(float64(score)*3.52)))
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 441, Col: 70}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var35))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 46, "\" stroke-linecap=\"round\"></circle></svg></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -580,18 +659,78 @@ func severityColor(severity string) string {
 	}
 }
 
-func bgColorClass(color string) string {
-	switch color {
-	case "text-blue-500":
-		return "bg-blue-500"
-	case "text-green-500":
-		return "bg-green-500"
-	case "text-yellow-500":
-		return "bg-yellow-500"
-	case "text-red-500":
-		return "bg-red-500"
+func getStatCardBg(colorType string) string {
+	switch colorType {
+	case "primary":
+		return "bg-gradient-to-br from-primary-500 to-primary-600"
+	case "success":
+		return "bg-gradient-to-br from-success-500 to-success-600"
+	case "warning":
+		return "bg-gradient-to-br from-warning-500 to-warning-600"
+	case "danger":
+		return "bg-gradient-to-br from-danger-500 to-danger-600"
 	default:
-		return "bg-gray-500"
+		return "bg-gradient-to-br from-gray-500 to-gray-600"
+	}
+}
+
+func getStatCardTextBg(colorType string) string {
+	switch colorType {
+	case "primary":
+		return "bg-primary-100 text-primary-800"
+	case "success":
+		return "bg-success-100 text-success-800"
+	case "warning":
+		return "bg-warning-100 text-warning-800"
+	case "danger":
+		return "bg-danger-100 text-danger-800"
+	default:
+		return "bg-gray-100 text-gray-800"
+	}
+}
+
+func getStatCardLabel(colorType string) string {
+	switch colorType {
+	case "primary":
+		return "Total Count"
+	case "success":
+		return "Active"
+	case "warning":
+		return "Pending"
+	case "danger":
+		return "Critical"
+	default:
+		return "Status"
+	}
+}
+
+func getSeverityBg(severity string) string {
+	switch severity {
+	case "critical":
+		return "bg-danger-500"
+	case "major":
+		return "bg-orange-500"
+	case "minor":
+		return "bg-warning-500"
+	case "warning":
+		return "bg-yellow-500"
+	default:
+		return "bg-info-500"
+	}
+}
+
+func getSeverityBadge(severity string) string {
+	switch severity {
+	case "critical":
+		return "bg-danger-100 text-danger-800"
+	case "major":
+		return "bg-orange-100 text-orange-800"
+	case "minor":
+		return "bg-warning-100 text-warning-800"
+	case "warning":
+		return "bg-yellow-100 text-yellow-800"
+	default:
+		return "bg-info-100 text-info-800"
 	}
 }
 

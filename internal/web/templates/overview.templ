@@ -7,72 +7,121 @@ import (
 
 templ OverviewPage(data OverviewData) {
 	@Page(data.Title, data.Theme, "/overview") {
-		<div class="space-y-6">
+		<div class="space-y-8 animate-fade-in">
+			<!-- Welcome Section -->
+			<div class="bg-gradient-to-r from-primary-500 to-primary-600 rounded-xl p-6 text-white">
+				<div class="flex items-center justify-between">
+					<div>
+						<h2 class="text-2xl font-bold mb-2">Welcome to Nextranet Gateway</h2>
+						<p class="text-primary-100">Manage your TR-069 devices with ease</p>
+					</div>
+					<div class="text-6xl opacity-20">
+						<i class="fas fa-network-wired"></i>
+					</div>
+				</div>
+			</div>
 			<!-- Statistics Cards -->
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-				@StatCard("Total Devices", data.Stats.TotalDevices, "fa-router", "text-blue-500")
-				@StatCard("Online Devices", data.Stats.OnlineDevices, "fa-wifi", "text-green-500")
-				@StatCard("Active Faults", data.Stats.ActiveFaults, "fa-exclamation-triangle", "text-yellow-500")
-				@StatCard("Critical Faults", data.Stats.CriticalFaults, "fa-exclamation-circle", "text-red-500")
+				@StatCard("Total Devices", data.Stats.TotalDevices, "fa-router", "primary")
+				@StatCard("Online Devices", data.Stats.OnlineDevices, "fa-wifi", "success")
+				@StatCard("Active Faults", data.Stats.ActiveFaults, "fa-exclamation-triangle", "warning")
+				@StatCard("Critical Faults", data.Stats.CriticalFaults, "fa-exclamation-circle", "danger")
 			</div>
 			<!-- Health Score and Quick Actions -->
-			<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 				<!-- Health Score -->
-				<div class="card p-6">
-					<h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-dark-text">System Health</h3>
-					<div class="relative">
+				<div class="card p-8 text-center">
+					<h3 class="text-xl font-bold mb-6 text-gray-800 dark:text-gray-200 flex items-center justify-center gap-2">
+						<i class="fas fa-heartbeat text-primary-500"></i>
+						System Health
+					</h3>
+					<div class="relative mb-6">
 						@HealthGauge(data.Stats.HealthScore)
-						<div class="text-center mt-4">
-							<p class="text-3xl font-bold { healthScoreColor(data.Stats.HealthScore) }">
-								{ fmt.Sprintf("%d%%", data.Stats.HealthScore) }
-							</p>
-							<p class="text-sm text-gray-600 dark:text-dark-muted">Overall Health Score</p>
-						</div>
+					</div>
+					<div class="text-center">
+						<p class="text-4xl font-bold { healthScoreColor(data.Stats.HealthScore) } mb-2">
+							{ fmt.Sprintf("%d%%", data.Stats.HealthScore) }
+						</p>
+						<p class="text-gray-600 dark:text-gray-400">Overall Health Score</p>
 					</div>
 				</div>
 				<!-- Quick Actions -->
-				<div class="card p-6">
-					<h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-dark-text">Quick Actions</h3>
-					<div class="space-y-2">
-						<button onclick="refreshAllDevices()" class="w-full btn btn-primary">
-							<i class="fas fa-sync-alt mr-2"></i>
-							Refresh All Devices
+				<div class="card p-8">
+					<h3 class="text-xl font-bold mb-6 text-gray-800 dark:text-gray-200 flex items-center gap-2">
+						<i class="fas fa-bolt text-warning-500"></i>
+						Quick Actions
+					</h3>
+					<div class="space-y-4">
+						<button onclick="refreshAllDevices()" class="w-full btn btn-primary text-left">
+							<i class="fas fa-sync-alt mr-3"></i>
+							<div>
+								<div class="font-semibold">Refresh All Devices</div>
+								<div class="text-xs opacity-75">Update device status</div>
+							</div>
 						</button>
-						<a href="/devices?status=offline" class="w-full btn btn-secondary block text-center">
-							<i class="fas fa-plug mr-2"></i>
-							View Offline Devices
+						<a href="/devices?status=offline" class="w-full btn btn-secondary block">
+							<i class="fas fa-plug mr-3"></i>
+							<div>
+								<div class="font-semibold">View Offline Devices</div>
+								<div class="text-xs opacity-75">Check disconnected devices</div>
+							</div>
 						</a>
-						<a href="/faults?severity=critical" class="w-full btn btn-danger block text-center">
-							<i class="fas fa-exclamation-circle mr-2"></i>
-							View Critical Faults
+						<a href="/faults?severity=critical" class="w-full btn btn-danger block">
+							<i class="fas fa-exclamation-circle mr-3"></i>
+							<div>
+								<div class="font-semibold">View Critical Faults</div>
+								<div class="text-xs opacity-75">Resolve urgent issues</div>
+							</div>
 						</a>
 					</div>
 				</div>
 			</div>
 			<!-- Charts Row -->
-			<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 				<!-- Device Distribution by Vendor -->
-				<div class="card p-6">
-					<h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-dark-text">Devices by Vendor</h3>
-					<div class="h-64">
+				<div class="card p-6 hover:shadow-xl transition-all duration-300">
+					<div class="flex items-center justify-between mb-6">
+						<h3 class="text-lg font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2">
+							<i class="fas fa-chart-pie text-primary-500"></i>
+							Devices by Vendor
+						</h3>
+						<button class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+							<i class="fas fa-expand-alt"></i>
+						</button>
+					</div>
+					<div class="h-64 relative">
 						<canvas id="vendorChart"></canvas>
 					</div>
 				</div>
 				<!-- Fault Severity Distribution -->
-				<div class="card p-6">
-					<h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-dark-text">Faults by Severity</h3>
-					<div class="h-64">
+				<div class="card p-6 hover:shadow-xl transition-all duration-300">
+					<div class="flex items-center justify-between mb-6">
+						<h3 class="text-lg font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2">
+							<i class="fas fa-chart-bar text-warning-500"></i>
+							Faults by Severity
+						</h3>
+						<button class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+							<i class="fas fa-expand-alt"></i>
+						</button>
+					</div>
+					<div class="h-64 relative">
 						<canvas id="faultChart"></canvas>
 					</div>
 				</div>
 			</div>
 			<!-- Recent Activity -->
-			<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 				<!-- Recent Faults -->
 				<div class="card p-6">
-					<div class="flex items-center justify-between mb-4">
-						<h3 class="text-lg font-semibold text-gray-800 dark:text-dark-text">Recent Faults</h3>
-						<a href="/faults" class="text-sm text-accent hover:text-accent-hover">View All</a>
+					<div class="flex items-center justify-between mb-6">
+						<h3 class="text-lg font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2">
+							<i class="fas fa-history text-danger-500"></i>
+							Recent Faults
+						</h3>
+						<a href="/faults" class="text-sm text-primary-500 hover:text-primary-600 font-medium flex items-center gap-1">
+							View All
+							<i class="fas fa-arrow-right text-xs"></i>
+						</a>
 					</div>
 					if len(data.RecentFaults) > 0 {
 						<div class="space-y-3">
@@ -81,18 +130,59 @@ templ OverviewPage(data OverviewData) {
 							}
 						</div>
 					} else {
-						<p class="text-gray-500 dark:text-dark-muted text-center py-8">No recent faults</p>
+						<div class="text-center py-12">
+							<i class="fas fa-check-circle text-success-500 text-4xl mb-4"></i>
+							<p class="text-gray-500 dark:text-gray-400 font-medium">No recent faults</p>
+							<p class="text-sm text-gray-400 dark:text-gray-500">All systems running smoothly</p>
+						</div>
 					}
+				</div>
+				<!-- System Performance -->
+				<div class="card p-6">
+					<div class="flex items-center justify-between mb-6">
+						<h3 class="text-lg font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2">
+							<i class="fas fa-tachometer-alt text-info-500"></i>
+							System Performance
+						</h3>
+					</div>
+					<div class="space-y-4">
+						<div class="flex items-center justify-between">
+							<span class="text-sm font-medium text-gray-600 dark:text-gray-400">CPU Usage</span>
+							<span class="text-sm font-bold text-gray-800 dark:text-gray-200">12%</span>
+						</div>
+						<div class="progress-bar">
+							<div class="progress-bar-fill" style="width: 12%"></div>
+						</div>
+						<div class="flex items-center justify-between">
+							<span class="text-sm font-medium text-gray-600 dark:text-gray-400">Memory Usage</span>
+							<span class="text-sm font-bold text-gray-800 dark:text-gray-200">34%</span>
+						</div>
+						<div class="progress-bar">
+							<div class="progress-bar-fill" style="width: 34%"></div>
+						</div>
+						<div class="flex items-center justify-between">
+							<span class="text-sm font-medium text-gray-600 dark:text-gray-400">Storage Usage</span>
+							<span class="text-sm font-bold text-gray-800 dark:text-gray-200">67%</span>
+						</div>
+						<div class="progress-bar">
+							<div class="progress-bar-fill" style="width: 67%"></div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<!-- Critical Alerts -->
 			if len(data.CriticalFaults) > 0 {
-				<div class="card p-6 border-2 border-red-500 dark:border-red-600">
-					<div class="flex items-center mb-4">
-						<i class="fas fa-exclamation-circle text-red-500 text-xl mr-3"></i>
-						<h3 class="text-lg font-semibold text-gray-800 dark:text-dark-text">Critical Alerts</h3>
+				<div class="card p-6 border-2 border-danger-500 bg-danger-50 dark:bg-danger-900/20 animate-pulse">
+					<div class="flex items-center mb-6">
+						<div class="w-12 h-12 bg-danger-500 rounded-full flex items-center justify-center mr-4 animate-bounce">
+							<i class="fas fa-exclamation-circle text-white text-xl"></i>
+						</div>
+						<div>
+							<h3 class="text-lg font-bold text-danger-700 dark:text-danger-300">Critical Alerts</h3>
+							<p class="text-sm text-danger-600 dark:text-danger-400">Immediate attention required</p>
+						</div>
 					</div>
-					<div class="space-y-2">
+					<div class="space-y-3">
 						for _, fault := range data.CriticalFaults {
 							@CriticalFaultAlert(fault)
 						}
@@ -202,18 +292,36 @@ templ OverviewPage(data OverviewData) {
             // Update stats function for WebSocket updates
             function updateStats(data) {
                 // Update stat cards
-                document.querySelector('[data-stat="total-devices"]').textContent = data.devices.total;
-                document.querySelector('[data-stat="online-devices"]').textContent = data.devices.online;
-                document.querySelector('[data-stat="active-faults"]').textContent = data.faults.active;
-                document.querySelector('[data-stat="critical-faults"]').textContent = data.faults.critical;
+                const totalDevicesEl = document.querySelector('[data-stat="total-devices"]');
+                const onlineDevicesEl = document.querySelector('[data-stat="online-devices"]');
+                const activeFaultsEl = document.querySelector('[data-stat="active-faults"]');
+                const criticalFaultsEl = document.querySelector('[data-stat="critical-faults"]');
+
+                if (totalDevicesEl && data.devices) totalDevicesEl.textContent = data.devices.total || 0;
+                if (onlineDevicesEl && data.devices) onlineDevicesEl.textContent = data.devices.online || 0;
+                if (activeFaultsEl && data.faults) activeFaultsEl.textContent = data.faults.active || 0;
+                if (criticalFaultsEl && data.faults) criticalFaultsEl.textContent = data.faults.critical || 0;
 
                 // Update navigation badges
-                document.getElementById('device-count').textContent = data.devices.total;
-                if (data.faults.active > 0) {
-                    document.getElementById('fault-count').textContent = data.faults.active;
-                    document.getElementById('fault-count').classList.remove('hidden');
-                } else {
-                    document.getElementById('fault-count').classList.add('hidden');
+                const deviceCountEl = document.getElementById('device-count');
+                const faultCountEl = document.getElementById('fault-count');
+
+                if (deviceCountEl && data.devices) {
+                    const totalDevices = data.devices.total || 0;
+                    deviceCountEl.textContent = totalDevices;
+                    if (totalDevices > 0) {
+                        deviceCountEl.classList.remove('hidden');
+                    }
+                }
+
+                if (faultCountEl && data.faults) {
+                    const activeFaults = data.faults.active || 0;
+                    faultCountEl.textContent = activeFaults;
+                    if (activeFaults > 0) {
+                        faultCountEl.classList.remove('hidden');
+                    } else {
+                        faultCountEl.classList.add('hidden');
+                    }
                 }
             }
 
@@ -234,25 +342,28 @@ templ OverviewPage(data OverviewData) {
 	}
 }
 
-templ StatCard(title string, value int, icon string, color string) {
-	<div class="card p-6">
+templ StatCard(title string, value int, icon string, colorType string) {
+	<div class="card p-6 hover:shadow-lg transition-all duration-300 group">
 		<div class="flex items-center justify-between">
-			<div>
-				<p class="text-sm text-gray-600 dark:text-dark-muted mb-1">{ title }</p>
-				<p class="text-2xl font-bold text-gray-800 dark:text-dark-text" data-stat={ toDataAttr(title) }>
+			<div class="flex-1">
+				<p class="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">{ title }</p>
+				<p class="text-3xl font-bold text-gray-800 dark:text-gray-200 group-hover:scale-105 transition-transform" data-stat={ toDataAttr(title) }>
 					{ fmt.Sprintf("%d", value) }
 				</p>
 			</div>
-			<div class={ "p-3 rounded-full " + bgColorClass(color) }>
-				<i class={ "fas " + icon + " text-white text-xl" }></i>
+			<div class={ "p-4 rounded-xl shadow-lg " + getStatCardBg(colorType) }>
+				<i class={ "fas " + icon + " text-white text-2xl" }></i>
 			</div>
+		</div>
+		<div class={ "mt-4 px-3 py-1 rounded-full text-xs font-semibold inline-block " + getStatCardTextBg(colorType) }>
+			{ getStatCardLabel(colorType) }
 		</div>
 	</div>
 }
 
 templ ServiceStatus(name string, connected bool) {
 	<div class="flex items-center justify-between">
-		<span class="text-gray-700 dark:text-dark-text">{ name }</span>
+		<span class="text-gray-700 dark:text-gray-700">{ name }</span>
 		<span class="flex items-center">
 			if connected {
 				<i class="fas fa-check-circle text-success mr-2"></i>
@@ -266,24 +377,37 @@ templ ServiceStatus(name string, connected bool) {
 }
 
 templ FaultItem(fault *models.Fault) {
-	<div class="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-dark-bg transition-colors">
-		<i class={ "fas fa-exclamation-triangle mt-1 " + severityColor(fault.Severity) }></i>
+	<div class="flex items-start gap-4 p-4 rounded-xl border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-gray-200 dark:hover:border-gray-600 transition-all duration-300">
+		<div class={ "w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 " + getSeverityBg(fault.Severity) }>
+			<i class={ "fas fa-exclamation-triangle text-white text-sm" }></i>
+		</div>
 		<div class="flex-1 min-w-0">
-			<p class="text-sm font-medium text-gray-800 dark:text-dark-text truncate">
-				{ fault.DeviceSerial } - { fault.Code }
-			</p>
-			<p class="text-xs text-gray-600 dark:text-dark-muted">
+			<div class="flex items-center gap-2 mb-1">
+				<p class="text-sm font-semibold text-gray-800 dark:text-gray-200 truncate">
+					{ fault.DeviceSerial }
+				</p>
+				<span class={ "px-2 py-0.5 rounded-full text-xs font-medium " + getSeverityBadge(fault.Severity) }>
+					{ fault.Severity }
+				</span>
+			</div>
+			<p class="text-sm text-gray-600 dark:text-gray-400 mb-2 line-clamp-2">
 				{ fault.Message }
 			</p>
-			<p class="text-xs text-gray-500 dark:text-dark-muted mt-1">
-				{ timeAgo(fault.Timestamp) }
-			</p>
+			<div class="flex items-center justify-between">
+				<p class="text-xs text-gray-500 dark:text-gray-500 flex items-center gap-1">
+					<i class="fas fa-clock"></i>
+					{ timeAgo(fault.Timestamp) }
+				</p>
+				<button class="text-xs text-primary-500 hover:text-primary-600 font-medium">
+					View Details
+				</button>
+			</div>
 		</div>
 	</div>
 }
 
 templ CriticalFaultAlert(fault *models.Fault) {
-	<div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-3">
+	<div class="bg-red-50 dark:bg-red-900 border border-red-200 dark:border-red-800 rounded-lg p-3">
 		<div class="flex items-start">
 			<i class="fas fa-exclamation-circle text-red-500 mt-0.5 mr-3"></i>
 			<div class="flex-1">
@@ -347,18 +471,78 @@ func severityColor(severity string) string {
 	}
 }
 
-func bgColorClass(color string) string {
-	switch color {
-	case "text-blue-500":
-		return "bg-blue-500"
-	case "text-green-500":
-		return "bg-green-500"
-	case "text-yellow-500":
-		return "bg-yellow-500"
-	case "text-red-500":
-		return "bg-red-500"
+func getStatCardBg(colorType string) string {
+	switch colorType {
+	case "primary":
+		return "bg-gradient-to-br from-primary-500 to-primary-600"
+	case "success":
+		return "bg-gradient-to-br from-success-500 to-success-600"
+	case "warning":
+		return "bg-gradient-to-br from-warning-500 to-warning-600"
+	case "danger":
+		return "bg-gradient-to-br from-danger-500 to-danger-600"
 	default:
-		return "bg-gray-500"
+		return "bg-gradient-to-br from-gray-500 to-gray-600"
+	}
+}
+
+func getStatCardTextBg(colorType string) string {
+	switch colorType {
+	case "primary":
+		return "bg-primary-100 text-primary-800"
+	case "success":
+		return "bg-success-100 text-success-800"
+	case "warning":
+		return "bg-warning-100 text-warning-800"
+	case "danger":
+		return "bg-danger-100 text-danger-800"
+	default:
+		return "bg-gray-100 text-gray-800"
+	}
+}
+
+func getStatCardLabel(colorType string) string {
+	switch colorType {
+	case "primary":
+		return "Total Count"
+	case "success":
+		return "Active"
+	case "warning":
+		return "Pending"
+	case "danger":
+		return "Critical"
+	default:
+		return "Status"
+	}
+}
+
+func getSeverityBg(severity string) string {
+	switch severity {
+	case "critical":
+		return "bg-danger-500"
+	case "major":
+		return "bg-orange-500"
+	case "minor":
+		return "bg-warning-500"
+	case "warning":
+		return "bg-yellow-500"
+	default:
+		return "bg-info-500"
+	}
+}
+
+func getSeverityBadge(severity string) string {
+	switch severity {
+	case "critical":
+		return "bg-danger-100 text-danger-800"
+	case "major":
+		return "bg-orange-100 text-orange-800"
+	case "minor":
+		return "bg-warning-100 text-warning-800"
+	case "warning":
+		return "bg-yellow-100 text-yellow-800"
+	default:
+		return "bg-info-100 text-info-800"
 	}
 }
 

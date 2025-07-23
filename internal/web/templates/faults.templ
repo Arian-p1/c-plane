@@ -8,8 +8,8 @@ templ FaultsPage(data FaultsPageData) {
 			<!-- Page Header with Actions -->
 			<div class="flex justify-between items-center">
 				<div>
-					<h1 class="text-2xl font-bold text-gray-800 dark:text-dark-text">Faults & Alarms</h1>
-					<p class="text-sm text-gray-600 dark:text-dark-muted mt-1">
+					<h1 class="text-2xl font-bold text-gray-800 dark:text-gray-700">Faults & Alarms</h1>
+					<p class="text-sm text-gray-600 dark:text-gray-500 mt-1">
 						Showing { fmt.Sprintf("%d", len(data.Faults)) } of { fmt.Sprintf("%d", data.TotalCount) } faults
 					</p>
 				</div>
@@ -29,8 +29,8 @@ templ FaultsPage(data FaultsPageData) {
 				<div class="card p-4">
 					<div class="flex items-center justify-between">
 						<div>
-							<p class="text-sm text-gray-600 dark:text-dark-muted">Total Faults</p>
-							<p class="text-2xl font-bold text-gray-800 dark:text-dark-text">
+							<p class="text-sm text-gray-600 dark:text-gray-500">Total Faults</p>
+							<p class="text-2xl font-bold text-gray-800 dark:text-gray-700">
 								{ fmt.Sprintf("%d", data.TotalCount) }
 							</p>
 						</div>
@@ -40,7 +40,7 @@ templ FaultsPage(data FaultsPageData) {
 				<div class="card p-4">
 					<div class="flex items-center justify-between">
 						<div>
-							<p class="text-sm text-gray-600 dark:text-dark-muted">Critical</p>
+							<p class="text-sm text-gray-600 dark:text-gray-500">Critical</p>
 							<p class="text-2xl font-bold text-red-600">
 								{ fmt.Sprintf("%d", data.SeverityStats["critical"]) }
 							</p>
@@ -51,7 +51,7 @@ templ FaultsPage(data FaultsPageData) {
 				<div class="card p-4">
 					<div class="flex items-center justify-between">
 						<div>
-							<p class="text-sm text-gray-600 dark:text-dark-muted">Major</p>
+							<p class="text-sm text-gray-600 dark:text-gray-500">Major</p>
 							<p class="text-2xl font-bold text-orange-600">
 								{ fmt.Sprintf("%d", data.SeverityStats["major"]) }
 							</p>
@@ -62,7 +62,7 @@ templ FaultsPage(data FaultsPageData) {
 				<div class="card p-4">
 					<div class="flex items-center justify-between">
 						<div>
-							<p class="text-sm text-gray-600 dark:text-dark-muted">Minor</p>
+							<p class="text-sm text-gray-600 dark:text-gray-500">Minor</p>
 							<p class="text-2xl font-bold text-yellow-600">
 								{ fmt.Sprintf("%d", data.SeverityStats["minor"]) }
 							</p>
@@ -73,7 +73,7 @@ templ FaultsPage(data FaultsPageData) {
 				<div class="card p-4">
 					<div class="flex items-center justify-between">
 						<div>
-							<p class="text-sm text-gray-600 dark:text-dark-muted">Active</p>
+							<p class="text-sm text-gray-600 dark:text-gray-500">Active</p>
 							<p class="text-2xl font-bold text-blue-600">
 								{ fmt.Sprintf("%d", data.ActiveCount) }
 							</p>
@@ -87,19 +87,19 @@ templ FaultsPage(data FaultsPageData) {
 				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
 					<!-- Device Filter -->
 					<div>
-						<label class="block text-sm font-medium text-gray-700 dark:text-dark-text mb-1">Device</label>
+						<label class="block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1">Device</label>
 						<input
 							type="text"
 							id="device-filter"
 							value={ data.Filters.DeviceID }
 							placeholder="Device ID or Serial"
-							class="w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text focus:ring-2 focus:ring-accent"
+							class="w-full px-3 py-2 border border-gray-300 dark:border-gray-200 rounded-lg bg-white dark:bg-white text-gray-900 dark:text-gray-800 focus:ring-2 focus:ring-accent"
 						/>
 					</div>
 					<!-- Severity Filter -->
 					<div>
-						<label class="block text-sm font-medium text-gray-700 dark:text-dark-text mb-1">Severity</label>
-						<select id="severity-filter" class="w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text">
+						<label class="block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1">Severity</label>
+						<select id="severity-filter" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-200 rounded-lg bg-white dark:bg-white text-gray-900 dark:text-gray-800">
 							<option value="">All Severities</option>
 							<option value="critical" selected={ data.Filters.Severity == "critical" }>Critical</option>
 							<option value="major" selected={ data.Filters.Severity == "major" }>Major</option>
@@ -110,8 +110,8 @@ templ FaultsPage(data FaultsPageData) {
 					</div>
 					<!-- Status Filter -->
 					<div>
-						<label class="block text-sm font-medium text-gray-700 dark:text-dark-text mb-1">Status</label>
-						<select id="status-filter" class="w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text">
+						<label class="block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1">Status</label>
+						<select id="status-filter" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-200 rounded-lg bg-white dark:bg-white text-gray-900 dark:text-gray-800">
 							<option value="">All Status</option>
 							<option value="active" selected={ data.Filters.Status == "active" }>Active</option>
 							<option value="acknowledged" selected={ data.Filters.Status == "acknowledged" }>Acknowledged</option>
@@ -120,8 +120,8 @@ templ FaultsPage(data FaultsPageData) {
 					</div>
 					<!-- Time Range Filter -->
 					<div>
-						<label class="block text-sm font-medium text-gray-700 dark:text-dark-text mb-1">Time Range</label>
-						<select id="time-filter" class="w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text">
+						<label class="block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1">Time Range</label>
+						<select id="time-filter" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-200 rounded-lg bg-white dark:bg-white text-gray-900 dark:text-gray-800">
 							<option value="">All Time</option>
 							<option value="1h">Last Hour</option>
 							<option value="24h">Last 24 Hours</option>
@@ -142,32 +142,32 @@ templ FaultsPage(data FaultsPageData) {
 			<div class="card overflow-hidden">
 				<div class="overflow-x-auto">
 					<table class="w-full">
-						<thead class="bg-gray-50 dark:bg-dark-bg border-b dark:border-dark-border">
+						<thead class="bg-gray-50 dark:bg-gray-50 border-b dark:border-gray-200">
 							<tr>
 								<th class="px-6 py-3 text-left">
-									<input type="checkbox" id="select-all" class="rounded border-gray-300 dark:border-dark-border"/>
+									<input type="checkbox" id="select-all" class="rounded border-gray-300 dark:border-gray-200"/>
 								</th>
-								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider">
 									Severity
 								</th>
-								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider">
 									Device
 								</th>
-								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider">
 									Code & Message
 								</th>
-								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider">
 									Status
 								</th>
-								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider">
 									Time
 								</th>
-								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider">
 									Actions
 								</th>
 							</tr>
 						</thead>
-						<tbody class="divide-y divide-gray-200 dark:divide-dark-border">
+						<tbody class="divide-y divide-gray-200 dark:divide-gray-200">
 							for _, fault := range data.Faults {
 								@FaultRow(fault)
 							}
@@ -178,8 +178,8 @@ templ FaultsPage(data FaultsPageData) {
 				if len(data.Faults) == 0 {
 					<div class="text-center py-12">
 						<i class="fas fa-check-circle text-green-400 text-5xl mb-4"></i>
-						<p class="text-gray-500 dark:text-dark-muted">No faults found</p>
-						<p class="text-sm text-gray-400 dark:text-dark-muted mt-1">All systems are running normally</p>
+						<p class="text-gray-500 dark:text-gray-500">No faults found</p>
+						<p class="text-sm text-gray-400 dark:text-gray-500 mt-1">All systems are running normally</p>
 					</div>
 				}
 			</div>
@@ -187,7 +187,7 @@ templ FaultsPage(data FaultsPageData) {
 			if data.TotalPages > 1 {
 				<div class="flex items-center justify-between">
 					<div class="flex items-center space-x-2">
-						<span class="text-sm text-gray-700 dark:text-dark-text">
+						<span class="text-sm text-gray-700 dark:text-gray-700">
 							Page { fmt.Sprintf("%d", data.CurrentPage) } of { fmt.Sprintf("%d", data.TotalPages) }
 						</span>
 					</div>
@@ -196,7 +196,7 @@ templ FaultsPage(data FaultsPageData) {
 						<button
 							onclick={ templ.JSFuncCall("goToPage", data.CurrentPage-1) }
 							disabled={ data.CurrentPage == 1 }
-							class="px-3 py-2 rounded-lg border border-gray-300 dark:border-dark-border hover:bg-gray-50 dark:hover:bg-dark-bg disabled:opacity-50 disabled:cursor-not-allowed"
+							class="px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
 						>
 							<i class="fas fa-chevron-left"></i>
 						</button>

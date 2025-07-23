@@ -47,20 +47,20 @@ func DeviceDetailPage(data DeviceDetailData) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"space-y-6\"><!-- Breadcrumb --><nav class=\"flex items-center space-x-2 text-sm text-gray-600 dark:text-dark-muted\"><a href=\"/devices\" class=\"hover:text-accent\">Devices</a> <i class=\"fas fa-chevron-right text-xs\"></i> <span class=\"text-gray-800 dark:text-dark-text\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"space-y-6\"><!-- Breadcrumb --><nav class=\"flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-500\"><a href=\"/devices\" class=\"hover:text-accent\">Devices</a> <i class=\"fas fa-chevron-right text-xs\"></i> <span class=\"text-gray-800 dark:text-gray-700\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var3 string
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(data.Device.DeviceID.SerialNumber)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/device_detail.templ`, Line: 16, Col: 87}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/device_detail.templ`, Line: 16, Col: 86}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</span></nav><!-- Device Header --><div class=\"card p-6\"><div class=\"flex justify-between items-start\"><div><h1 class=\"text-2xl font-bold text-gray-800 dark:text-dark-text mb-2\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</span></nav><!-- Device Header --><div class=\"card p-6\"><div class=\"flex justify-between items-start\"><div><h1 class=\"text-2xl font-bold text-gray-800 dark:text-gray-700 mb-2\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -110,7 +110,7 @@ func DeviceDetailPage(data DeviceDetailData) templ.Component {
 					return templ_7745c5c3_Err
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</span> <span class=\"text-gray-600 dark:text-dark-muted\"><i class=\"fas fa-clock mr-1\"></i> Last seen: ")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</span> <span class=\"text-gray-600 dark:text-gray-500\"><i class=\"fas fa-clock mr-1\"></i> Last seen: ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -150,7 +150,7 @@ func DeviceDetailPage(data DeviceDetailData) templ.Component {
 					return templ_7745c5c3_Err
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "</div></div><div class=\"grid grid-cols-1 lg:grid-cols-3 gap-6\"><!-- Device Information --><div class=\"lg:col-span-2 space-y-6\"><!-- Basic Information --><div class=\"card p-6\"><h2 class=\"text-lg font-semibold mb-4 text-gray-800 dark:text-dark-text\">Device Information</h2><dl class=\"grid grid-cols-1 sm:grid-cols-2 gap-4\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "</div></div><div class=\"grid grid-cols-1 lg:grid-cols-3 gap-6\"><!-- Device Information --><div class=\"lg:col-span-2 space-y-6\"><!-- Basic Information --><div class=\"card p-6\"><h2 class=\"text-lg font-semibold mb-4 text-gray-800 dark:text-gray-700\">Device Information</h2><dl class=\"grid grid-cols-1 sm:grid-cols-2 gap-4\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -191,7 +191,7 @@ func DeviceDetailPage(data DeviceDetailData) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			if len(data.Parameters) > 0 {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "<div class=\"card p-6\"><div class=\"flex justify-between items-center mb-4\"><h2 class=\"text-lg font-semibold text-gray-800 dark:text-dark-text\">Parameters</h2><button onclick=\"refreshParameters()\" class=\"text-sm text-accent hover:text-accent-hover\"><i class=\"fas fa-sync-alt mr-1\"></i> Refresh</button></div><div class=\"space-y-3\">")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "<div class=\"card p-6\"><div class=\"flex justify-between items-center mb-4\"><h2 class=\"text-lg font-semibold text-gray-800 dark:text-gray-700\">Parameters</h2><button onclick=\"refreshParameters()\" class=\"text-sm text-accent hover:text-accent-hover\"><i class=\"fas fa-sync-alt mr-1\"></i> Refresh</button></div><div class=\"space-y-3\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -206,7 +206,7 @@ func DeviceDetailPage(data DeviceDetailData) templ.Component {
 					return templ_7745c5c3_Err
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "<!-- Active Tasks --><div class=\"card p-6\"><div class=\"flex justify-between items-center mb-4\"><h2 class=\"text-lg font-semibold text-gray-800 dark:text-dark-text\">Active Tasks</h2><span class=\"text-sm text-gray-600 dark:text-dark-muted\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "<!-- Active Tasks --><div class=\"card p-6\"><div class=\"flex justify-between items-center mb-4\"><h2 class=\"text-lg font-semibold text-gray-800 dark:text-gray-700\">Active Tasks</h2><span class=\"text-sm text-gray-600 dark:text-gray-500\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

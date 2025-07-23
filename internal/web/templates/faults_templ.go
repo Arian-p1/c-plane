@@ -43,7 +43,7 @@ func FaultsPage(data FaultsPageData) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"space-y-6\"><!-- Page Header with Actions --><div class=\"flex justify-between items-center\"><div><h1 class=\"text-2xl font-bold text-gray-800 dark:text-dark-text\">Faults & Alarms</h1><p class=\"text-sm text-gray-600 dark:text-dark-muted mt-1\">Showing ")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"space-y-6\"><!-- Page Header with Actions --><div class=\"flex justify-between items-center\"><div><h1 class=\"text-2xl font-bold text-gray-800 dark:text-gray-700\">Faults & Alarms</h1><p class=\"text-sm text-gray-600 dark:text-gray-500 mt-1\">Showing ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -69,7 +69,7 @@ func FaultsPage(data FaultsPageData) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, " faults</p></div><div class=\"flex space-x-3\"><button onclick=\"refreshFaults()\" class=\"btn btn-secondary\"><i class=\"fas fa-sync-alt mr-2\"></i> Refresh</button> <button onclick=\"showBulkActions()\" class=\"btn btn-primary\"><i class=\"fas fa-tasks mr-2\"></i> Bulk Actions</button></div></div><!-- Statistics Cards --><div class=\"grid grid-cols-1 md:grid-cols-5 gap-4\"><div class=\"card p-4\"><div class=\"flex items-center justify-between\"><div><p class=\"text-sm text-gray-600 dark:text-dark-muted\">Total Faults</p><p class=\"text-2xl font-bold text-gray-800 dark:text-dark-text\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, " faults</p></div><div class=\"flex space-x-3\"><button onclick=\"refreshFaults()\" class=\"btn btn-secondary\"><i class=\"fas fa-sync-alt mr-2\"></i> Refresh</button> <button onclick=\"showBulkActions()\" class=\"btn btn-primary\"><i class=\"fas fa-tasks mr-2\"></i> Bulk Actions</button></div></div><!-- Statistics Cards --><div class=\"grid grid-cols-1 md:grid-cols-5 gap-4\"><div class=\"card p-4\"><div class=\"flex items-center justify-between\"><div><p class=\"text-sm text-gray-600 dark:text-gray-500\">Total Faults</p><p class=\"text-2xl font-bold text-gray-800 dark:text-gray-700\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -82,7 +82,7 @@ func FaultsPage(data FaultsPageData) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</p></div><i class=\"fas fa-exclamation-triangle text-gray-500 text-2xl\"></i></div></div><div class=\"card p-4\"><div class=\"flex items-center justify-between\"><div><p class=\"text-sm text-gray-600 dark:text-dark-muted\">Critical</p><p class=\"text-2xl font-bold text-red-600\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</p></div><i class=\"fas fa-exclamation-triangle text-gray-500 text-2xl\"></i></div></div><div class=\"card p-4\"><div class=\"flex items-center justify-between\"><div><p class=\"text-sm text-gray-600 dark:text-gray-500\">Critical</p><p class=\"text-2xl font-bold text-red-600\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -95,7 +95,7 @@ func FaultsPage(data FaultsPageData) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</p></div><i class=\"fas fa-exclamation-circle text-red-500 text-2xl\"></i></div></div><div class=\"card p-4\"><div class=\"flex items-center justify-between\"><div><p class=\"text-sm text-gray-600 dark:text-dark-muted\">Major</p><p class=\"text-2xl font-bold text-orange-600\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</p></div><i class=\"fas fa-exclamation-circle text-red-500 text-2xl\"></i></div></div><div class=\"card p-4\"><div class=\"flex items-center justify-between\"><div><p class=\"text-sm text-gray-600 dark:text-gray-500\">Major</p><p class=\"text-2xl font-bold text-orange-600\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -108,7 +108,7 @@ func FaultsPage(data FaultsPageData) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</p></div><i class=\"fas fa-exclamation text-orange-500 text-2xl\"></i></div></div><div class=\"card p-4\"><div class=\"flex items-center justify-between\"><div><p class=\"text-sm text-gray-600 dark:text-dark-muted\">Minor</p><p class=\"text-2xl font-bold text-yellow-600\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</p></div><i class=\"fas fa-exclamation text-orange-500 text-2xl\"></i></div></div><div class=\"card p-4\"><div class=\"flex items-center justify-between\"><div><p class=\"text-sm text-gray-600 dark:text-gray-500\">Minor</p><p class=\"text-2xl font-bold text-yellow-600\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -121,7 +121,7 @@ func FaultsPage(data FaultsPageData) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "</p></div><i class=\"fas fa-info-circle text-yellow-500 text-2xl\"></i></div></div><div class=\"card p-4\"><div class=\"flex items-center justify-between\"><div><p class=\"text-sm text-gray-600 dark:text-dark-muted\">Active</p><p class=\"text-2xl font-bold text-blue-600\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "</p></div><i class=\"fas fa-info-circle text-yellow-500 text-2xl\"></i></div></div><div class=\"card p-4\"><div class=\"flex items-center justify-between\"><div><p class=\"text-sm text-gray-600 dark:text-gray-500\">Active</p><p class=\"text-2xl font-bold text-blue-600\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -134,7 +134,7 @@ func FaultsPage(data FaultsPageData) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</p></div><i class=\"fas fa-bell text-blue-500 text-2xl\"></i></div></div></div><!-- Filters Section --><div class=\"card p-4\"><div class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4\"><!-- Device Filter --><div><label class=\"block text-sm font-medium text-gray-700 dark:text-dark-text mb-1\">Device</label> <input type=\"text\" id=\"device-filter\" value=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</p></div><i class=\"fas fa-bell text-blue-500 text-2xl\"></i></div></div></div><!-- Filters Section --><div class=\"card p-4\"><div class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4\"><!-- Device Filter --><div><label class=\"block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1\">Device</label> <input type=\"text\" id=\"device-filter\" value=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -147,7 +147,7 @@ func FaultsPage(data FaultsPageData) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "\" placeholder=\"Device ID or Serial\" class=\"w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text focus:ring-2 focus:ring-accent\"></div><!-- Severity Filter --><div><label class=\"block text-sm font-medium text-gray-700 dark:text-dark-text mb-1\">Severity</label> <select id=\"severity-filter\" class=\"w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text\"><option value=\"\">All Severities</option> <option value=\"critical\" selected=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "\" placeholder=\"Device ID or Serial\" class=\"w-full px-3 py-2 border border-gray-300 dark:border-gray-200 rounded-lg bg-white dark:bg-white text-gray-900 dark:text-gray-800 focus:ring-2 focus:ring-accent\"></div><!-- Severity Filter --><div><label class=\"block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1\">Severity</label> <select id=\"severity-filter\" class=\"w-full px-3 py-2 border border-gray-300 dark:border-gray-200 rounded-lg bg-white dark:bg-white text-gray-900 dark:text-gray-800\"><option value=\"\">All Severities</option> <option value=\"critical\" selected=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -212,7 +212,7 @@ func FaultsPage(data FaultsPageData) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "\">Info</option></select></div><!-- Status Filter --><div><label class=\"block text-sm font-medium text-gray-700 dark:text-dark-text mb-1\">Status</label> <select id=\"status-filter\" class=\"w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text\"><option value=\"\">All Status</option> <option value=\"active\" selected=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "\">Info</option></select></div><!-- Status Filter --><div><label class=\"block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1\">Status</label> <select id=\"status-filter\" class=\"w-full px-3 py-2 border border-gray-300 dark:border-gray-200 rounded-lg bg-white dark:bg-white text-gray-900 dark:text-gray-800\"><option value=\"\">All Status</option> <option value=\"active\" selected=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -251,7 +251,7 @@ func FaultsPage(data FaultsPageData) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "\">Resolved</option></select></div><!-- Time Range Filter --><div><label class=\"block text-sm font-medium text-gray-700 dark:text-dark-text mb-1\">Time Range</label> <select id=\"time-filter\" class=\"w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text\"><option value=\"\">All Time</option> <option value=\"1h\">Last Hour</option> <option value=\"24h\">Last 24 Hours</option> <option value=\"7d\">Last 7 Days</option> <option value=\"30d\">Last 30 Days</option></select></div><!-- Apply Filters --><div class=\"flex items-end\"><button onclick=\"applyFilters()\" class=\"w-full btn btn-primary\"><i class=\"fas fa-filter mr-2\"></i> Apply</button></div></div></div><!-- Faults Table --><div class=\"card overflow-hidden\"><div class=\"overflow-x-auto\"><table class=\"w-full\"><thead class=\"bg-gray-50 dark:bg-dark-bg border-b dark:border-dark-border\"><tr><th class=\"px-6 py-3 text-left\"><input type=\"checkbox\" id=\"select-all\" class=\"rounded border-gray-300 dark:border-dark-border\"></th><th class=\"px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider\">Severity</th><th class=\"px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider\">Device</th><th class=\"px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider\">Code & Message</th><th class=\"px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider\">Status</th><th class=\"px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider\">Time</th><th class=\"px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider\">Actions</th></tr></thead> <tbody class=\"divide-y divide-gray-200 dark:divide-dark-border\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "\">Resolved</option></select></div><!-- Time Range Filter --><div><label class=\"block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1\">Time Range</label> <select id=\"time-filter\" class=\"w-full px-3 py-2 border border-gray-300 dark:border-gray-200 rounded-lg bg-white dark:bg-white text-gray-900 dark:text-gray-800\"><option value=\"\">All Time</option> <option value=\"1h\">Last Hour</option> <option value=\"24h\">Last 24 Hours</option> <option value=\"7d\">Last 7 Days</option> <option value=\"30d\">Last 30 Days</option></select></div><!-- Apply Filters --><div class=\"flex items-end\"><button onclick=\"applyFilters()\" class=\"w-full btn btn-primary\"><i class=\"fas fa-filter mr-2\"></i> Apply</button></div></div></div><!-- Faults Table --><div class=\"card overflow-hidden\"><div class=\"overflow-x-auto\"><table class=\"w-full\"><thead class=\"bg-gray-50 dark:bg-gray-50 border-b dark:border-gray-200\"><tr><th class=\"px-6 py-3 text-left\"><input type=\"checkbox\" id=\"select-all\" class=\"rounded border-gray-300 dark:border-gray-200\"></th><th class=\"px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider\">Severity</th><th class=\"px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider\">Device</th><th class=\"px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider\">Code & Message</th><th class=\"px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider\">Status</th><th class=\"px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider\">Time</th><th class=\"px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider\">Actions</th></tr></thead> <tbody class=\"divide-y divide-gray-200 dark:divide-gray-200\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -266,7 +266,7 @@ func FaultsPage(data FaultsPageData) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			if len(data.Faults) == 0 {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "<div class=\"text-center py-12\"><i class=\"fas fa-check-circle text-green-400 text-5xl mb-4\"></i><p class=\"text-gray-500 dark:text-dark-muted\">No faults found</p><p class=\"text-sm text-gray-400 dark:text-dark-muted mt-1\">All systems are running normally</p></div>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "<div class=\"text-center py-12\"><i class=\"fas fa-check-circle text-green-400 text-5xl mb-4\"></i><p class=\"text-gray-500 dark:text-gray-500\">No faults found</p><p class=\"text-sm text-gray-400 dark:text-gray-500 mt-1\">All systems are running normally</p></div>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -276,7 +276,7 @@ func FaultsPage(data FaultsPageData) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			if data.TotalPages > 1 {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "<div class=\"flex items-center justify-between\"><div class=\"flex items-center space-x-2\"><span class=\"text-sm text-gray-700 dark:text-dark-text\">Page ")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "<div class=\"flex items-center justify-between\"><div class=\"flex items-center space-x-2\"><span class=\"text-sm text-gray-700 dark:text-gray-700\">Page ")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -332,7 +332,7 @@ func FaultsPage(data FaultsPageData) templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 26, "\" class=\"px-3 py-2 rounded-lg border border-gray-300 dark:border-dark-border hover:bg-gray-50 dark:hover:bg-dark-bg disabled:opacity-50 disabled:cursor-not-allowed\"><i class=\"fas fa-chevron-left\"></i></button><!-- Page Numbers -->")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 26, "\" class=\"px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed\"><i class=\"fas fa-chevron-left\"></i></button><!-- Page Numbers -->")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}

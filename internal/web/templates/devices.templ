@@ -8,8 +8,8 @@ templ DevicesPage(data DevicesPageData) {
 			<!-- Page Header with Actions -->
 			<div class="flex justify-between items-center">
 				<div>
-					<h1 class="text-2xl font-bold text-gray-800 dark:text-dark-text">Devices</h1>
-					<p class="text-sm text-gray-600 dark:text-dark-muted mt-1">
+					<h1 class="text-2xl font-bold text-gray-800 dark:text-gray-700">Devices</h1>
+					<p class="text-sm text-gray-600 dark:text-gray-500 mt-1">
 						Showing { fmt.Sprintf("%d", data.FilteredCount) } of { fmt.Sprintf("%d", data.TotalCount) } devices
 					</p>
 				</div>
@@ -29,19 +29,19 @@ templ DevicesPage(data DevicesPageData) {
 				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
 					<!-- Search -->
 					<div>
-						<label class="block text-sm font-medium text-gray-700 dark:text-dark-text mb-1">Search</label>
+						<label class="block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1">Search</label>
 						<input
 							type="text"
 							id="search-input"
 							value={ data.Filters.Search }
 							placeholder="Serial, IP, Model..."
-							class="w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text focus:ring-2 focus:ring-accent"
+							class="w-full px-3 py-2 border border-gray-300 dark:border-gray-200 rounded-lg bg-white dark:bg-white text-gray-900 dark:text-gray-800 focus:ring-2 focus:ring-accent"
 						/>
 					</div>
 					<!-- Vendor Filter -->
 					<div>
-						<label class="block text-sm font-medium text-gray-700 dark:text-dark-text mb-1">Vendor</label>
-						<select id="vendor-filter" class="w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text">
+						<label class="block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1">Vendor</label>
+						<select id="vendor-filter" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-200 rounded-lg bg-white dark:bg-white text-gray-900 dark:text-gray-800">
 							<option value="">All Vendors</option>
 							for _, vendor := range data.Vendors {
 								<option value={ vendor } selected={ data.Filters.Vendor == vendor }>{ vendor }</option>
@@ -50,8 +50,8 @@ templ DevicesPage(data DevicesPageData) {
 					</div>
 					<!-- Status Filter -->
 					<div>
-						<label class="block text-sm font-medium text-gray-700 dark:text-dark-text mb-1">Status</label>
-						<select id="status-filter" class="w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text">
+						<label class="block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1">Status</label>
+						<select id="status-filter" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-200 rounded-lg bg-white dark:bg-white text-gray-900 dark:text-gray-800">
 							<option value="">All Status</option>
 							<option value="online" selected={ data.Filters.Status == "online" }>Online</option>
 							<option value="offline" selected={ data.Filters.Status == "offline" }>Offline</option>
@@ -68,7 +68,7 @@ templ DevicesPage(data DevicesPageData) {
 				<!-- Active Filters -->
 				if len(data.Filters.Tags) > 0 {
 					<div class="mt-4 flex flex-wrap gap-2">
-						<span class="text-sm text-gray-600 dark:text-dark-muted">Active Tags:</span>
+						<span class="text-sm text-gray-600 dark:text-gray-500">Active Tags:</span>
 						for _, tag := range data.Filters.Tags {
 							<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent">
 								{ tag }
@@ -84,29 +84,29 @@ templ DevicesPage(data DevicesPageData) {
 			<div class="card overflow-hidden">
 				<div class="overflow-x-auto">
 					<table class="w-full">
-						<thead class="bg-gray-50 dark:bg-dark-bg border-b dark:border-dark-border">
+						<thead class="bg-gray-50 dark:bg-gray-50 border-b dark:border-gray-200">
 							<tr>
 								<th class="px-6 py-3 text-left">
-									<input type="checkbox" id="select-all" class="rounded border-gray-300 dark:border-dark-border"/>
+									<input type="checkbox" id="select-all" class="rounded border-gray-300 dark:border-gray-200"/>
 								</th>
-								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider">
 									Device Info
 								</th>
-								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider">
 									Status
 								</th>
-								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider">
 									IP Address
 								</th>
-								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider">
 									Last Seen
 								</th>
-								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider">
 									Actions
 								</th>
 							</tr>
 						</thead>
-						<tbody class="divide-y divide-gray-200 dark:divide-dark-border">
+						<tbody class="divide-y divide-gray-200 dark:divide-gray-200">
 							for _, device := range data.Devices {
 								@DeviceRow(device)
 							}
@@ -117,8 +117,8 @@ templ DevicesPage(data DevicesPageData) {
 				if len(data.Devices) == 0 {
 					<div class="text-center py-12">
 						<i class="fas fa-router text-gray-400 text-5xl mb-4"></i>
-						<p class="text-gray-500 dark:text-dark-muted">No devices found</p>
-						<p class="text-sm text-gray-400 dark:text-dark-muted mt-1">Try adjusting your filters</p>
+						<p class="text-gray-500 dark:text-gray-500">No devices found</p>
+						<p class="text-sm text-gray-400 dark:text-gray-500 mt-1">Try adjusting your filters</p>
 					</div>
 				}
 			</div>
@@ -126,7 +126,7 @@ templ DevicesPage(data DevicesPageData) {
 			if data.TotalPages > 1 {
 				<div class="flex items-center justify-between">
 					<div class="flex items-center space-x-2">
-						<span class="text-sm text-gray-700 dark:text-dark-text">
+						<span class="text-sm text-gray-700 dark:text-gray-700">
 							Page { fmt.Sprintf("%d", data.CurrentPage) } of { fmt.Sprintf("%d", data.TotalPages) }
 						</span>
 					</div>
@@ -135,7 +135,7 @@ templ DevicesPage(data DevicesPageData) {
 						<button
 							onclick={ templ.JSFuncCall("goToPage", data.CurrentPage-1) }
 							disabled={ data.CurrentPage == 1 }
-							class="px-3 py-2 rounded-lg border border-gray-300 dark:border-dark-border hover:bg-gray-50 dark:hover:bg-dark-bg disabled:opacity-50 disabled:cursor-not-allowed"
+							class="px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
 						>
 							<i class="fas fa-chevron-left"></i>
 						</button>
@@ -148,7 +148,7 @@ templ DevicesPage(data DevicesPageData) {
 							} else if i == 1 || i == data.TotalPages || (i >= data.CurrentPage-2 && i <= data.CurrentPage+2) {
 								<button
 									onclick={ templ.JSFuncCall("goToPage", i) }
-									class="px-3 py-2 rounded-lg border border-gray-300 dark:border-dark-border hover:bg-gray-50 dark:hover:bg-dark-bg"
+									class="px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-100"
 								>
 									{ fmt.Sprintf("%d", i) }
 								</button>
@@ -160,7 +160,7 @@ templ DevicesPage(data DevicesPageData) {
 						<button
 							onclick={ templ.JSFuncCall("goToPage", data.CurrentPage+1) }
 							disabled={ data.CurrentPage == data.TotalPages }
-							class="px-3 py-2 rounded-lg border border-gray-300 dark:border-dark-border hover:bg-gray-50 dark:hover:bg-dark-bg disabled:opacity-50 disabled:cursor-not-allowed"
+							class="px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
 						>
 							<i class="fas fa-chevron-right"></i>
 						</button>
@@ -170,9 +170,9 @@ templ DevicesPage(data DevicesPageData) {
 		</div>
 		<!-- Bulk Actions Modal -->
 		<div id="bulk-actions-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-			<div class="bg-white dark:bg-dark-surface rounded-lg p-6 max-w-md w-full">
-				<h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-dark-text">Bulk Actions</h3>
-				<p class="text-sm text-gray-600 dark:text-dark-muted mb-4">
+			<div class="bg-white dark:bg-white rounded-lg p-6 max-w-md w-full">
+				<h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-700">Bulk Actions</h3>
+				<p class="text-sm text-gray-600 dark:text-gray-500 mb-4">
 					<span id="selected-count">0</span> devices selected
 				</p>
 				<div class="space-y-3">
@@ -304,14 +304,14 @@ templ DevicesPage(data DevicesPageData) {
 }
 
 templ DeviceRow(device *DeviceDisplay) {
-	<tr class="hover:bg-gray-50 dark:hover:bg-dark-bg transition-colors">
+	<tr class="hover:bg-gray-50 dark:hover:bg-gray-100 transition-colors">
 		<td class="px-6 py-4">
 			<input
 				type="checkbox"
 				name="device-select"
 				value={ device.ID }
 				onchange={ templ.JSFuncCall("toggleDevice", device.ID) }
-				class="rounded border-gray-300 dark:border-dark-border"
+				class="rounded border-gray-300 dark:border-gray-200"
 			/>
 		</td>
 		<td class="px-6 py-4">
@@ -319,13 +319,13 @@ templ DeviceRow(device *DeviceDisplay) {
 				<a href={ templ.URL(fmt.Sprintf("/devices/%s", device.ID)) } class="text-accent hover:text-accent-hover font-medium">
 					{ device.DeviceID.SerialNumber }
 				</a>
-				<p class="text-sm text-gray-600 dark:text-dark-muted">
+				<p class="text-sm text-gray-600 dark:text-gray-500">
 					{ device.DeviceID.Manufacturer } { device.DeviceID.ModelName }
 				</p>
 				if len(device.TagList) > 0 {
 					<div class="mt-1 flex flex-wrap gap-1">
 						for _, tag := range device.TagList {
-							<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-200 dark:bg-dark-bg text-gray-700 dark:text-dark-muted">
+							<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-200 dark:bg-gray-100 text-gray-700 dark:text-gray-600">
 								{ tag }
 							</span>
 						}
@@ -340,12 +340,12 @@ templ DeviceRow(device *DeviceDisplay) {
 			</span>
 		</td>
 		<td class="px-6 py-4">
-			<span class="text-gray-700 dark:text-dark-text font-mono text-sm">
+			<span class="text-gray-700 dark:text-gray-700 font-mono text-sm">
 				{ device.DeviceID.IPAddress }
 			</span>
 		</td>
 		<td class="px-6 py-4">
-			<span class="text-gray-600 dark:text-dark-muted text-sm">
+			<span class="text-gray-600 dark:text-gray-500 text-sm">
 				{ device.LastSeenText }
 			</span>
 		</td>
@@ -353,23 +353,23 @@ templ DeviceRow(device *DeviceDisplay) {
 			<div class="flex items-center space-x-2">
 				<button
 					onclick={ templ.JSFuncCall("refreshDevice", device.ID) }
-					class="p-1 hover:bg-gray-100 dark:hover:bg-dark-bg rounded transition-colors"
+					class="p-1 hover:bg-gray-100 dark:hover:bg-gray-100 rounded transition-colors"
 					title="Refresh"
 				>
-					<i class="fas fa-sync-alt text-gray-600 dark:text-dark-muted"></i>
+					<i class="fas fa-sync-alt text-gray-600 dark:text-gray-500"></i>
 				</button>
 				<a
 					href={ templ.URL(fmt.Sprintf("/devices/%s", device.ID)) }
-					class="p-1 hover:bg-gray-100 dark:hover:bg-dark-bg rounded transition-colors"
+					class="p-1 hover:bg-gray-100 dark:hover:bg-gray-100 rounded transition-colors"
 					title="View Details"
 				>
-					<i class="fas fa-eye text-gray-600 dark:text-dark-muted"></i>
+					<i class="fas fa-eye text-gray-600 dark:text-gray-500"></i>
 				</a>
 				<button
-					class="p-1 hover:bg-gray-100 dark:hover:bg-dark-bg rounded transition-colors"
+					class="p-1 hover:bg-gray-100 dark:hover:bg-gray-100 rounded transition-colors"
 					title="More Actions"
 				>
-					<i class="fas fa-ellipsis-v text-gray-600 dark:text-dark-muted"></i>
+					<i class="fas fa-ellipsis-v text-gray-600 dark:text-gray-500"></i>
 				</button>
 			</div>
 		</td>

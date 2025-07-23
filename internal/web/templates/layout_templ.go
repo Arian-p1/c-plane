@@ -8,7 +8,7 @@ package templates
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-func Layout(title string, theme string) templ.Component {
+func Navigation(currentPath string) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -29,22 +29,16 @@ func Layout(title string, theme string) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<ul class=\"nav-list\"><li class=\"nav-item\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var2 = []any{func() string {
-			if theme == "dark" {
-				return "dark"
-			} else {
-				return ""
-			}
-		}()}
+		var templ_7745c5c3_Var2 = []any{navItemClass(currentPath, "/overview")}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var2...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<html lang=\"en\" class=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<a href=\"/overview\" class=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -57,166 +51,73 @@ func Layout(title string, theme string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "\"><i class=\"fas fa-dashboard nav-icon\"></i> <span class=\"nav-text\">Overview</span></a></li><li class=\"nav-item\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var4 string
-		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(title)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/layout.templ`, Line: 9, Col: 17}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+		var templ_7745c5c3_Var4 = []any{navItemClass(currentPath, "/devices")}
+		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var4...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, " - Nextranet</title><!-- Tailwind CSS --><script src=\"https://cdn.tailwindcss.com\"></script><script>\n            tailwind.config = {\n                darkMode: 'class',\n                theme: {\n                    extend: {\n                        colors: {\n                            'dark-bg': '#0f172a',\n                            'dark-surface': '#1e293b',\n                            'dark-border': '#334155',\n                            'dark-text': '#e2e8f0',\n                            'dark-muted': '#94a3b8',\n                            'accent': '#3b82f6',\n                            'accent-hover': '#2563eb',\n                            'success': '#10b981',\n                            'warning': '#f59e0b',\n                            'danger': '#ef4444',\n                            'info': '#06b6d4'\n                        }\n                    }\n                }\n            }\n        </script><!-- Icons --><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css\"><!-- Custom styles --><style>\n            .dark body {\n                background-color: #0f172a;\n                color: #e2e8f0;\n            }\n\n            .dark .sidebar {\n                background-color: #1e293b;\n                border-right: 1px solid #334155;\n            }\n\n            .dark .card {\n                background-color: #1e293b;\n                border: 1px solid #334155;\n            }\n\n            .dark .table-row:hover {\n                background-color: #334155;\n            }\n\n            /* Custom scrollbar for dark theme */\n            .dark ::-webkit-scrollbar {\n                width: 8px;\n                height: 8px;\n            }\n\n            .dark ::-webkit-scrollbar-track {\n                background: #1e293b;\n            }\n\n            .dark ::-webkit-scrollbar-thumb {\n                background: #475569;\n                border-radius: 4px;\n            }\n\n            .dark ::-webkit-scrollbar-thumb:hover {\n                background: #64748b;\n            }\n        </style></head><body class=\"bg-gray-50 dark:bg-dark-bg transition-colors duration-200\"><div class=\"app-container\"><!-- Sidebar --><aside class=\"sidebar shadow-lg\"><div class=\"h-full flex flex-col\"><!-- Logo --><div class=\"p-4 border-b dark:border-dark-border\"><div class=\"logo-container\"><img src=\"/static/nextranet%201.png\" alt=\"Nextranet\"></div></div><!-- Navigation --><nav class=\"flex-1 p-4 overflow-y-auto\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = Navigation("/").Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</nav><!-- System Status --><div class=\"p-4 border-t dark:border-dark-border\"><div id=\"system-status\" class=\"space-y-2 text-sm\"><div class=\"flex items-center justify-between\"><span class=\"text-gray-600 dark:text-dark-muted\">CWMP</span> <span id=\"cwmp-status\" class=\"flex items-center\"><i class=\"fas fa-circle text-gray-400 text-xs\"></i></span></div><div class=\"flex items-center justify-between\"><span class=\"text-gray-600 dark:text-dark-muted\">NBI</span> <span id=\"nbi-status\" class=\"flex items-center\"><i class=\"fas fa-circle text-gray-400 text-xs\"></i></span></div><div class=\"flex items-center justify-between\"><span class=\"text-gray-600 dark:text-dark-muted\">WebSocket</span> <span id=\"ws-status\" class=\"flex items-center\"><i class=\"fas fa-circle text-gray-400 text-xs\"></i></span></div></div></div></div></aside><!-- Main Content --><main class=\"main-content\"><!-- Top Bar --><header class=\"bg-white dark:bg-dark-surface shadow-sm border-b dark:border-dark-border\"><div class=\"flex items-center justify-between px-6 py-3\"><h2 class=\"text-xl font-semibold text-gray-800 dark:text-dark-text\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<a href=\"/devices\" class=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var5 string
-		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(title)
+		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(templ.CSSClasses(templ_7745c5c3_Var4).String())
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/layout.templ`, Line: 122, Col: 82}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/layout.templ`, Line: 1, Col: 0}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</h2><div class=\"flex items-center space-x-4\"><!-- Theme Toggle --><button id=\"theme-toggle\" class=\"p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-bg transition-colors\"><i class=\"fas fa-moon dark:fa-sun text-gray-600 dark:text-dark-muted\"></i></button><!-- Notifications --><button class=\"relative p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-bg transition-colors\"><i class=\"fas fa-bell text-gray-600 dark:text-dark-muted\"></i> <span id=\"notification-badge\" class=\"absolute top-0 right-0 w-2 h-2 bg-danger rounded-full hidden\"></span></button><!-- User Menu --><div class=\"relative\"><button class=\"flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-bg transition-colors\"><i class=\"fas fa-user-circle text-gray-600 dark:text-dark-muted text-lg\"></i> <span class=\"text-sm text-gray-700 dark:text-dark-text\">Admin</span></button></div></div></div></header><!-- Page Content --><div class=\"content-wrapper\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "\"><i class=\"fas fa-router nav-icon\"></i> <span class=\"nav-text\">Devices</span> <span id=\"device-count\" class=\"nav-badge hidden\">0</span></a></li><li class=\"nav-item\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templ_7745c5c3_Var1.Render(ctx, templ_7745c5c3_Buffer)
+		var templ_7745c5c3_Var6 = []any{navItemClass(currentPath, "/faults")}
+		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var6...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "</div></main></div><!-- WebSocket Script --><script>\n            let ws = null;\n            let reconnectInterval = null;\n\n            function connectWebSocket() {\n                const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';\n                const wsUrl = `${protocol}//${window.location.host}/ws`;\n\n                ws = new WebSocket(wsUrl);\n\n                ws.onopen = function() {\n                    console.log('WebSocket connected');\n                    updateConnectionStatus('ws-status', true);\n\n                    if (reconnectInterval) {\n                        clearInterval(reconnectInterval);\n                        reconnectInterval = null;\n                    }\n                };\n\n                ws.onmessage = function(event) {\n                    const data = JSON.parse(event.data);\n                    handleWebSocketMessage(data);\n                };\n\n                ws.onclose = function() {\n                    console.log('WebSocket disconnected');\n                    updateConnectionStatus('ws-status', false);\n\n                    // Attempt to reconnect every 5 seconds\n                    if (!reconnectInterval) {\n                        reconnectInterval = setInterval(connectWebSocket, 5000);\n                    }\n                };\n\n                ws.onerror = function(error) {\n                    console.error('WebSocket error:', error);\n                };\n            }\n\n            function handleWebSocketMessage(data) {\n                switch(data.type) {\n                    case 'stats_update':\n                        updateStats(data.data);\n                        break;\n                    case 'device_status':\n                        updateDeviceStatus(data.data);\n                        break;\n                    case 'fault_alert':\n                        showFaultAlert(data.data);\n                        break;\n                    case 'system_status':\n                        updateSystemStatus(data.data);\n                        break;\n                }\n            }\n\n            function updateConnectionStatus(elementId, connected) {\n                const element = document.getElementById(elementId);\n                if (element) {\n                    const icon = element.querySelector('i');\n                    if (connected) {\n                        icon.classList.remove('text-gray-400', 'text-danger');\n                        icon.classList.add('text-success');\n                    } else {\n                        icon.classList.remove('text-success');\n                        icon.classList.add('text-danger');\n                    }\n                }\n            }\n\n            function updateSystemStatus(status) {\n                updateConnectionStatus('cwmp-status', status.cwmpConnected);\n                updateConnectionStatus('nbi-status', status.nbiConnected);\n            }\n\n            // Theme toggle\n            document.getElementById('theme-toggle').addEventListener('click', function() {\n                const html = document.documentElement;\n                const isDark = html.classList.contains('dark');\n\n                if (isDark) {\n                    html.classList.remove('dark');\n                    localStorage.setItem('theme', 'light');\n                    document.cookie = 'theme=light; path=/';\n                } else {\n                    html.classList.add('dark');\n                    localStorage.setItem('theme', 'dark');\n                    document.cookie = 'theme=dark; path=/';\n                }\n\n                // Update icon\n                const icon = this.querySelector('i');\n                icon.classList.toggle('fa-moon');\n                icon.classList.toggle('fa-sun');\n            });\n\n            // Initialize WebSocket connection\n            connectWebSocket();\n\n            // Check system status on load\n            fetch('/api/stats/realtime')\n                .then(res => res.json())\n                .then(data => {\n                    updateSystemStatus(data.system);\n                });\n        </script></body></html>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "<a href=\"/faults\" class=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		return nil
-	})
-}
-
-func Navigation(currentPath string) templ.Component {
-	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
-		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
-		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
-			return templ_7745c5c3_CtxErr
-		}
-		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
-		if !templ_7745c5c3_IsBuffer {
-			defer func() {
-				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
-				if templ_7745c5c3_Err == nil {
-					templ_7745c5c3_Err = templ_7745c5c3_BufErr
-				}
-			}()
-		}
-		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var6 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var6 == nil {
-			templ_7745c5c3_Var6 = templ.NopComponent
-		}
-		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "<ul class=\"space-y-2\"><li>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var7 = []any{navItemClass(currentPath, "/overview")}
-		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var7...)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "<a href=\"/overview\" class=\"")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var8 string
-		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(templ.CSSClasses(templ_7745c5c3_Var7).String())
+		var templ_7745c5c3_Var7 string
+		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(templ.CSSClasses(templ_7745c5c3_Var6).String())
 		if templ_7745c5c3_Err != nil {
 			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/layout.templ`, Line: 1, Col: 0}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "\"><i class=\"fas fa-dashboard mr-3 flex-shrink-0 w-5 text-center\"></i> <span class=\"flex-1 min-w-0\">Overview</span></a></li><li>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "\"><i class=\"fas fa-exclamation-triangle nav-icon\"></i> <span class=\"nav-text\">Faults</span> <span id=\"fault-count\" class=\"nav-badge nav-badge-danger hidden\">0</span></a></li><li class=\"nav-item\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var9 = []any{navItemClass(currentPath, "/devices")}
-		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var9...)
+		var templ_7745c5c3_Var8 = []any{navItemClass(currentPath, "/files")}
+		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var8...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "<a href=\"/devices\" class=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "<a href=\"/files\" class=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var10 string
-		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(templ.CSSClasses(templ_7745c5c3_Var9).String())
+		var templ_7745c5c3_Var9 string
+		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(templ.CSSClasses(templ_7745c5c3_Var8).String())
 		if templ_7745c5c3_Err != nil {
 			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/layout.templ`, Line: 1, Col: 0}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "\"><i class=\"fas fa-router mr-3 flex-shrink-0 w-5 text-center\"></i> <span class=\"flex-1 min-w-0 truncate\">Devices</span> <span id=\"device-count\" class=\"ml-2 bg-gray-200 dark:bg-dark-bg text-gray-700 dark:text-dark-muted px-2 py-1 rounded-full text-xs flex-shrink-0\">0</span></a></li><li>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var11 = []any{navItemClass(currentPath, "/faults")}
-		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var11...)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "<a href=\"/faults\" class=\"")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var12 string
-		templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(templ.CSSClasses(templ_7745c5c3_Var11).String())
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/layout.templ`, Line: 1, Col: 0}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "\"><i class=\"fas fa-exclamation-triangle mr-3 flex-shrink-0 w-5 text-center\"></i> <span class=\"flex-1 min-w-0 truncate\">Faults</span> <span id=\"fault-count\" class=\"ml-2 bg-danger text-white px-2 py-1 rounded-full text-xs flex-shrink-0 hidden\">0</span></a></li><li>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var13 = []any{navItemClass(currentPath, "/files")}
-		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var13...)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "<a href=\"/files\" class=\"")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var14 string
-		templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(templ.CSSClasses(templ_7745c5c3_Var13).String())
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/layout.templ`, Line: 1, Col: 0}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "\"><i class=\"fas fa-file mr-3 flex-shrink-0 w-5 text-center\"></i> <span class=\"flex-1 min-w-0 truncate\">Files</span></a></li></ul>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "\"><i class=\"fas fa-file nav-icon\"></i> <span class=\"nav-text\">Files</span></a></li></ul>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -225,11 +126,11 @@ func Navigation(currentPath string) templ.Component {
 }
 
 func navItemClass(currentPath, itemPath string) string {
-	baseClass := "flex items-center px-4 py-2 rounded-lg transition-colors"
+	baseClass := "nav-link"
 	if currentPath == itemPath {
-		return baseClass + " bg-accent text-white"
+		return baseClass + " nav-link-active"
 	}
-	return baseClass + " text-gray-700 dark:text-dark-text hover:bg-gray-100 dark:hover:bg-dark-bg"
+	return baseClass
 }
 
 func Page(title string, theme string, currentPath string) templ.Component {
@@ -248,12 +149,12 @@ func Page(title string, theme string, currentPath string) templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var15 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var15 == nil {
-			templ_7745c5c3_Var15 = templ.NopComponent
+		templ_7745c5c3_Var10 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var10 == nil {
+			templ_7745c5c3_Var10 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Var16 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_Var11 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 			templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 			templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
 			if !templ_7745c5c3_IsBuffer {
@@ -265,13 +166,13 @@ func Page(title string, theme string, currentPath string) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templ_7745c5c3_Var15.Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = templ_7745c5c3_Var10.Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = LayoutWithNav(title, theme, currentPath).Render(templ.WithChildren(ctx, templ_7745c5c3_Var16), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = LayoutWithNav(title, theme, currentPath).Render(templ.WithChildren(ctx, templ_7745c5c3_Var11), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -280,6 +181,105 @@ func Page(title string, theme string, currentPath string) templ.Component {
 }
 
 func LayoutWithNav(title string, theme string, currentPath string) templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var12 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var12 == nil {
+			templ_7745c5c3_Var12 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "<!doctype html>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var13 = []any{func() string {
+			if theme == "dark" {
+				return "dark"
+			} else {
+				return ""
+			}
+		}()}
+		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var13...)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "<html lang=\"en\" class=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var14 string
+		templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(templ.CSSClasses(templ_7745c5c3_Var13).String())
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/layout.templ`, Line: 1, Col: 0}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><title>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var15 string
+		templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(title)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/layout.templ`, Line: 54, Col: 17}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var15))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, " - GenieACS Gateway</title><!-- Preload Critical Resources --><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin><link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap\" rel=\"stylesheet\"><!-- FontAwesome Icons --><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css\"><!-- Custom Styles --><link rel=\"stylesheet\" href=\"/static/styles.css\"><!-- Favicon --><link rel=\"icon\" type=\"image/png\" href=\"/static/favicon.png\"><!-- Meta Tags --><meta name=\"description\" content=\"Nextranet Gateway - Professional TR-069 Device Management\"><meta name=\"theme-color\" content=\"#3b82f6\"><meta name=\"apple-mobile-web-app-capable\" content=\"yes\"><meta name=\"apple-mobile-web-app-status-bar-style\" content=\"default\"><meta name=\"apple-mobile-web-app-title\" content=\"Nextranet\"></head><body class=\"app-body\"><!-- Loading Screen --><div id=\"loading-screen\" class=\"fixed inset-0 bg-white dark:bg-gray-900 z-50 flex items-center justify-center transition-opacity duration-300\"><div class=\"text-center\"><div class=\"animate-spin rounded-full h-12 w-12 border-b-2 border-primary-500 mx-auto mb-4\"></div><p class=\"text-gray-600 dark:text-gray-400\">Loading...</p></div></div><div class=\"app-container\"><!-- Mobile Sidebar Overlay --><div id=\"sidebar-overlay\" class=\"sidebar-overlay\" onclick=\"closeMobileSidebar()\"></div><!-- Left Sidebar --><aside id=\"sidebar\" class=\"sidebar\"><div class=\"sidebar-inner\"><!-- Logo Section --><div class=\"logo-section\"><div class=\"logo-container\"><div class=\"flex items-center gap-3\"><img src=\"/static/nextranet%201.png\" alt=\"Nextranet\" class=\"logo-image w-10 h-10\"><div class=\"flex flex-col\"><span class=\"font-bold text-lg text-gray-800 dark:text-gray-200 leading-none\">Nextranet</span> <span class=\"text-xs text-gray-500 dark:text-gray-400 leading-none\">Gateway</span></div></div></div></div><!-- Navigation Section --><nav class=\"nav-section\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = Navigation(currentPath).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "</nav><!-- System Status Section --><div class=\"status-section\"><h3 class=\"text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-3\">System Status</h3><div id=\"system-status\" class=\"status-list\"><div class=\"status-item\"><span class=\"status-label\">CWMP Server</span> <span id=\"cwmp-status\" class=\"status-indicator\"><div class=\"status-icon\"></div></span></div><div class=\"status-item\"><span class=\"status-label\">NBI Interface</span> <span id=\"nbi-status\" class=\"status-indicator\"><div class=\"status-icon\"></div></span></div><div class=\"status-item\"><span class=\"status-label\">WebSocket</span> <span id=\"ws-status\" class=\"status-indicator\"><div class=\"status-icon\"></div></span></div></div></div></div></aside><!-- Main Content Area --><main class=\"main-content\"><!-- Top Header --><header class=\"main-header\"><div class=\"header-content\"><div class=\"flex items-center gap-4\"><!-- Mobile Menu Button --><button id=\"mobile-menu-btn\" class=\"mobile-menu-btn header-btn\" type=\"button\" aria-label=\"Toggle menu\"><i class=\"fas fa-bars\"></i></button><div class=\"flex flex-col\"><h1 class=\"page-title\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var16 string
+		templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(title)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/layout.templ`, Line: 139, Col: 39}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "</h1><div class=\"flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400\"><i class=\"fas fa-clock text-xs\"></i> <span id=\"current-time\"></span></div></div></div><div class=\"header-actions\"><!-- Search Button --><button class=\"header-btn tooltip\" type=\"button\" data-tooltip=\"Search\" onclick=\"openSearch()\"><i class=\"fas fa-search\"></i></button><!-- Theme Toggle --><button id=\"theme-toggle\" class=\"header-btn tooltip\" type=\"button\" data-tooltip=\"Toggle theme\"><i class=\"fas fa-moon theme-icon\"></i></button><!-- Notifications --><button class=\"header-btn tooltip\" type=\"button\" data-tooltip=\"Notifications\" onclick=\"openNotifications()\"><i class=\"fas fa-bell\"></i> <span id=\"notification-badge\" class=\"notification-dot hidden\"></span></button><!-- User Menu --><div class=\"user-menu\"><button class=\"user-btn tooltip\" type=\"button\" data-tooltip=\"User menu\" onclick=\"toggleUserMenu()\"><i class=\"fas fa-user-circle user-icon\"></i> <span class=\"user-name\">Administrator</span> <i class=\"fas fa-chevron-down text-xs ml-1\"></i></button><!-- User Dropdown --><div id=\"user-dropdown\" class=\"absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 hidden z-50\"><div class=\"py-2\"><div class=\"px-4 py-2 border-b border-gray-200 dark:border-gray-700\"><p class=\"text-sm font-medium text-gray-800 dark:text-gray-200\">Administrator</p><p class=\"text-xs text-gray-500 dark:text-gray-400\">admin@genieacs.com</p></div><a href=\"/profile\" class=\"block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700\"><i class=\"fas fa-user mr-2\"></i>Profile</a> <a href=\"/settings\" class=\"block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700\"><i class=\"fas fa-cog mr-2\"></i>Settings</a><div class=\"border-t border-gray-200 dark:border-gray-700 my-1\"></div><a href=\"/logout\" class=\"block px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-gray-100 dark:hover:bg-gray-700\"><i class=\"fas fa-sign-out-alt mr-2\"></i>Logout</a></div></div></div></div></div></header><!-- Page Content --><div class=\"page-content\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templ_7745c5c3_Var12.Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "</div></main></div><!-- Search Modal --><div id=\"search-modal\" class=\"modal\"><div class=\"modal-content p-6 max-w-2xl w-full mx-4\"><div class=\"flex items-center justify-between mb-4\"><h3 class=\"text-lg font-semibold text-gray-800 dark:text-gray-200\">Search</h3><button onclick=\"closeSearch()\" class=\"text-gray-400 hover:text-gray-600 dark:hover:text-gray-300\"><i class=\"fas fa-times\"></i></button></div><div class=\"relative mb-4\"><input type=\"text\" id=\"search-input\" placeholder=\"Search devices, faults, or files...\" class=\"w-full pl-10 pr-4 py-3 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200\"> <i class=\"fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400\"></i></div><div id=\"search-results\" class=\"max-h-64 overflow-y-auto\"><div class=\"text-center text-gray-500 dark:text-gray-400 py-8\"><i class=\"fas fa-search text-3xl mb-2\"></i><p>Start typing to search...</p></div></div></div></div><!-- Notifications Panel --><div id=\"notifications-panel\" class=\"fixed top-0 right-0 h-full w-96 bg-white dark:bg-gray-900 shadow-xl transform translate-x-full transition-transform duration-300 z-50\"><div class=\"p-6 border-b border-gray-200 dark:border-gray-700\"><div class=\"flex items-center justify-between\"><h3 class=\"text-lg font-semibold text-gray-800 dark:text-gray-200\">Notifications</h3><button onclick=\"closeNotifications()\" class=\"text-gray-400 hover:text-gray-600 dark:hover:text-gray-300\"><i class=\"fas fa-times\"></i></button></div></div><div id=\"notifications-content\" class=\"p-6\"><div class=\"text-center text-gray-500 dark:text-gray-400\"><i class=\"fas fa-bell text-3xl mb-2\"></i><p>No new notifications</p></div></div></div><!-- Notification Toast Container --><div id=\"toast-container\" class=\"fixed top-4 right-4 z-50 space-y-2\"></div><!-- JavaScript --><script>\n\t\t\t\t// Global variables\n\t\t\t\tlet ws = null;\n\t\t\t\tlet reconnectInterval = null;\n\t\t\t\tlet userMenuOpen = false;\n\n\t\t\t\t// Initialize app\n\t\t\t\tdocument.addEventListener('DOMContentLoaded', function() {\n\t\t\t\t\tinitializeApp();\n\t\t\t\t});\n\n\t\t\t\tfunction initializeApp() {\n\t\t\t\t\t// Hide loading screen\n\t\t\t\t\tsetTimeout(() => {\n\t\t\t\t\t\tconst loadingScreen = document.getElementById('loading-screen');\n\t\t\t\t\t\tif (loadingScreen) {\n\t\t\t\t\t\t\tloadingScreen.style.opacity = '0';\n\t\t\t\t\t\t\tsetTimeout(() => loadingScreen.remove(), 300);\n\t\t\t\t\t\t}\n\t\t\t\t\t}, 500);\n\n\t\t\t\t\t// Initialize clock\n\t\t\t\t\tupdateClock();\n\t\t\t\t\tsetInterval(updateClock, 1000);\n\n\t\t\t\t\t// Initialize mobile menu\n\t\t\t\t\tinitializeMobileMenu();\n\n\t\t\t\t\t// Initialize theme toggle\n\t\t\t\t\tinitializeThemeToggle();\n\n\t\t\t\t\t// Initialize WebSocket\n\t\t\t\t\tconnectWebSocket();\n\n\t\t\t\t\t// Initialize user menu\n\t\t\t\t\tinitializeUserMenu();\n\n\t\t\t\t\t// Check system status\n\t\t\t\t\tcheckSystemStatus();\n\n\t\t\t\t\t// Load initial device and fault counts\n\t\t\t\t\tupdateDeviceCount();\n\t\t\t\t\tupdateFaultCount();\n\n\t\t\t\t\t// Close dropdowns on outside click\n\t\t\t\t\tdocument.addEventListener('click', handleOutsideClick);\n\n\t\t\t\t\t// Handle keyboard shortcuts\n\t\t\t\t\tdocument.addEventListener('keydown', handleKeyboardShortcuts);\n\t\t\t\t}\n\n\t\t\t\t// Clock functionality\n\t\t\t\tfunction updateClock() {\n\t\t\t\t\tconst now = new Date();\n\t\t\t\t\tconst timeString = now.toLocaleTimeString('en-US', {\n\t\t\t\t\t\thour12: false,\n\t\t\t\t\t\thour: '2-digit',\n\t\t\t\t\t\tminute: '2-digit'\n\t\t\t\t\t});\n\t\t\t\t\tconst clockElement = document.getElementById('current-time');\n\t\t\t\t\tif (clockElement) {\n\t\t\t\t\t\tclockElement.textContent = timeString;\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\t// Mobile menu functionality\n\t\t\t\tfunction initializeMobileMenu() {\n\t\t\t\t\tconst mobileMenuBtn = document.getElementById('mobile-menu-btn');\n\t\t\t\t\tif (mobileMenuBtn) {\n\t\t\t\t\t\tmobileMenuBtn.addEventListener('click', toggleMobileSidebar);\n\t\t\t\t\t}\n\n\t\t\t\t\t// Close sidebar when clicking nav links on mobile\n\t\t\t\t\tconst navLinks = document.querySelectorAll('.nav-link');\n\t\t\t\t\tnavLinks.forEach(link => {\n\t\t\t\t\t\tlink.addEventListener('click', () => {\n\t\t\t\t\t\t\tif (window.innerWidth <= 768) {\n\t\t\t\t\t\t\t\tcloseMobileSidebar();\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t});\n\t\t\t\t\t});\n\n\t\t\t\t\t// Handle window resize\n\t\t\t\t\twindow.addEventListener('resize', () => {\n\t\t\t\t\t\tif (window.innerWidth > 768) {\n\t\t\t\t\t\t\tcloseMobileSidebar();\n\t\t\t\t\t\t}\n\t\t\t\t\t});\n\t\t\t\t}\n\n\t\t\t\tfunction toggleMobileSidebar() {\n\t\t\t\t\tconst sidebar = document.getElementById('sidebar');\n\t\t\t\t\tconst overlay = document.getElementById('sidebar-overlay');\n\n\t\t\t\t\tif (sidebar && overlay) {\n\t\t\t\t\t\tconst isOpen = sidebar.classList.contains('mobile-open');\n\t\t\t\t\t\tif (isOpen) {\n\t\t\t\t\t\t\tcloseMobileSidebar();\n\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\topenMobileSidebar();\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\tfunction openMobileSidebar() {\n\t\t\t\t\tconst sidebar = document.getElementById('sidebar');\n\t\t\t\t\tconst overlay = document.getElementById('sidebar-overlay');\n\n\t\t\t\t\tif (sidebar && overlay) {\n\t\t\t\t\t\tsidebar.classList.add('mobile-open');\n\t\t\t\t\t\toverlay.classList.add('mobile-open');\n\t\t\t\t\t\tdocument.body.style.overflow = 'hidden';\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\tfunction closeMobileSidebar() {\n\t\t\t\t\tconst sidebar = document.getElementById('sidebar');\n\t\t\t\t\tconst overlay = document.getElementById('sidebar-overlay');\n\n\t\t\t\t\tif (sidebar && overlay) {\n\t\t\t\t\t\tsidebar.classList.remove('mobile-open');\n\t\t\t\t\t\toverlay.classList.remove('mobile-open');\n\t\t\t\t\t\tdocument.body.style.overflow = '';\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\t// Theme toggle functionality\n\t\t\t\tfunction initializeThemeToggle() {\n\t\t\t\t\tconst themeToggle = document.getElementById('theme-toggle');\n\t\t\t\t\tif (themeToggle) {\n\t\t\t\t\t\tthemeToggle.addEventListener('click', toggleTheme);\n\t\t\t\t\t\tupdateThemeIcon();\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\tfunction toggleTheme() {\n\t\t\t\t\tconst html = document.documentElement;\n\t\t\t\t\tconst isDark = html.classList.contains('dark');\n\n\t\t\t\t\tif (isDark) {\n\t\t\t\t\t\thtml.classList.remove('dark');\n\t\t\t\t\t\tlocalStorage.setItem('theme', 'light');\n\t\t\t\t\t\tdocument.cookie = 'theme=light; path=/';\n\t\t\t\t\t} else {\n\t\t\t\t\t\thtml.classList.add('dark');\n\t\t\t\t\t\tlocalStorage.setItem('theme', 'dark');\n\t\t\t\t\t\tdocument.cookie = 'theme=dark; path=/';\n\t\t\t\t\t}\n\n\t\t\t\t\tupdateThemeIcon();\n\t\t\t\t\tshowToast('Theme updated', 'success');\n\t\t\t\t}\n\n\t\t\t\tfunction updateThemeIcon() {\n\t\t\t\t\tconst icon = document.querySelector('#theme-toggle i');\n\t\t\t\t\tconst isDark = document.documentElement.classList.contains('dark');\n\n\t\t\t\t\tif (icon) {\n\t\t\t\t\t\ticon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\t// User menu functionality\n\t\t\t\tfunction initializeUserMenu() {\n\t\t\t\t\t// Close user menu when clicking outside\n\t\t\t\t\tdocument.addEventListener('click', (e) => {\n\t\t\t\t\t\tconst userMenu = document.querySelector('.user-menu');\n\t\t\t\t\t\tconst userDropdown = document.getElementById('user-dropdown');\n\n\t\t\t\t\t\tif (userMenu && !userMenu.contains(e.target)) {\n\t\t\t\t\t\t\tuserDropdown?.classList.add('hidden');\n\t\t\t\t\t\t\tuserMenuOpen = false;\n\t\t\t\t\t\t}\n\t\t\t\t\t});\n\t\t\t\t}\n\n\t\t\t\tfunction toggleUserMenu() {\n\t\t\t\t\tconst dropdown = document.getElementById('user-dropdown');\n\t\t\t\t\tif (dropdown) {\n\t\t\t\t\t\tdropdown.classList.toggle('hidden');\n\t\t\t\t\t\tuserMenuOpen = !userMenuOpen;\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\t// Search functionality\n\t\t\t\tfunction openSearch() {\n\t\t\t\t\tconst modal = document.getElementById('search-modal');\n\t\t\t\t\tconst input = document.getElementById('search-input');\n\n\t\t\t\t\tif (modal) {\n\t\t\t\t\t\tmodal.classList.add('show');\n\t\t\t\t\t\tsetTimeout(() => input?.focus(), 100);\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\tfunction closeSearch() {\n\t\t\t\t\tconst modal = document.getElementById('search-modal');\n\t\t\t\t\tif (modal) {\n\t\t\t\t\t\tmodal.classList.remove('show');\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\t// Notifications functionality\n\t\t\t\tfunction openNotifications() {\n\t\t\t\t\tconst panel = document.getElementById('notifications-panel');\n\t\t\t\t\tif (panel) {\n\t\t\t\t\t\tpanel.style.transform = 'translateX(0)';\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\tfunction closeNotifications() {\n\t\t\t\t\tconst panel = document.getElementById('notifications-panel');\n\t\t\t\t\tif (panel) {\n\t\t\t\t\t\tpanel.style.transform = 'translateX(100%)';\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\t// Toast notifications\n\t\t\t\tfunction showToast(message, type = 'info', duration = 3000) {\n\t\t\t\t\tconst container = document.getElementById('toast-container');\n\t\t\t\t\tif (!container) return;\n\n\t\t\t\t\tconst toast = document.createElement('div');\n\t\t\t\t\ttoast.className = `notification ${type} show`;\n\t\t\t\t\ttoast.innerHTML = `\n\t\t\t\t\t\t<div class=\"flex items-center gap-3\">\n\t\t\t\t\t\t\t<i class=\"fas fa-${getToastIcon(type)}\"></i>\n\t\t\t\t\t\t\t<span>${message}</span>\n\t\t\t\t\t\t\t<button onclick=\"this.parentElement.parentElement.remove()\" class=\"ml-auto\">\n\t\t\t\t\t\t\t\t<i class=\"fas fa-times\"></i>\n\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t`;\n\n\t\t\t\t\tcontainer.appendChild(toast);\n\n\t\t\t\t\tsetTimeout(() => {\n\t\t\t\t\t\ttoast.classList.remove('show');\n\t\t\t\t\t\tsetTimeout(() => toast.remove(), 300);\n\t\t\t\t\t}, duration);\n\t\t\t\t}\n\n\t\t\t\tfunction getToastIcon(type) {\n\t\t\t\t\tswitch (type) {\n\t\t\t\t\t\tcase 'success': return 'check-circle';\n\t\t\t\t\t\tcase 'error': return 'exclamation-circle';\n\t\t\t\t\t\tcase 'warning': return 'exclamation-triangle';\n\t\t\t\t\t\tdefault: return 'info-circle';\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\t// WebSocket functionality\n\t\t\t\tfunction connectWebSocket() {\n\t\t\t\t\tconst protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';\n\t\t\t\t\tconst wsUrl = `${protocol}//${window.location.host}/ws`;\n\n\t\t\t\t\ttry {\n\t\t\t\t\t\tws = new WebSocket(wsUrl);\n\n\t\t\t\t\t\tws.onopen = function() {\n\t\t\t\t\t\t\tconsole.log('WebSocket connected');\n\t\t\t\t\t\t\tupdateConnectionStatus('ws-status', true);\n\t\t\t\t\t\t\tif (reconnectInterval) {\n\t\t\t\t\t\t\t\tclearInterval(reconnectInterval);\n\t\t\t\t\t\t\t\treconnectInterval = null;\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t};\n\n\t\t\t\t\t\tws.onmessage = function(event) {\n\t\t\t\t\t\t\ttry {\n\t\t\t\t\t\t\t\tconst data = JSON.parse(event.data);\n\t\t\t\t\t\t\t\thandleWebSocketMessage(data);\n\t\t\t\t\t\t\t} catch (e) {\n\t\t\t\t\t\t\t\tconsole.error('Error parsing WebSocket message:', e);\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t};\n\n\t\t\t\t\t\tws.onclose = function() {\n\t\t\t\t\t\t\tconsole.log('WebSocket disconnected');\n\t\t\t\t\t\t\tupdateConnectionStatus('ws-status', false);\n\n\t\t\t\t\t\t\tif (!reconnectInterval) {\n\t\t\t\t\t\t\t\treconnectInterval = setInterval(connectWebSocket, 5000);\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t};\n\n\t\t\t\t\t\tws.onerror = function(error) {\n\t\t\t\t\t\t\tconsole.error('WebSocket error:', error);\n\t\t\t\t\t\t\tupdateConnectionStatus('ws-status', false);\n\t\t\t\t\t\t};\n\t\t\t\t\t} catch (error) {\n\t\t\t\t\t\tconsole.error('Failed to create WebSocket:', error);\n\t\t\t\t\t\tupdateConnectionStatus('ws-status', false);\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\tfunction handleWebSocketMessage(data) {\n\t\t\t\t\tif (data.type === 'stats') {\n\t\t\t\t\t\tupdateStats(data.payload);\n\t\t\t\t\t} else if (data.type === 'device_update') {\n\t\t\t\t\t\tupdateDeviceCount();\n\t\t\t\t\t\tshowToast('Device status updated', 'info');\n\t\t\t\t\t} else if (data.type === 'fault_update') {\n\t\t\t\t\t\tupdateFaultCount();\n\t\t\t\t\t\tshowToast('New fault detected', 'warning');\n\t\t\t\t\t} else if (data.type === 'notification') {\n\t\t\t\t\t\tshowToast(data.message, data.level || 'info');\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\tfunction updateStats(stats) {\n\t\t\t\t\t// Update device count\n\t\t\t\t\tconst deviceCountEl = document.getElementById('device-count');\n\t\t\t\t\tif (deviceCountEl && stats.devices) {\n\t\t\t\t\t\tconst totalDevices = stats.devices.total || 0;\n\t\t\t\t\t\tdeviceCountEl.textContent = totalDevices;\n\t\t\t\t\t\tif (totalDevices > 0) {\n\t\t\t\t\t\t\tdeviceCountEl.classList.remove('hidden');\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\n\t\t\t\t\t// Update fault count\n\t\t\t\t\tconst faultCountEl = document.getElementById('fault-count');\n\t\t\t\t\tif (faultCountEl && stats.faults) {\n\t\t\t\t\t\tconst criticalFaults = stats.faults.critical || 0;\n\t\t\t\t\t\tfaultCountEl.textContent = criticalFaults;\n\t\t\t\t\t\tif (criticalFaults > 0) {\n\t\t\t\t\t\t\tfaultCountEl.classList.remove('hidden');\n\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\tfaultCountEl.classList.add('hidden');\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\tfunction updateConnectionStatus(elementId, isConnected) {\n\t\t\t\t\tconst element = document.getElementById(elementId);\n\t\t\t\t\tif (element) {\n\t\t\t\t\t\tconst icon = element.querySelector('.status-icon');\n\t\t\t\t\t\tif (icon) {\n\t\t\t\t\t\t\ticon.classList.remove('text-success', 'text-danger');\n\t\t\t\t\t\t\ticon.classList.add(isConnected ? 'text-success' : 'text-danger');\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\tfunction checkSystemStatus() {\n\t\t\t\t\tfetch('/api/stats/realtime')\n\t\t\t\t\t\t.then(res => res.json())\n\t\t\t\t\t\t.then(data => {\n\t\t\t\t\t\t\tif (data.system) {\n\t\t\t\t\t\t\t\tupdateConnectionStatus('cwmp-status', data.system.cwmpConnected);\n\t\t\t\t\t\t\t\tupdateConnectionStatus('nbi-status', data.system.nbiConnected);\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t})\n\t\t\t\t\t\t.catch(err => console.error('Failed to fetch system status:', err));\n\t\t\t\t}\n\n\t\t\t\t// Keyboard shortcuts\n\t\t\t\tfunction handleKeyboardShortcuts(e) {\n\t\t\t\t\tif (e.ctrlKey || e.metaKey) {\n\t\t\t\t\t\tswitch (e.key) {\n\t\t\t\t\t\t\tcase 'k':\n\t\t\t\t\t\t\t\te.preventDefault();\n\t\t\t\t\t\t\t\topenSearch();\n\t\t\t\t\t\t\t\tbreak;\n\t\t\t\t\t\t\tcase 'd':\n\t\t\t\t\t\t\t\te.preventDefault();\n\t\t\t\t\t\t\t\ttoggleTheme();\n\t\t\t\t\t\t\t\tbreak;\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\n\t\t\t\t\tif (e.key === 'Escape') {\n\t\t\t\t\t\tcloseSearch();\n\t\t\t\t\t\tcloseNotifications();\n\t\t\t\t\t\tcloseMobileSidebar();\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\t// Handle outside clicks\n\t\t\t\tfunction handleOutsideClick(e) {\n\t\t\t\t\t// Close search modal\n\t\t\t\t\tconst searchModal = document.getElementById('search-modal');\n\t\t\t\t\tif (searchModal && e.target === searchModal) {\n\t\t\t\t\t\tcloseSearch();\n\t\t\t\t\t}\n\n\t\t\t\t\t// Close notifications panel\n\t\t\t\t\tconst notificationsPanel = document.getElementById('notifications-panel');\n\t\t\t\t\tif (notificationsPanel && !notificationsPanel.contains(e.target) &&\n\t\t\t\t\t\t!e.target.closest('.header-btn')) {\n\t\t\t\t\t\tcloseNotifications();\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\t// Utility functions\n\t\t\t\tfunction updateDeviceCount() {\n\t\t\t\t\tfetch('/api/stats/realtime')\n\t\t\t\t\t\t.then(res => res.json())\n\t\t\t\t\t\t.then(data => {\n\t\t\t\t\t\t\tconst deviceCountEl = document.getElementById('device-count');\n\t\t\t\t\t\t\tif (deviceCountEl && data.devices && data.devices.total !== undefined) {\n\t\t\t\t\t\t\t\tconst totalDevices = data.devices.total;\n\t\t\t\t\t\t\t\tdeviceCountEl.textContent = totalDevices;\n\t\t\t\t\t\t\t\tif (totalDevices > 0) {\n\t\t\t\t\t\t\t\t\tdeviceCountEl.classList.remove('hidden');\n\t\t\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\t\t\tdeviceCountEl.classList.add('hidden');\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t})\n\t\t\t\t\t\t.catch(err => console.error('Failed to fetch device count:', err));\n\t\t\t\t}\n\n\t\t\t\tfunction updateFaultCount() {\n\t\t\t\t\tfetch('/api/stats/realtime')\n\t\t\t\t\t\t.then(res => res.json())\n\t\t\t\t\t\t.then(data => {\n\t\t\t\t\t\t\tconst faultCountEl = document.getElementById('fault-count');\n\t\t\t\t\t\t\tif (faultCountEl && data.faults && data.faults.critical !== undefined) {\n\t\t\t\t\t\t\t\tconst criticalFaults = data.faults.critical;\n\t\t\t\t\t\t\t\tfaultCountEl.textContent = criticalFaults;\n\t\t\t\t\t\t\t\tif (criticalFaults > 0) {\n\t\t\t\t\t\t\t\t\tfaultCountEl.classList.remove('hidden');\n\t\t\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\t\t\tfaultCountEl.classList.add('hidden');\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t})\n\t\t\t\t\t\t.catch(err => console.error('Failed to fetch fault count:', err));\n\t\t\t\t}\n\n\t\t\t\t// Performance monitoring\n\t\t\t\twindow.addEventListener('load', function() {\n\t\t\t\t\tif (window.performance && window.performance.timing) {\n\t\t\t\t\t\tconst loadTime = window.performance.timing.loadEventEnd - window.performance.timing.navigationStart;\n\t\t\t\t\t\tconsole.log(`Page loaded in ${loadTime}ms`);\n\t\t\t\t\t}\n\t\t\t\t});\n\n\t\t\t\t// Service Worker registration (if available)\n\t\t\t\tif ('serviceWorker' in navigator) {\n\t\t\t\t\twindow.addEventListener('load', function() {\n\t\t\t\t\t\tnavigator.serviceWorker.register('/sw.js')\n\t\t\t\t\t\t\t.then(function(registration) {\n\t\t\t\t\t\t\t\tconsole.log('ServiceWorker registration successful');\n\t\t\t\t\t\t\t})\n\t\t\t\t\t\t\t.catch(function(err) {\n\t\t\t\t\t\t\t\tconsole.log('ServiceWorker registration failed');\n\t\t\t\t\t\t\t});\n\t\t\t\t\t});\n\t\t\t\t}\n\t\t\t</script></body></html>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		return nil
+	})
+}
+
+func Layout(title string, theme string) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -335,34 +335,13 @@ func LayoutWithNav(title string, theme string, currentPath string) templ.Compone
 		var templ_7745c5c3_Var20 string
 		templ_7745c5c3_Var20, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/layout.templ`, Line: 312, Col: 17}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/layout.templ`, Line: 705, Col: 17}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var20))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, " - Nextranet</title><!-- Tailwind CSS --><script src=\"https://cdn.tailwindcss.com\"></script><script>\n            tailwind.config = {\n                darkMode: 'class',\n                theme: {\n                    extend: {\n                        colors: {\n                            'dark-bg': '#0f172a',\n                            'dark-surface': '#1e293b',\n                            'dark-border': '#334155',\n                            'dark-text': '#e2e8f0',\n                            'dark-muted': '#94a3b8',\n                            'accent': '#3b82f6',\n                            'accent-hover': '#2563eb',\n                            'success': '#10b981',\n                            'warning': '#f59e0b',\n                            'danger': '#ef4444',\n                            'info': '#06b6d4'\n                        }\n                    }\n                }\n            }\n        </script><!-- Icons --><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css\"><!-- Custom styles --><style>\n            .dark body {\n                background-color: #0f172a;\n                color: #e2e8f0;\n            }\n\n            .dark .sidebar {\n                background-color: #1e293b;\n                border-right: 1px solid #334155;\n            }\n\n            .dark .card {\n                background-color: #1e293b;\n                border: 1px solid #334155;\n            }\n\n            .dark .table-row:hover {\n                background-color: #334155;\n            }\n\n            /* Custom scrollbar for dark theme */\n            .dark ::-webkit-scrollbar {\n                width: 8px;\n                height: 8px;\n            }\n\n            .dark ::-webkit-scrollbar-track {\n                background: #1e293b;\n            }\n\n            .dark ::-webkit-scrollbar-thumb {\n                background: #475569;\n                border-radius: 4px;\n            }\n\n            .dark ::-webkit-scrollbar-thumb:hover {\n                background: #64748b;\n            }\n        </style></head><body class=\"bg-gray-50 dark:bg-dark-bg transition-colors duration-200\"><div class=\"app-container\"><!-- Sidebar --><aside class=\"sidebar shadow-lg\"><div class=\"h-full flex flex-col\"><!-- Logo --><div class=\"p-4 border-b dark:border-dark-border\"><div class=\"logo-container\"><img src=\"/static/nextranet%201.png\" alt=\"Nextranet\"></div></div><!-- Navigation --><nav class=\"flex-1 p-4 overflow-y-auto\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = Navigation(currentPath).Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "</nav><!-- System Status --><div class=\"p-4 border-t dark:border-dark-border\"><div id=\"system-status\" class=\"space-y-2 text-sm\"><div class=\"flex items-center justify-between\"><span class=\"text-gray-600 dark:text-dark-muted\">CWMP</span> <span id=\"cwmp-status\" class=\"flex items-center\"><i class=\"fas fa-circle text-gray-400 text-xs\"></i></span></div><div class=\"flex items-center justify-between\"><span class=\"text-gray-600 dark:text-dark-muted\">NBI</span> <span id=\"nbi-status\" class=\"flex items-center\"><i class=\"fas fa-circle text-gray-400 text-xs\"></i></span></div><div class=\"flex items-center justify-between\"><span class=\"text-gray-600 dark:text-dark-muted\">WebSocket</span> <span id=\"ws-status\" class=\"flex items-center\"><i class=\"fas fa-circle text-gray-400 text-xs\"></i></span></div></div></div></div></aside><!-- Main Content --><main class=\"main-content\"><!-- Top Bar --><header class=\"bg-white dark:bg-dark-surface shadow-sm border-b dark:border-dark-border\"><div class=\"flex items-center justify-between px-6 py-3\"><h2 class=\"text-xl font-semibold text-gray-800 dark:text-dark-text\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var21 string
-		templ_7745c5c3_Var21, templ_7745c5c3_Err = templ.JoinStringErrs(title)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/layout.templ`, Line: 425, Col: 82}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var21))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 22, "</h2><div class=\"flex items-center space-x-4\"><!-- Theme Toggle --><button id=\"theme-toggle\" class=\"p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-bg transition-colors\"><i class=\"fas fa-moon dark:fa-sun text-gray-600 dark:text-dark-muted\"></i></button><!-- Notifications --><button class=\"relative p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-bg transition-colors\"><i class=\"fas fa-bell text-gray-600 dark:text-dark-muted\"></i> <span id=\"notification-badge\" class=\"absolute top-0 right-0 w-2 h-2 bg-danger rounded-full hidden\"></span></button><!-- User Menu --><div class=\"relative\"><button class=\"flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-bg transition-colors\"><i class=\"fas fa-user-circle text-gray-600 dark:text-dark-muted text-lg\"></i> <span class=\"text-sm text-gray-700 dark:text-dark-text\">Admin</span></button></div></div></div></header><!-- Page Content --><div class=\"content-wrapper\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, " - Nextranet Gateway</title><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css\"><link rel=\"stylesheet\" href=\"/static/styles.css\"></head><body class=\"app-body\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -370,7 +349,7 @@ func LayoutWithNav(title string, theme string, currentPath string) templ.Compone
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, "</div></main></div><!-- WebSocket Script --><script>\n            let ws = null;\n            let reconnectInterval = null;\n\n            function connectWebSocket() {\n                const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';\n                const wsUrl = `${protocol}//${window.location.host}/ws`;\n\n                ws = new WebSocket(wsUrl);\n\n                ws.onopen = function() {\n                    console.log('WebSocket connected');\n                    updateConnectionStatus('ws-status', true);\n\n                    if (reconnectInterval) {\n                        clearInterval(reconnectInterval);\n                        reconnectInterval = null;\n                    }\n                };\n\n                ws.onmessage = function(event) {\n                    const data = JSON.parse(event.data);\n                    handleWebSocketMessage(data);\n                };\n\n                ws.onclose = function() {\n                    console.log('WebSocket disconnected');\n                    updateConnectionStatus('ws-status', false);\n\n                    // Attempt to reconnect every 5 seconds\n                    if (!reconnectInterval) {\n                        reconnectInterval = setInterval(connectWebSocket, 5000);\n                    }\n                };\n\n                ws.onerror = function(error) {\n                    console.error('WebSocket error:', error);\n                };\n            }\n\n            function handleWebSocketMessage(data) {\n                switch(data.type) {\n                    case 'stats_update':\n                        updateStats(data.data);\n                        break;\n                    case 'device_status':\n                        updateDeviceStatus(data.data);\n                        break;\n                    case 'fault_alert':\n                        showFaultAlert(data.data);\n                        break;\n                    case 'system_status':\n                        updateSystemStatus(data.data);\n                        break;\n                }\n            }\n\n            function updateConnectionStatus(elementId, connected) {\n                const element = document.getElementById(elementId);\n                if (element) {\n                    const icon = element.querySelector('i');\n                    if (connected) {\n                        icon.classList.remove('text-gray-400', 'text-danger');\n                        icon.classList.add('text-success');\n                    } else {\n                        icon.classList.remove('text-success');\n                        icon.classList.add('text-danger');\n                    }\n                }\n            }\n\n            function updateSystemStatus(status) {\n                updateConnectionStatus('cwmp-status', status.cwmpConnected);\n                updateConnectionStatus('nbi-status', status.nbiConnected);\n            }\n\n            // Theme toggle\n            document.getElementById('theme-toggle').addEventListener('click', function() {\n                const html = document.documentElement;\n                const isDark = html.classList.contains('dark');\n\n                if (isDark) {\n                    html.classList.remove('dark');\n                    localStorage.setItem('theme', 'light');\n                    document.cookie = 'theme=light; path=/';\n                } else {\n                    html.classList.add('dark');\n                    localStorage.setItem('theme', 'dark');\n                    document.cookie = 'theme=dark; path=/';\n                }\n\n                // Update icon\n                const icon = this.querySelector('i');\n                icon.classList.toggle('fa-moon');\n                icon.classList.toggle('fa-sun');\n            });\n\n            // Initialize WebSocket connection\n            connectWebSocket();\n\n            // Check system status on load\n            fetch('/api/stats/realtime')\n                .then(res => res.json())\n                .then(data => {\n                    updateSystemStatus(data.system);\n                });\n        </script></body></html>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "</body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

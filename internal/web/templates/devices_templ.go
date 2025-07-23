@@ -43,7 +43,7 @@ func DevicesPage(data DevicesPageData) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"space-y-6\"><!-- Page Header with Actions --><div class=\"flex justify-between items-center\"><div><h1 class=\"text-2xl font-bold text-gray-800 dark:text-dark-text\">Devices</h1><p class=\"text-sm text-gray-600 dark:text-dark-muted mt-1\">Showing ")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"space-y-6\"><!-- Page Header with Actions --><div class=\"flex justify-between items-center\"><div><h1 class=\"text-2xl font-bold text-gray-800 dark:text-gray-700\">Devices</h1><p class=\"text-sm text-gray-600 dark:text-gray-500 mt-1\">Showing ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -69,7 +69,7 @@ func DevicesPage(data DevicesPageData) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, " devices</p></div><div class=\"flex space-x-3\"><button onclick=\"refreshAllDevices()\" class=\"btn btn-secondary\"><i class=\"fas fa-sync-alt mr-2\"></i> Refresh All</button> <button onclick=\"showBulkActions()\" class=\"btn btn-primary\"><i class=\"fas fa-tasks mr-2\"></i> Bulk Actions</button></div></div><!-- Filters Section --><div class=\"card p-4\"><div class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4\"><!-- Search --><div><label class=\"block text-sm font-medium text-gray-700 dark:text-dark-text mb-1\">Search</label> <input type=\"text\" id=\"search-input\" value=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, " devices</p></div><div class=\"flex space-x-3\"><button onclick=\"refreshAllDevices()\" class=\"btn btn-secondary\"><i class=\"fas fa-sync-alt mr-2\"></i> Refresh All</button> <button onclick=\"showBulkActions()\" class=\"btn btn-primary\"><i class=\"fas fa-tasks mr-2\"></i> Bulk Actions</button></div></div><!-- Filters Section --><div class=\"card p-4\"><div class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4\"><!-- Search --><div><label class=\"block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1\">Search</label> <input type=\"text\" id=\"search-input\" value=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -82,7 +82,7 @@ func DevicesPage(data DevicesPageData) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "\" placeholder=\"Serial, IP, Model...\" class=\"w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text focus:ring-2 focus:ring-accent\"></div><!-- Vendor Filter --><div><label class=\"block text-sm font-medium text-gray-700 dark:text-dark-text mb-1\">Vendor</label> <select id=\"vendor-filter\" class=\"w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text\"><option value=\"\">All Vendors</option> ")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "\" placeholder=\"Serial, IP, Model...\" class=\"w-full px-3 py-2 border border-gray-300 dark:border-gray-200 rounded-lg bg-white dark:bg-white text-gray-900 dark:text-gray-800 focus:ring-2 focus:ring-accent\"></div><!-- Vendor Filter --><div><label class=\"block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1\">Vendor</label> <select id=\"vendor-filter\" class=\"w-full px-3 py-2 border border-gray-300 dark:border-gray-200 rounded-lg bg-white dark:bg-white text-gray-900 dark:text-gray-800\"><option value=\"\">All Vendors</option> ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -131,7 +131,7 @@ func DevicesPage(data DevicesPageData) templ.Component {
 					return templ_7745c5c3_Err
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "</select></div><!-- Status Filter --><div><label class=\"block text-sm font-medium text-gray-700 dark:text-dark-text mb-1\">Status</label> <select id=\"status-filter\" class=\"w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text\"><option value=\"\">All Status</option> <option value=\"online\" selected=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "</select></div><!-- Status Filter --><div><label class=\"block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1\">Status</label> <select id=\"status-filter\" class=\"w-full px-3 py-2 border border-gray-300 dark:border-gray-200 rounded-lg bg-white dark:bg-white text-gray-900 dark:text-gray-800\"><option value=\"\">All Status</option> <option value=\"online\" selected=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -162,7 +162,7 @@ func DevicesPage(data DevicesPageData) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			if len(data.Filters.Tags) > 0 {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "<div class=\"mt-4 flex flex-wrap gap-2\"><span class=\"text-sm text-gray-600 dark:text-dark-muted\">Active Tags:</span> ")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "<div class=\"mt-4 flex flex-wrap gap-2\"><span class=\"text-sm text-gray-600 dark:text-gray-500\">Active Tags:</span> ")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -207,7 +207,7 @@ func DevicesPage(data DevicesPageData) templ.Component {
 					return templ_7745c5c3_Err
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "</div><!-- Devices Table --><div class=\"card overflow-hidden\"><div class=\"overflow-x-auto\"><table class=\"w-full\"><thead class=\"bg-gray-50 dark:bg-dark-bg border-b dark:border-dark-border\"><tr><th class=\"px-6 py-3 text-left\"><input type=\"checkbox\" id=\"select-all\" class=\"rounded border-gray-300 dark:border-dark-border\"></th><th class=\"px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider\">Device Info</th><th class=\"px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider\">Status</th><th class=\"px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider\">IP Address</th><th class=\"px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider\">Last Seen</th><th class=\"px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider\">Actions</th></tr></thead> <tbody class=\"divide-y divide-gray-200 dark:divide-dark-border\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "</div><!-- Devices Table --><div class=\"card overflow-hidden\"><div class=\"overflow-x-auto\"><table class=\"w-full\"><thead class=\"bg-gray-50 dark:bg-gray-50 border-b dark:border-gray-200\"><tr><th class=\"px-6 py-3 text-left\"><input type=\"checkbox\" id=\"select-all\" class=\"rounded border-gray-300 dark:border-gray-200\"></th><th class=\"px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider\">Device Info</th><th class=\"px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider\">Status</th><th class=\"px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider\">IP Address</th><th class=\"px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider\">Last Seen</th><th class=\"px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider\">Actions</th></tr></thead> <tbody class=\"divide-y divide-gray-200 dark:divide-gray-200\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -222,7 +222,7 @@ func DevicesPage(data DevicesPageData) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			if len(data.Devices) == 0 {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, "<div class=\"text-center py-12\"><i class=\"fas fa-router text-gray-400 text-5xl mb-4\"></i><p class=\"text-gray-500 dark:text-dark-muted\">No devices found</p><p class=\"text-sm text-gray-400 dark:text-dark-muted mt-1\">Try adjusting your filters</p></div>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, "<div class=\"text-center py-12\"><i class=\"fas fa-router text-gray-400 text-5xl mb-4\"></i><p class=\"text-gray-500 dark:text-gray-500\">No devices found</p><p class=\"text-sm text-gray-400 dark:text-gray-500 mt-1\">Try adjusting your filters</p></div>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -232,7 +232,7 @@ func DevicesPage(data DevicesPageData) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			if data.TotalPages > 1 {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 22, "<div class=\"flex items-center justify-between\"><div class=\"flex items-center space-x-2\"><span class=\"text-sm text-gray-700 dark:text-dark-text\">Page ")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 22, "<div class=\"flex items-center justify-between\"><div class=\"flex items-center space-x-2\"><span class=\"text-sm text-gray-700 dark:text-gray-700\">Page ")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -288,7 +288,7 @@ func DevicesPage(data DevicesPageData) templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "\" class=\"px-3 py-2 rounded-lg border border-gray-300 dark:border-dark-border hover:bg-gray-50 dark:hover:bg-dark-bg disabled:opacity-50 disabled:cursor-not-allowed\"><i class=\"fas fa-chevron-left\"></i></button><!-- Page Numbers -->")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "\" class=\"px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed\"><i class=\"fas fa-chevron-left\"></i></button><!-- Page Numbers -->")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -325,7 +325,7 @@ func DevicesPage(data DevicesPageData) templ.Component {
 						if templ_7745c5c3_Err != nil {
 							return templ_7745c5c3_Err
 						}
-						templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 31, "\" class=\"px-3 py-2 rounded-lg border border-gray-300 dark:border-dark-border hover:bg-gray-50 dark:hover:bg-dark-bg\">")
+						templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 31, "\" class=\"px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-100\">")
 						if templ_7745c5c3_Err != nil {
 							return templ_7745c5c3_Err
 						}
@@ -379,12 +379,12 @@ func DevicesPage(data DevicesPageData) templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 37, "\" class=\"px-3 py-2 rounded-lg border border-gray-300 dark:border-dark-border hover:bg-gray-50 dark:hover:bg-dark-bg disabled:opacity-50 disabled:cursor-not-allowed\"><i class=\"fas fa-chevron-right\"></i></button></div></div>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 37, "\" class=\"px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed\"><i class=\"fas fa-chevron-right\"></i></button></div></div>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 38, "</div><!-- Bulk Actions Modal --> <div id=\"bulk-actions-modal\" class=\"hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50\"><div class=\"bg-white dark:bg-dark-surface rounded-lg p-6 max-w-md w-full\"><h3 class=\"text-lg font-semibold mb-4 text-gray-800 dark:text-dark-text\">Bulk Actions</h3><p class=\"text-sm text-gray-600 dark:text-dark-muted mb-4\"><span id=\"selected-count\">0</span> devices selected</p><div class=\"space-y-3\"><button onclick=\"bulkRefresh()\" class=\"w-full btn btn-secondary\"><i class=\"fas fa-sync-alt mr-2\"></i> Refresh Selected</button> <button onclick=\"bulkReboot()\" class=\"w-full btn btn-warning\"><i class=\"fas fa-power-off mr-2\"></i> Reboot Selected</button> <button onclick=\"bulkAddTags()\" class=\"w-full btn btn-secondary\"><i class=\"fas fa-tags mr-2\"></i> Add Tags</button></div><div class=\"mt-6 flex space-x-3\"><button onclick=\"closeBulkActions()\" class=\"flex-1 btn btn-secondary\">Cancel</button></div></div></div><script>\n\t\t\tlet selectedDevices = new Set();\n\n\t\t\tfunction applyFilters() {\n\t\t\t\tconst params = new URLSearchParams();\n\n\t\t\t\tconst search = document.getElementById('search-input').value;\n\t\t\t\tif (search) params.set('search', search);\n\n\t\t\t\tconst vendor = document.getElementById('vendor-filter').value;\n\t\t\t\tif (vendor) params.set('vendor', vendor);\n\n\t\t\t\tconst status = document.getElementById('status-filter').value;\n\t\t\t\tif (status) params.set('status', status);\n\n\t\t\t\twindow.location.href = '/devices?' + params.toString();\n\t\t\t}\n\n\t\t\tfunction goToPage(page) {\n\t\t\t\tconst url = new URL(window.location);\n\t\t\t\turl.searchParams.set('page', page);\n\t\t\t\twindow.location.href = url.toString();\n\t\t\t}\n\n\t\t\tfunction toggleDevice(deviceId) {\n\t\t\t\tif (selectedDevices.has(deviceId)) {\n\t\t\t\t\tselectedDevices.delete(deviceId);\n\t\t\t\t} else {\n\t\t\t\t\tselectedDevices.add(deviceId);\n\t\t\t\t}\n\t\t\t\tupdateSelectedCount();\n\t\t\t}\n\n\t\t\tfunction selectAll() {\n\t\t\t\tconst selectAll = document.getElementById('select-all');\n\t\t\t\tconst checkboxes = document.querySelectorAll('input[name=\"device-select\"]');\n\n\t\t\t\tcheckboxes.forEach(cb => {\n\t\t\t\t\tcb.checked = selectAll.checked;\n\t\t\t\t\tif (selectAll.checked) {\n\t\t\t\t\t\tselectedDevices.add(cb.value);\n\t\t\t\t\t} else {\n\t\t\t\t\t\tselectedDevices.delete(cb.value);\n\t\t\t\t\t}\n\t\t\t\t});\n\n\t\t\t\tupdateSelectedCount();\n\t\t\t}\n\n\t\t\tfunction updateSelectedCount() {\n\t\t\t\tdocument.getElementById('selected-count').textContent = selectedDevices.size;\n\t\t\t}\n\n\t\t\tfunction showBulkActions() {\n\t\t\t\tif (selectedDevices.size === 0) {\n\t\t\t\t\talert('Please select at least one device');\n\t\t\t\t\treturn;\n\t\t\t\t}\n\t\t\t\tdocument.getElementById('bulk-actions-modal').classList.remove('hidden');\n\t\t\t}\n\n\t\t\tfunction closeBulkActions() {\n\t\t\t\tdocument.getElementById('bulk-actions-modal').classList.add('hidden');\n\t\t\t}\n\n\t\t\tfunction refreshDevice(deviceId) {\n\t\t\t\tfetch(`/api/devices/${deviceId}/refresh`, { method: 'POST' })\n\t\t\t\t\t.then(res => res.json())\n\t\t\t\t\t.then(data => {\n\t\t\t\t\t\tif (data.success) {\n\t\t\t\t\t\t\tshowNotification('success', 'Device refresh initiated');\n\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\tshowNotification('error', data.error || 'Failed to refresh device');\n\t\t\t\t\t\t}\n\t\t\t\t\t})\n\t\t\t\t\t.catch(() => {\n\t\t\t\t\t\tshowNotification('error', 'Failed to refresh device');\n\t\t\t\t\t});\n\t\t\t}\n\n\t\t\tfunction bulkRefresh() {\n\t\t\t\tconst deviceIds = Array.from(selectedDevices);\n\t\t\t\tfetch('/api/bulk/devices/refresh', {\n\t\t\t\t\tmethod: 'POST',\n\t\t\t\t\theaders: { 'Content-Type': 'application/json' },\n\t\t\t\t\tbody: JSON.stringify({ deviceIds })\n\t\t\t\t})\n\t\t\t\t\t.then(res => res.json())\n\t\t\t\t\t.then(data => {\n\t\t\t\t\t\tshowNotification('success', `Refresh initiated for ${data.successful} devices`);\n\t\t\t\t\t\tcloseBulkActions();\n\t\t\t\t\t\tsetTimeout(() => location.reload(), 2000);\n\t\t\t\t\t})\n\t\t\t\t\t.catch(() => {\n\t\t\t\t\t\tshowNotification('error', 'Failed to refresh devices');\n\t\t\t\t\t});\n\t\t\t}\n\n\t\t\tfunction showNotification(type, message) {\n\t\t\t\t// Implement notification display\n\t\t\t\talert(message);\n\t\t\t}\n\n\t\t\t// Initialize select all checkbox\n\t\t\tdocument.getElementById('select-all').addEventListener('change', selectAll);\n\t\t</script>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 38, "</div><!-- Bulk Actions Modal --> <div id=\"bulk-actions-modal\" class=\"hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50\"><div class=\"bg-white dark:bg-white rounded-lg p-6 max-w-md w-full\"><h3 class=\"text-lg font-semibold mb-4 text-gray-800 dark:text-gray-700\">Bulk Actions</h3><p class=\"text-sm text-gray-600 dark:text-gray-500 mb-4\"><span id=\"selected-count\">0</span> devices selected</p><div class=\"space-y-3\"><button onclick=\"bulkRefresh()\" class=\"w-full btn btn-secondary\"><i class=\"fas fa-sync-alt mr-2\"></i> Refresh Selected</button> <button onclick=\"bulkReboot()\" class=\"w-full btn btn-warning\"><i class=\"fas fa-power-off mr-2\"></i> Reboot Selected</button> <button onclick=\"bulkAddTags()\" class=\"w-full btn btn-secondary\"><i class=\"fas fa-tags mr-2\"></i> Add Tags</button></div><div class=\"mt-6 flex space-x-3\"><button onclick=\"closeBulkActions()\" class=\"flex-1 btn btn-secondary\">Cancel</button></div></div></div><script>\n\t\t\tlet selectedDevices = new Set();\n\n\t\t\tfunction applyFilters() {\n\t\t\t\tconst params = new URLSearchParams();\n\n\t\t\t\tconst search = document.getElementById('search-input').value;\n\t\t\t\tif (search) params.set('search', search);\n\n\t\t\t\tconst vendor = document.getElementById('vendor-filter').value;\n\t\t\t\tif (vendor) params.set('vendor', vendor);\n\n\t\t\t\tconst status = document.getElementById('status-filter').value;\n\t\t\t\tif (status) params.set('status', status);\n\n\t\t\t\twindow.location.href = '/devices?' + params.toString();\n\t\t\t}\n\n\t\t\tfunction goToPage(page) {\n\t\t\t\tconst url = new URL(window.location);\n\t\t\t\turl.searchParams.set('page', page);\n\t\t\t\twindow.location.href = url.toString();\n\t\t\t}\n\n\t\t\tfunction toggleDevice(deviceId) {\n\t\t\t\tif (selectedDevices.has(deviceId)) {\n\t\t\t\t\tselectedDevices.delete(deviceId);\n\t\t\t\t} else {\n\t\t\t\t\tselectedDevices.add(deviceId);\n\t\t\t\t}\n\t\t\t\tupdateSelectedCount();\n\t\t\t}\n\n\t\t\tfunction selectAll() {\n\t\t\t\tconst selectAll = document.getElementById('select-all');\n\t\t\t\tconst checkboxes = document.querySelectorAll('input[name=\"device-select\"]');\n\n\t\t\t\tcheckboxes.forEach(cb => {\n\t\t\t\t\tcb.checked = selectAll.checked;\n\t\t\t\t\tif (selectAll.checked) {\n\t\t\t\t\t\tselectedDevices.add(cb.value);\n\t\t\t\t\t} else {\n\t\t\t\t\t\tselectedDevices.delete(cb.value);\n\t\t\t\t\t}\n\t\t\t\t});\n\n\t\t\t\tupdateSelectedCount();\n\t\t\t}\n\n\t\t\tfunction updateSelectedCount() {\n\t\t\t\tdocument.getElementById('selected-count').textContent = selectedDevices.size;\n\t\t\t}\n\n\t\t\tfunction showBulkActions() {\n\t\t\t\tif (selectedDevices.size === 0) {\n\t\t\t\t\talert('Please select at least one device');\n\t\t\t\t\treturn;\n\t\t\t\t}\n\t\t\t\tdocument.getElementById('bulk-actions-modal').classList.remove('hidden');\n\t\t\t}\n\n\t\t\tfunction closeBulkActions() {\n\t\t\t\tdocument.getElementById('bulk-actions-modal').classList.add('hidden');\n\t\t\t}\n\n\t\t\tfunction refreshDevice(deviceId) {\n\t\t\t\tfetch(`/api/devices/${deviceId}/refresh`, { method: 'POST' })\n\t\t\t\t\t.then(res => res.json())\n\t\t\t\t\t.then(data => {\n\t\t\t\t\t\tif (data.success) {\n\t\t\t\t\t\t\tshowNotification('success', 'Device refresh initiated');\n\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\tshowNotification('error', data.error || 'Failed to refresh device');\n\t\t\t\t\t\t}\n\t\t\t\t\t})\n\t\t\t\t\t.catch(() => {\n\t\t\t\t\t\tshowNotification('error', 'Failed to refresh device');\n\t\t\t\t\t});\n\t\t\t}\n\n\t\t\tfunction bulkRefresh() {\n\t\t\t\tconst deviceIds = Array.from(selectedDevices);\n\t\t\t\tfetch('/api/bulk/devices/refresh', {\n\t\t\t\t\tmethod: 'POST',\n\t\t\t\t\theaders: { 'Content-Type': 'application/json' },\n\t\t\t\t\tbody: JSON.stringify({ deviceIds })\n\t\t\t\t})\n\t\t\t\t\t.then(res => res.json())\n\t\t\t\t\t.then(data => {\n\t\t\t\t\t\tshowNotification('success', `Refresh initiated for ${data.successful} devices`);\n\t\t\t\t\t\tcloseBulkActions();\n\t\t\t\t\t\tsetTimeout(() => location.reload(), 2000);\n\t\t\t\t\t})\n\t\t\t\t\t.catch(() => {\n\t\t\t\t\t\tshowNotification('error', 'Failed to refresh devices');\n\t\t\t\t\t});\n\t\t\t}\n\n\t\t\tfunction showNotification(type, message) {\n\t\t\t\t// Implement notification display\n\t\t\t\talert(message);\n\t\t\t}\n\n\t\t\t// Initialize select all checkbox\n\t\t\tdocument.getElementById('select-all').addEventListener('change', selectAll);\n\t\t</script>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -419,7 +419,7 @@ func DeviceRow(device *DeviceDisplay) templ.Component {
 			templ_7745c5c3_Var22 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 39, "<tr class=\"hover:bg-gray-50 dark:hover:bg-dark-bg transition-colors\"><td class=\"px-6 py-4\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 39, "<tr class=\"hover:bg-gray-50 dark:hover:bg-gray-100 transition-colors\"><td class=\"px-6 py-4\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -449,7 +449,7 @@ func DeviceRow(device *DeviceDisplay) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 42, "\" class=\"rounded border-gray-300 dark:border-dark-border\"></td><td class=\"px-6 py-4\"><div><a href=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 42, "\" class=\"rounded border-gray-300 dark:border-gray-200\"></td><td class=\"px-6 py-4\"><div><a href=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -475,7 +475,7 @@ func DeviceRow(device *DeviceDisplay) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 44, "</a><p class=\"text-sm text-gray-600 dark:text-dark-muted\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 44, "</a><p class=\"text-sm text-gray-600 dark:text-gray-500\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -511,7 +511,7 @@ func DeviceRow(device *DeviceDisplay) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			for _, tag := range device.TagList {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 48, "<span class=\"inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-200 dark:bg-dark-bg text-gray-700 dark:text-dark-muted\">")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 48, "<span class=\"inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-200 dark:bg-gray-100 text-gray-700 dark:text-gray-600\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -569,7 +569,7 @@ func DeviceRow(device *DeviceDisplay) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 54, "</span></td><td class=\"px-6 py-4\"><span class=\"text-gray-700 dark:text-dark-text font-mono text-sm\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 54, "</span></td><td class=\"px-6 py-4\"><span class=\"text-gray-700 dark:text-gray-700 font-mono text-sm\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -582,7 +582,7 @@ func DeviceRow(device *DeviceDisplay) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 55, "</span></td><td class=\"px-6 py-4\"><span class=\"text-gray-600 dark:text-dark-muted text-sm\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 55, "</span></td><td class=\"px-6 py-4\"><span class=\"text-gray-600 dark:text-gray-500 text-sm\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -612,7 +612,7 @@ func DeviceRow(device *DeviceDisplay) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 58, "\" class=\"p-1 hover:bg-gray-100 dark:hover:bg-dark-bg rounded transition-colors\" title=\"Refresh\"><i class=\"fas fa-sync-alt text-gray-600 dark:text-dark-muted\"></i></button> <a href=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 58, "\" class=\"p-1 hover:bg-gray-100 dark:hover:bg-gray-100 rounded transition-colors\" title=\"Refresh\"><i class=\"fas fa-sync-alt text-gray-600 dark:text-gray-500\"></i></button> <a href=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -625,7 +625,7 @@ func DeviceRow(device *DeviceDisplay) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 59, "\" class=\"p-1 hover:bg-gray-100 dark:hover:bg-dark-bg rounded transition-colors\" title=\"View Details\"><i class=\"fas fa-eye text-gray-600 dark:text-dark-muted\"></i></a> <button class=\"p-1 hover:bg-gray-100 dark:hover:bg-dark-bg rounded transition-colors\" title=\"More Actions\"><i class=\"fas fa-ellipsis-v text-gray-600 dark:text-dark-muted\"></i></button></div></td></tr>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 59, "\" class=\"p-1 hover:bg-gray-100 dark:hover:bg-gray-100 rounded transition-colors\" title=\"View Details\"><i class=\"fas fa-eye text-gray-600 dark:text-gray-500\"></i></a> <button class=\"p-1 hover:bg-gray-100 dark:hover:bg-gray-100 rounded transition-colors\" title=\"More Actions\"><i class=\"fas fa-ellipsis-v text-gray-600 dark:text-gray-500\"></i></button></div></td></tr>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
