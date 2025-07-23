@@ -1,0 +1,377 @@
+package templates
+
+import "fmt"
+
+templ DevicesPage(data DevicesPageData) {
+	@Page(data.Title, data.Theme, data.CurrentPath) {
+		<div class="space-y-6">
+			<!-- Page Header with Actions -->
+			<div class="flex justify-between items-center">
+				<div>
+					<h1 class="text-2xl font-bold text-gray-800 dark:text-dark-text">Devices</h1>
+					<p class="text-sm text-gray-600 dark:text-dark-muted mt-1">
+						Showing { fmt.Sprintf("%d", data.FilteredCount) } of { fmt.Sprintf("%d", data.TotalCount) } devices
+					</p>
+				</div>
+				<div class="flex space-x-3">
+					<button onclick="refreshAllDevices()" class="btn btn-secondary">
+						<i class="fas fa-sync-alt mr-2"></i>
+						Refresh All
+					</button>
+					<button onclick="showBulkActions()" class="btn btn-primary">
+						<i class="fas fa-tasks mr-2"></i>
+						Bulk Actions
+					</button>
+				</div>
+			</div>
+			<!-- Filters Section -->
+			<div class="card p-4">
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+					<!-- Search -->
+					<div>
+						<label class="block text-sm font-medium text-gray-700 dark:text-dark-text mb-1">Search</label>
+						<input
+							type="text"
+							id="search-input"
+							value={ data.Filters.Search }
+							placeholder="Serial, IP, Model..."
+							class="w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text focus:ring-2 focus:ring-accent"
+						/>
+					</div>
+					<!-- Vendor Filter -->
+					<div>
+						<label class="block text-sm font-medium text-gray-700 dark:text-dark-text mb-1">Vendor</label>
+						<select id="vendor-filter" class="w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text">
+							<option value="">All Vendors</option>
+							for _, vendor := range data.Vendors {
+								<option value={ vendor } selected={ data.Filters.Vendor == vendor }>{ vendor }</option>
+							}
+						</select>
+					</div>
+					<!-- Status Filter -->
+					<div>
+						<label class="block text-sm font-medium text-gray-700 dark:text-dark-text mb-1">Status</label>
+						<select id="status-filter" class="w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text">
+							<option value="">All Status</option>
+							<option value="online" selected={ data.Filters.Status == "online" }>Online</option>
+							<option value="offline" selected={ data.Filters.Status == "offline" }>Offline</option>
+						</select>
+					</div>
+					<!-- Apply Filters -->
+					<div class="flex items-end">
+						<button onclick="applyFilters()" class="w-full btn btn-primary">
+							<i class="fas fa-filter mr-2"></i>
+							Apply Filters
+						</button>
+					</div>
+				</div>
+				<!-- Active Filters -->
+				if len(data.Filters.Tags) > 0 {
+					<div class="mt-4 flex flex-wrap gap-2">
+						<span class="text-sm text-gray-600 dark:text-dark-muted">Active Tags:</span>
+						for _, tag := range data.Filters.Tags {
+							<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent">
+								{ tag }
+								<button onclick={ templ.JSFuncCall("removeTag", tag) } class="ml-1 hover:text-accent-hover">
+									<i class="fas fa-times"></i>
+								</button>
+							</span>
+						}
+					</div>
+				}
+			</div>
+			<!-- Devices Table -->
+			<div class="card overflow-hidden">
+				<div class="overflow-x-auto">
+					<table class="w-full">
+						<thead class="bg-gray-50 dark:bg-dark-bg border-b dark:border-dark-border">
+							<tr>
+								<th class="px-6 py-3 text-left">
+									<input type="checkbox" id="select-all" class="rounded border-gray-300 dark:border-dark-border"/>
+								</th>
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">
+									Device Info
+								</th>
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">
+									Status
+								</th>
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">
+									IP Address
+								</th>
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">
+									Last Seen
+								</th>
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">
+									Actions
+								</th>
+							</tr>
+						</thead>
+						<tbody class="divide-y divide-gray-200 dark:divide-dark-border">
+							for _, device := range data.Devices {
+								@DeviceRow(device)
+							}
+						</tbody>
+					</table>
+				</div>
+				<!-- Empty State -->
+				if len(data.Devices) == 0 {
+					<div class="text-center py-12">
+						<i class="fas fa-router text-gray-400 text-5xl mb-4"></i>
+						<p class="text-gray-500 dark:text-dark-muted">No devices found</p>
+						<p class="text-sm text-gray-400 dark:text-dark-muted mt-1">Try adjusting your filters</p>
+					</div>
+				}
+			</div>
+			<!-- Pagination -->
+			if data.TotalPages > 1 {
+				<div class="flex items-center justify-between">
+					<div class="flex items-center space-x-2">
+						<span class="text-sm text-gray-700 dark:text-dark-text">
+							Page { fmt.Sprintf("%d", data.CurrentPage) } of { fmt.Sprintf("%d", data.TotalPages) }
+						</span>
+					</div>
+					<div class="flex space-x-1">
+						<!-- Previous -->
+						<button
+							onclick={ templ.JSFuncCall("goToPage", data.CurrentPage-1) }
+							disabled={ data.CurrentPage == 1 }
+							class="px-3 py-2 rounded-lg border border-gray-300 dark:border-dark-border hover:bg-gray-50 dark:hover:bg-dark-bg disabled:opacity-50 disabled:cursor-not-allowed"
+						>
+							<i class="fas fa-chevron-left"></i>
+						</button>
+						<!-- Page Numbers -->
+						for i := 1; i <= data.TotalPages; i++ {
+							if i == data.CurrentPage {
+								<button class="px-3 py-2 rounded-lg bg-accent text-white">
+									{ fmt.Sprintf("%d", i) }
+								</button>
+							} else if i == 1 || i == data.TotalPages || (i >= data.CurrentPage-2 && i <= data.CurrentPage+2) {
+								<button
+									onclick={ templ.JSFuncCall("goToPage", i) }
+									class="px-3 py-2 rounded-lg border border-gray-300 dark:border-dark-border hover:bg-gray-50 dark:hover:bg-dark-bg"
+								>
+									{ fmt.Sprintf("%d", i) }
+								</button>
+							} else if i == data.CurrentPage-3 || i == data.CurrentPage+3 {
+								<span class="px-2">...</span>
+							}
+						}
+						<!-- Next -->
+						<button
+							onclick={ templ.JSFuncCall("goToPage", data.CurrentPage+1) }
+							disabled={ data.CurrentPage == data.TotalPages }
+							class="px-3 py-2 rounded-lg border border-gray-300 dark:border-dark-border hover:bg-gray-50 dark:hover:bg-dark-bg disabled:opacity-50 disabled:cursor-not-allowed"
+						>
+							<i class="fas fa-chevron-right"></i>
+						</button>
+					</div>
+				</div>
+			}
+		</div>
+		<!-- Bulk Actions Modal -->
+		<div id="bulk-actions-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+			<div class="bg-white dark:bg-dark-surface rounded-lg p-6 max-w-md w-full">
+				<h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-dark-text">Bulk Actions</h3>
+				<p class="text-sm text-gray-600 dark:text-dark-muted mb-4">
+					<span id="selected-count">0</span> devices selected
+				</p>
+				<div class="space-y-3">
+					<button onclick="bulkRefresh()" class="w-full btn btn-secondary">
+						<i class="fas fa-sync-alt mr-2"></i>
+						Refresh Selected
+					</button>
+					<button onclick="bulkReboot()" class="w-full btn btn-warning">
+						<i class="fas fa-power-off mr-2"></i>
+						Reboot Selected
+					</button>
+					<button onclick="bulkAddTags()" class="w-full btn btn-secondary">
+						<i class="fas fa-tags mr-2"></i>
+						Add Tags
+					</button>
+				</div>
+				<div class="mt-6 flex space-x-3">
+					<button onclick="closeBulkActions()" class="flex-1 btn btn-secondary">Cancel</button>
+				</div>
+			</div>
+		</div>
+		<script>
+			let selectedDevices = new Set();
+
+			function applyFilters() {
+				const params = new URLSearchParams();
+
+				const search = document.getElementById('search-input').value;
+				if (search) params.set('search', search);
+
+				const vendor = document.getElementById('vendor-filter').value;
+				if (vendor) params.set('vendor', vendor);
+
+				const status = document.getElementById('status-filter').value;
+				if (status) params.set('status', status);
+
+				window.location.href = '/devices?' + params.toString();
+			}
+
+			function goToPage(page) {
+				const url = new URL(window.location);
+				url.searchParams.set('page', page);
+				window.location.href = url.toString();
+			}
+
+			function toggleDevice(deviceId) {
+				if (selectedDevices.has(deviceId)) {
+					selectedDevices.delete(deviceId);
+				} else {
+					selectedDevices.add(deviceId);
+				}
+				updateSelectedCount();
+			}
+
+			function selectAll() {
+				const selectAll = document.getElementById('select-all');
+				const checkboxes = document.querySelectorAll('input[name="device-select"]');
+
+				checkboxes.forEach(cb => {
+					cb.checked = selectAll.checked;
+					if (selectAll.checked) {
+						selectedDevices.add(cb.value);
+					} else {
+						selectedDevices.delete(cb.value);
+					}
+				});
+
+				updateSelectedCount();
+			}
+
+			function updateSelectedCount() {
+				document.getElementById('selected-count').textContent = selectedDevices.size;
+			}
+
+			function showBulkActions() {
+				if (selectedDevices.size === 0) {
+					alert('Please select at least one device');
+					return;
+				}
+				document.getElementById('bulk-actions-modal').classList.remove('hidden');
+			}
+
+			function closeBulkActions() {
+				document.getElementById('bulk-actions-modal').classList.add('hidden');
+			}
+
+			function refreshDevice(deviceId) {
+				fetch(`/api/devices/${deviceId}/refresh`, { method: 'POST' })
+					.then(res => res.json())
+					.then(data => {
+						if (data.success) {
+							showNotification('success', 'Device refresh initiated');
+						} else {
+							showNotification('error', data.error || 'Failed to refresh device');
+						}
+					})
+					.catch(() => {
+						showNotification('error', 'Failed to refresh device');
+					});
+			}
+
+			function bulkRefresh() {
+				const deviceIds = Array.from(selectedDevices);
+				fetch('/api/bulk/devices/refresh', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({ deviceIds })
+				})
+					.then(res => res.json())
+					.then(data => {
+						showNotification('success', `Refresh initiated for ${data.successful} devices`);
+						closeBulkActions();
+						setTimeout(() => location.reload(), 2000);
+					})
+					.catch(() => {
+						showNotification('error', 'Failed to refresh devices');
+					});
+			}
+
+			function showNotification(type, message) {
+				// Implement notification display
+				alert(message);
+			}
+
+			// Initialize select all checkbox
+			document.getElementById('select-all').addEventListener('change', selectAll);
+		</script>
+	}
+}
+
+templ DeviceRow(device *DeviceDisplay) {
+	<tr class="hover:bg-gray-50 dark:hover:bg-dark-bg transition-colors">
+		<td class="px-6 py-4">
+			<input
+				type="checkbox"
+				name="device-select"
+				value={ device.ID }
+				onchange={ templ.JSFuncCall("toggleDevice", device.ID) }
+				class="rounded border-gray-300 dark:border-dark-border"
+			/>
+		</td>
+		<td class="px-6 py-4">
+			<div>
+				<a href={ templ.URL(fmt.Sprintf("/devices/%s", device.ID)) } class="text-accent hover:text-accent-hover font-medium">
+					{ device.DeviceID.SerialNumber }
+				</a>
+				<p class="text-sm text-gray-600 dark:text-dark-muted">
+					{ device.DeviceID.Manufacturer } { device.DeviceID.ModelName }
+				</p>
+				if len(device.TagList) > 0 {
+					<div class="mt-1 flex flex-wrap gap-1">
+						for _, tag := range device.TagList {
+							<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-200 dark:bg-dark-bg text-gray-700 dark:text-dark-muted">
+								{ tag }
+							</span>
+						}
+					</div>
+				}
+			</div>
+		</td>
+		<td class="px-6 py-4">
+			<span class={ "inline-flex items-center " + device.StatusClass }>
+				<i class="fas fa-circle text-xs mr-2"></i>
+				{ device.StatusText }
+			</span>
+		</td>
+		<td class="px-6 py-4">
+			<span class="text-gray-700 dark:text-dark-text font-mono text-sm">
+				{ device.DeviceID.IPAddress }
+			</span>
+		</td>
+		<td class="px-6 py-4">
+			<span class="text-gray-600 dark:text-dark-muted text-sm">
+				{ device.LastSeenText }
+			</span>
+		</td>
+		<td class="px-6 py-4">
+			<div class="flex items-center space-x-2">
+				<button
+					onclick={ templ.JSFuncCall("refreshDevice", device.ID) }
+					class="p-1 hover:bg-gray-100 dark:hover:bg-dark-bg rounded transition-colors"
+					title="Refresh"
+				>
+					<i class="fas fa-sync-alt text-gray-600 dark:text-dark-muted"></i>
+				</button>
+				<a
+					href={ templ.URL(fmt.Sprintf("/devices/%s", device.ID)) }
+					class="p-1 hover:bg-gray-100 dark:hover:bg-dark-bg rounded transition-colors"
+					title="View Details"
+				>
+					<i class="fas fa-eye text-gray-600 dark:text-dark-muted"></i>
+				</a>
+				<button
+					class="p-1 hover:bg-gray-100 dark:hover:bg-dark-bg rounded transition-colors"
+					title="More Actions"
+				>
+					<i class="fas fa-ellipsis-v text-gray-600 dark:text-dark-muted"></i>
+				</button>
+			</div>
+		</td>
+	</tr>
+}

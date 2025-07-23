@@ -1,0 +1,69 @@
+# Nextranet Gateway Configuration
+
+info:
+  version: "1.0.0"
+  description: "Nextranet Control Plane Gateway"
+
+logger:
+  level: "debug" # Options: panic, fatal, error, warn, info, debug, trace
+  reportCaller: false
+  file: "./logs/gateway.log"
+  rotationCount: 3
+  rotationTime: "24h"
+  rotationMaxAge: 7 # days
+  rotationMaxSize: 50 # MB
+
+# North Bound Interface (API)
+nbi:
+  scheme: "http" # http or https
+  bindingIPv4: "0.0.0.0"
+  bindingIPv6: ""
+  port: 8080
+  readTimeout: 30s
+  writeTimeout: 30s
+  # tls:
+  #   cert: "./certs/server.crt"
+  #   key: "./certs/server.key"
+
+# Web User Interface
+ui:
+  scheme: "http" # http or https
+  bindingIPv4: "0.0.0.0"
+  bindingIPv6: ""
+  port: 8081
+  readTimeout: 30s
+  writeTimeout: 30s
+  theme: "dark" # dark or light
+  # tls:
+  #   cert: "./certs/server.crt"
+  #   key: "./certs/server.key"
+
+# Web Configuration
+web:
+  uploadDir: "./uploads" # Directory for file uploads
+  maxFileSize: 104857600 # 100MB in bytes
+  maxTotalSize: 1073741824 # 1GB in bytes
+  allowedTypes: "firmware,config,backup,script,other"
+
+# Database Configuration
+database:
+  type: "mongodb" # mongodb, postgresql, mysql
+  url: "mongodb://localhost:27017"
+  name: "genieacs"
+  authType: "" # Options: "", "scram-sha-1", "scram-sha-256"
+  username: ""
+  password: ""
+  pool:
+    maxIdleConns: 10
+    maxOpenConns: 100
+    connMaxLifetime: 5m
+    connMaxIdleTime: 1m
+
+# GenieACS Services Configuration
+genieacs:
+  cwmpUrl: "http://192.168.205.223:7547" # CWMP/TR-069 service
+  nbiUrl: "http://192.168.205.223:7557" # NBI API service
+  fsUrl: "http://192.168.205.223:7567" # File service
+  username: "admin" # Optional: GenieACS API username
+  password: "admin" # Optional: GenieACS API password
+  timeout: 30s

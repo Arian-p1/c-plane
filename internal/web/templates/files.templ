@@ -1,0 +1,439 @@
+package templates
+
+import "fmt"
+
+templ FilesPage(data FilesPageData) {
+	@Page(data.Title, data.Theme, data.CurrentPath) {
+		<div class="space-y-6">
+			<!-- Page Header -->
+			<div class="flex justify-between items-center">
+				<h1 class="text-2xl font-bold text-gray-800 dark:text-dark-text">File Management</h1>
+				<button onclick="showUploadModal()" class="btn btn-primary">
+					<i class="fas fa-upload mr-2"></i>
+					Upload Files
+				</button>
+			</div>
+			<!-- Upload Area -->
+			<div class="card p-6">
+				<div id="upload-area" class="border-2 border-dashed border-gray-300 dark:border-dark-border rounded-lg p-8 text-center hover:border-accent transition-colors cursor-pointer">
+					<i class="fas fa-cloud-upload-alt text-4xl text-gray-400 dark:text-dark-muted mb-4"></i>
+					<p class="text-lg text-gray-600 dark:text-dark-muted mb-2">Drag and drop files here</p>
+					<p class="text-sm text-gray-500 dark:text-dark-muted mb-4">or click to select files</p>
+					<button class="btn btn-secondary">
+						<i class="fas fa-folder-open mr-2"></i>
+						Browse Files
+					</button>
+					<input type="file" id="file-input" multiple class="hidden" accept=".zip,.tar,.gz,.xml,.json,.txt,.cfg,.conf"/>
+				</div>
+			</div>
+			<!-- File Filters -->
+			<div class="card p-4">
+				<div class="flex flex-wrap items-center gap-4">
+					<div class="flex items-center space-x-2">
+						<label class="text-sm text-gray-600 dark:text-dark-muted">Filter by type:</label>
+						<select id="file-type-filter" class="form-select">
+							<option value="">All Types</option>
+							<option value="firmware">Firmware</option>
+							<option value="config">Configuration</option>
+							<option value="backup">Backup</option>
+							<option value="script">Script</option>
+							<option value="other">Other</option>
+						</select>
+					</div>
+					<div class="flex items-center space-x-2">
+						<label class="text-sm text-gray-600 dark:text-dark-muted">Search:</label>
+						<input type="text" id="file-search" placeholder="Search files..." class="form-input w-64"/>
+					</div>
+					<div class="flex items-center space-x-2">
+						<span class="text-sm text-gray-600 dark:text-dark-muted">
+							Total: <span id="total-files">{ fmt.Sprintf("%d", len(data.Files)) }</span> files
+							(<span id="total-size">{ formatBytes(data.TotalSize) }</span>)
+						</span>
+					</div>
+				</div>
+			</div>
+			<!-- Files List -->
+			<div class="card">
+				<div class="p-4 border-b border-gray-200 dark:border-dark-border">
+					<h2 class="text-lg font-semibold text-gray-800 dark:text-dark-text">Files</h2>
+				</div>
+				<div class="overflow-x-auto">
+					<table class="w-full">
+						<thead class="bg-gray-50 dark:bg-dark-bg">
+							<tr>
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">
+									<input type="checkbox" id="select-all" class="rounded"/>
+								</th>
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">Name</th>
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">Type</th>
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">Size</th>
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">Uploaded</th>
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">Actions</th>
+							</tr>
+						</thead>
+						<tbody class="divide-y divide-gray-200 dark:divide-dark-border">
+							if len(data.Files) > 0 {
+								for _, file := range data.Files {
+									@FileRow(file)
+								}
+							} else {
+								<tr>
+									<td colspan="6" class="px-6 py-12 text-center text-gray-500 dark:text-dark-muted">
+										<i class="fas fa-folder-open text-4xl mb-4"></i>
+										<p class="text-lg">No files uploaded yet</p>
+										<p class="text-sm">Upload some files to get started</p>
+									</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- Bulk Actions -->
+			<div id="bulk-actions" class="hidden card p-4">
+				<div class="flex items-center justify-between">
+					<span class="text-sm text-gray-600 dark:text-dark-muted">
+						<span id="selected-count">0</span> files selected
+					</span>
+					<div class="flex space-x-2">
+						<button onclick="downloadSelected()" class="btn btn-secondary">
+							<i class="fas fa-download mr-2"></i>
+							Download
+						</button>
+						<button onclick="deleteSelected()" class="btn btn-danger">
+							<i class="fas fa-trash mr-2"></i>
+							Delete
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Upload Modal -->
+		<div id="upload-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+			<div class="bg-white dark:bg-dark-surface rounded-lg p-6 max-w-md w-full">
+				<h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-dark-text">Upload Files</h3>
+				<div class="space-y-4">
+					<div>
+						<label class="block text-sm font-medium text-gray-700 dark:text-dark-text mb-2">File Type</label>
+						<select id="upload-type" class="form-select w-full">
+							<option value="firmware">Firmware</option>
+							<option value="config">Configuration</option>
+							<option value="backup">Backup</option>
+							<option value="script">Script</option>
+							<option value="other">Other</option>
+						</select>
+					</div>
+					<div>
+						<label class="block text-sm font-medium text-gray-700 dark:text-dark-text mb-2">Description (optional)</label>
+						<textarea id="upload-description" class="form-textarea w-full" rows="3" placeholder="Enter file description..."></textarea>
+					</div>
+					<div id="upload-progress" class="hidden">
+						<div class="flex justify-between text-sm text-gray-600 dark:text-dark-muted mb-1">
+							<span>Uploading...</span>
+							<span id="upload-percent">0%</span>
+						</div>
+						<div class="w-full bg-gray-200 dark:bg-dark-bg rounded-full h-2">
+							<div id="upload-bar" class="bg-accent h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+						</div>
+					</div>
+					<div class="flex space-x-3">
+						<button onclick="startUpload()" class="btn btn-primary flex-1">
+							<i class="fas fa-upload mr-2"></i>
+							Start Upload
+						</button>
+						<button onclick="closeUploadModal()" class="btn btn-secondary">Cancel</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			let selectedFiles = [];
+			let uploadQueue = [];
+
+			// File upload handling
+			document.getElementById('upload-area').addEventListener('click', () => {
+				document.getElementById('file-input').click();
+			});
+
+			document.getElementById('upload-area').addEventListener('dragover', (e) => {
+				e.preventDefault();
+				e.currentTarget.classList.add('border-accent');
+			});
+
+			document.getElementById('upload-area').addEventListener('dragleave', (e) => {
+				e.preventDefault();
+				e.currentTarget.classList.remove('border-accent');
+			});
+
+			document.getElementById('upload-area').addEventListener('drop', (e) => {
+				e.preventDefault();
+				e.currentTarget.classList.remove('border-accent');
+				handleFiles(e.dataTransfer.files);
+			});
+
+			document.getElementById('file-input').addEventListener('change', (e) => {
+				handleFiles(e.target.files);
+			});
+
+			function handleFiles(files) {
+				uploadQueue = Array.from(files);
+				if (uploadQueue.length > 0) {
+					showUploadModal();
+				}
+			}
+
+			function showUploadModal() {
+				document.getElementById('upload-modal').classList.remove('hidden');
+			}
+
+			function closeUploadModal() {
+				document.getElementById('upload-modal').classList.add('hidden');
+				document.getElementById('upload-progress').classList.add('hidden');
+				uploadQueue = [];
+			}
+
+			function startUpload() {
+				if (uploadQueue.length === 0) return;
+
+				const type = document.getElementById('upload-type').value;
+				const description = document.getElementById('upload-description').value;
+
+				document.getElementById('upload-progress').classList.remove('hidden');
+
+				uploadFiles(uploadQueue, type, description);
+			}
+
+			function uploadFiles(files, type, description) {
+				const formData = new FormData();
+
+				for (let file of files) {
+					formData.append('files', file);
+				}
+				formData.append('type', type);
+				formData.append('description', description);
+
+				const xhr = new XMLHttpRequest();
+
+				xhr.upload.addEventListener('progress', (e) => {
+					if (e.lengthComputable) {
+						const percent = Math.round((e.loaded / e.total) * 100);
+						document.getElementById('upload-percent').textContent = percent + '%';
+						document.getElementById('upload-bar').style.width = percent + '%';
+					}
+				});
+
+				xhr.addEventListener('load', () => {
+					if (xhr.status === 200) {
+						showNotification('success', 'Files uploaded successfully');
+						closeUploadModal();
+						location.reload();
+					} else {
+						showNotification('error', 'Upload failed');
+					}
+				});
+
+				xhr.addEventListener('error', () => {
+					showNotification('error', 'Upload failed');
+				});
+
+				xhr.open('POST', '/api/files/upload');
+				xhr.send(formData);
+			}
+
+			// File selection
+			function toggleFileSelection(fileId, checkbox) {
+				if (checkbox.checked) {
+					selectedFiles.push(fileId);
+				} else {
+					selectedFiles = selectedFiles.filter(id => id !== fileId);
+				}
+				updateBulkActions();
+			}
+
+			function updateBulkActions() {
+				const bulkActions = document.getElementById('bulk-actions');
+				const selectedCount = document.getElementById('selected-count');
+
+				if (selectedFiles.length > 0) {
+					bulkActions.classList.remove('hidden');
+					selectedCount.textContent = selectedFiles.length;
+				} else {
+					bulkActions.classList.add('hidden');
+				}
+			}
+
+			// File actions
+			function downloadFile(fileId) {
+				window.open('/api/files/' + fileId + '/download', '_blank');
+			}
+
+			function deleteFile(fileId) {
+				if (confirm('Are you sure you want to delete this file?')) {
+					fetch('/api/files/' + fileId, { method: 'DELETE' })
+						.then(res => res.json())
+						.then(data => {
+							if (data.success) {
+								showNotification('success', 'File deleted successfully');
+								location.reload();
+							} else {
+								showNotification('error', data.error || 'Failed to delete file');
+							}
+						});
+				}
+			}
+
+			function downloadSelected() {
+				if (selectedFiles.length === 0) return;
+
+				const form = document.createElement('form');
+				form.method = 'POST';
+				form.action = '/api/files/download-bulk';
+
+				selectedFiles.forEach(fileId => {
+					const input = document.createElement('input');
+					input.type = 'hidden';
+					input.name = 'fileIds';
+					input.value = fileId;
+					form.appendChild(input);
+				});
+
+				document.body.appendChild(form);
+				form.submit();
+				document.body.removeChild(form);
+			}
+
+			function deleteSelected() {
+				if (selectedFiles.length === 0) return;
+
+				if (confirm(`Are you sure you want to delete ${selectedFiles.length} files?`)) {
+					Promise.all(selectedFiles.map(fileId =>
+						fetch('/api/files/' + fileId, { method: 'DELETE' })
+					)).then(() => {
+						showNotification('success', 'Files deleted successfully');
+						location.reload();
+					}).catch(() => {
+						showNotification('error', 'Failed to delete some files');
+					});
+				}
+			}
+
+			// File filtering
+			document.getElementById('file-type-filter').addEventListener('change', filterFiles);
+			document.getElementById('file-search').addEventListener('input', filterFiles);
+
+			function filterFiles() {
+				const typeFilter = document.getElementById('file-type-filter').value;
+				const searchFilter = document.getElementById('file-search').value.toLowerCase();
+				const rows = document.querySelectorAll('tbody tr[data-file-id]');
+
+				let visibleCount = 0;
+				rows.forEach(row => {
+					const type = row.dataset.fileType;
+					const name = row.dataset.fileName.toLowerCase();
+
+					const typeMatch = !typeFilter || type === typeFilter;
+					const nameMatch = !searchFilter || name.includes(searchFilter);
+
+					if (typeMatch && nameMatch) {
+						row.style.display = '';
+						visibleCount++;
+					} else {
+						row.style.display = 'none';
+					}
+				});
+
+				document.getElementById('total-files').textContent = visibleCount;
+			}
+
+			// Select all checkbox
+			document.getElementById('select-all').addEventListener('change', function() {
+				const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
+				checkboxes.forEach(checkbox => {
+					if (this.checked) {
+						checkbox.checked = true;
+						toggleFileSelection(checkbox.dataset.fileId, checkbox);
+					} else {
+						checkbox.checked = false;
+						selectedFiles = [];
+						updateBulkActions();
+					}
+				});
+			});
+
+			function showNotification(type, message) {
+				// Implement notification display
+				alert(`${type}: ${message}`);
+			}
+		</script>
+	}
+}
+
+templ FileRow(file FileInfo) {
+	<tr class="table-row hover:bg-gray-50 dark:hover:bg-dark-bg" data-file-id={ file.ID } data-file-type={ file.Type } data-file-name={ file.Name }>
+		<td class="px-6 py-4 whitespace-nowrap">
+			<input type="checkbox" class="rounded" data-file-id={ file.ID } onchange={ templ.JSFuncCall("toggleFileSelection", file.ID, "this") }/>
+		</td>
+		<td class="px-6 py-4 whitespace-nowrap">
+			<div class="flex items-center">
+				<i class={ "fas mr-3 " + getFileIcon(file.Type) }></i>
+				<div>
+					<div class="text-sm font-medium text-gray-800 dark:text-dark-text">{ file.Name }</div>
+					if file.Description != "" {
+						<div class="text-sm text-gray-500 dark:text-dark-muted">{ file.Description }</div>
+					}
+				</div>
+			</div>
+		</td>
+		<td class="px-6 py-4 whitespace-nowrap">
+			<span class={ "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium " + getTypeClass(file.Type) }>
+				{ file.Type }
+			</span>
+		</td>
+		<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-dark-text">
+			{ formatBytes(file.Size) }
+		</td>
+		<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-dark-muted">
+			{ timeAgo(file.UploadedAt) }
+		</td>
+		<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+			<div class="flex space-x-2">
+				<button onclick={ templ.JSFuncCall("downloadFile", file.ID) } class="text-accent hover:text-accent-hover">
+					<i class="fas fa-download"></i>
+				</button>
+				<button onclick={ templ.JSFuncCall("deleteFile", file.ID) } class="text-red-600 hover:text-red-700">
+					<i class="fas fa-trash"></i>
+				</button>
+			</div>
+		</td>
+	</tr>
+}
+
+func getFileIcon(fileType string) string {
+	switch fileType {
+	case "firmware":
+		return "fa-microchip text-blue-500"
+	case "config":
+		return "fa-cog text-green-500"
+	case "backup":
+		return "fa-archive text-orange-500"
+	case "script":
+		return "fa-code text-purple-500"
+	default:
+		return "fa-file text-gray-500"
+	}
+}
+
+func getTypeClass(fileType string) string {
+	switch fileType {
+	case "firmware":
+		return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+	case "config":
+		return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+	case "backup":
+		return "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200"
+	case "script":
+		return "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200"
+	default:
+		return "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
+	}
+}

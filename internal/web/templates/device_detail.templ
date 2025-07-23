@@ -1,0 +1,449 @@
+package templates
+
+import (
+	"fmt"
+	"github.com/nextranet/gateway/c-plane/internal/models"
+	"time"
+)
+
+templ DeviceDetailPage(data DeviceDetailData) {
+	@Page(data.Title, data.Theme, data.CurrentPath) {
+		<div class="space-y-6">
+			<!-- Breadcrumb -->
+			<nav class="flex items-center space-x-2 text-sm text-gray-600 dark:text-dark-muted">
+				<a href="/devices" class="hover:text-accent">Devices</a>
+				<i class="fas fa-chevron-right text-xs"></i>
+				<span class="text-gray-800 dark:text-dark-text">{ data.Device.DeviceID.SerialNumber }</span>
+			</nav>
+			<!-- Device Header -->
+			<div class="card p-6">
+				<div class="flex justify-between items-start">
+					<div>
+						<h1 class="text-2xl font-bold text-gray-800 dark:text-dark-text mb-2">
+							{ data.Device.DeviceID.SerialNumber }
+						</h1>
+						<div class="flex items-center space-x-4 text-sm">
+							<span class="flex items-center">
+								<i class={ "fas fa-circle mr-2 " + getStatusColor(data.IsOnline) }></i>
+								if data.IsOnline {
+									<span class="text-green-600">Online</span>
+								} else {
+									<span class="text-red-600">Offline</span>
+								}
+							</span>
+							<span class="text-gray-600 dark:text-dark-muted">
+								<i class="fas fa-clock mr-1"></i>
+								Last seen: { formatLastSeen(data.Device.Status.LastSeen) }
+							</span>
+						</div>
+					</div>
+					if data.CanManage {
+						<div class="flex space-x-2">
+							<button onclick={ templ.JSFuncCall("refreshDevice", data.Device.ID) } class="btn btn-secondary">
+								<i class="fas fa-sync-alt mr-2"></i>
+								Refresh
+							</button>
+							<button onclick="showActionsMenu()" class="btn btn-primary">
+								<i class="fas fa-cog mr-2"></i>
+								Actions
+							</button>
+						</div>
+					}
+				</div>
+			</div>
+			<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+				<!-- Device Information -->
+				<div class="lg:col-span-2 space-y-6">
+					<!-- Basic Information -->
+					<div class="card p-6">
+						<h2 class="text-lg font-semibold mb-4 text-gray-800 dark:text-dark-text">Device Information</h2>
+						<dl class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+							@InfoItem("Vendor", data.Device.DeviceID.Manufacturer)
+							@InfoItem("Model", data.Device.DeviceID.ModelName)
+							@InfoItem("Product Class", data.Device.DeviceID.ProductClass)
+							@InfoItem("OUI", data.Device.DeviceID.OUI)
+							@InfoItem("Hardware Version", data.Device.DeviceID.HardwareVersion)
+							@InfoItem("Software Version", data.Device.DeviceID.SoftwareVersion)
+							@InfoItem("IP Address", data.Device.DeviceID.IPAddress)
+							@InfoItem("External IP", data.Device.DeviceID.ExternalIPAddress)
+						</dl>
+					</div>
+					<!-- Parameters -->
+					if len(data.Parameters) > 0 {
+						<div class="card p-6">
+							<div class="flex justify-between items-center mb-4">
+								<h2 class="text-lg font-semibold text-gray-800 dark:text-dark-text">Parameters</h2>
+								<button onclick="refreshParameters()" class="text-sm text-accent hover:text-accent-hover">
+									<i class="fas fa-sync-alt mr-1"></i>
+									Refresh
+								</button>
+							</div>
+							<div class="space-y-3">
+								for path, param := range data.Parameters {
+									@ParameterItem(path, param)
+								}
+							</div>
+						</div>
+					}
+					<!-- Active Tasks -->
+					<div class="card p-6">
+						<div class="flex justify-between items-center mb-4">
+							<h2 class="text-lg font-semibold text-gray-800 dark:text-dark-text">Active Tasks</h2>
+							<span class="text-sm text-gray-600 dark:text-dark-muted">
+								{ fmt.Sprintf("%d tasks", len(data.Tasks)) }
+							</span>
+						</div>
+						if len(data.Tasks) > 0 {
+							<div class="space-y-3">
+								for _, task := range data.Tasks {
+									@TaskItem(task)
+								}
+							</div>
+						} else {
+							<p class="text-gray-500 dark:text-dark-muted text-center py-4">No active tasks</p>
+						}
+					</div>
+				</div>
+				<!-- Sidebar -->
+				<div class="space-y-6">
+					<!-- Recent Faults -->
+					<div class="card p-6">
+						<div class="flex justify-between items-center mb-4">
+							<h3 class="text-lg font-semibold text-gray-800 dark:text-dark-text">Recent Faults</h3>
+							<a href={ templ.URL(fmt.Sprintf("/faults?deviceId=%s", data.Device.ID)) } class="text-sm text-accent hover:text-accent-hover">
+								View All
+							</a>
+						</div>
+						if len(data.Faults) > 0 {
+							<div class="space-y-3">
+								for _, fault := range data.Faults[:min(5, len(data.Faults))] {
+									@DeviceFaultItem(fault)
+								}
+							</div>
+						} else {
+							<p class="text-gray-500 dark:text-dark-muted text-center py-4">No recent faults</p>
+						}
+					</div>
+					<!-- Tags -->
+					<div class="card p-6">
+						<h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-dark-text">Tags</h3>
+						<div class="flex flex-wrap gap-2">
+							for tag := range data.Device.Tags {
+								<span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-accent/10 text-accent">
+									{ tag }
+									if data.CanManage {
+										<button onclick={ templ.JSFuncCall("removeTag", tag) } class="ml-2 hover:text-accent-hover">
+											<i class="fas fa-times text-xs"></i>
+										</button>
+									}
+								</span>
+							}
+						</div>
+						if data.CanManage {
+							<button onclick="showAddTag()" class="mt-3 text-sm text-accent hover:text-accent-hover">
+								<i class="fas fa-plus mr-1"></i>
+								Add Tag
+							</button>
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Actions Menu Modal -->
+		<div id="actions-menu" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+			<div class="bg-white dark:bg-dark-surface rounded-lg p-6 max-w-md w-full">
+				<h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-dark-text">Device Actions</h3>
+				<div class="space-y-3">
+					<button onclick={ templ.JSFuncCall("rebootDevice", data.Device.ID) } class="w-full btn btn-warning">
+						<i class="fas fa-power-off mr-2"></i>
+						Reboot Device
+					</button>
+					<button onclick="showFactoryReset()" class="w-full btn btn-danger">
+						<i class="fas fa-undo mr-2"></i>
+						Factory Reset
+					</button>
+					<button onclick="showParameterEdit()" class="w-full btn btn-secondary">
+						<i class="fas fa-edit mr-2"></i>
+						Edit Parameters
+					</button>
+					<button onclick="downloadConfig()" class="w-full btn btn-secondary">
+						<i class="fas fa-download mr-2"></i>
+						Download Config
+					</button>
+				</div>
+				<button onclick="closeActionsMenu()" class="w-full btn btn-secondary mt-4">Cancel</button>
+			</div>
+		</div>
+		<script>
+			const deviceId = '{ data.Device.ID }';
+
+			function refreshDevice(deviceId) {
+				fetch(`/api/devices/${deviceId}/refresh`, { method: 'POST' })
+					.then(res => res.json())
+					.then(data => {
+						if (data.success) {
+							showNotification('success', 'Device refresh initiated');
+							setTimeout(() => location.reload(), 2000);
+						} else {
+							showNotification('error', data.error || 'Failed to refresh device');
+						}
+					});
+			}
+
+			function rebootDevice(deviceId) {
+				if (confirm('Are you sure you want to reboot this device?')) {
+					fetch('/api/devices/' + deviceId + '/reboot', { method: 'POST' })
+						.then(res => res.json())
+						.then(data => {
+							if (data.success) {
+								showNotification('success', 'Device reboot initiated');
+								closeActionsMenu();
+							} else {
+								showNotification('error', data.error || 'Failed to reboot device');
+							}
+						});
+				}
+			}
+
+			function showActionsMenu() {
+				document.getElementById('actions-menu').classList.remove('hidden');
+			}
+
+			function closeActionsMenu() {
+				document.getElementById('actions-menu').classList.add('hidden');
+			}
+
+			function downloadConfig() {
+				window.open('/api/devices/' + deviceId + '/config/download', '_blank');
+				closeActionsMenu();
+			}
+
+			function showFactoryReset() {
+				closeActionsMenu();
+				if (confirm('Are you sure you want to factory reset this device? This will erase all configuration and restore defaults.')) {
+					fetch('/api/devices/' + deviceId + '/factory-reset', { method: 'POST' })
+						.then(res => res.json())
+						.then(data => {
+							if (data.success) {
+								showNotification('success', 'Factory reset initiated');
+							} else {
+								showNotification('error', data.error || 'Failed to factory reset device');
+							}
+						});
+				}
+			}
+
+			function showParameterEdit() {
+				closeActionsMenu();
+				// TODO: Implement parameter editing modal
+				showNotification('info', 'Parameter editing feature coming soon');
+			}
+
+			function removeTag(tag) {
+				if (confirm('Are you sure you want to remove this tag?')) {
+					fetch('/api/devices/' + deviceId + '/tags/' + encodeURIComponent(tag), { method: 'DELETE' })
+						.then(res => res.json())
+						.then(data => {
+							if (data.success) {
+								showNotification('success', 'Tag removed successfully');
+								location.reload();
+							} else {
+								showNotification('error', data.error || 'Failed to remove tag');
+							}
+						});
+				}
+			}
+
+			function showAddTag() {
+				const tag = prompt('Enter tag name:');
+				if (tag && tag.trim()) {
+					fetch('/api/devices/' + deviceId + '/tags', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({ tag: tag.trim() })
+					})
+					.then(res => res.json())
+					.then(data => {
+						if (data.success) {
+							showNotification('success', 'Tag added successfully');
+							location.reload();
+						} else {
+							showNotification('error', data.error || 'Failed to add tag');
+						}
+					});
+				}
+			}
+
+			function editParameter(path) {
+				const newValue = prompt('Enter new value for ' + path + ':');
+				if (newValue !== null) {
+					fetch('/api/devices/' + deviceId + '/parameters', {
+						method: 'PUT',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({
+							parameter: path,
+							value: newValue
+						})
+					})
+					.then(res => res.json())
+					.then(data => {
+						if (data.success) {
+							showNotification('success', 'Parameter updated successfully');
+							location.reload();
+						} else {
+							showNotification('error', data.error || 'Failed to update parameter');
+						}
+					});
+				}
+			}
+
+			function refreshParameters() {
+				showNotification('info', 'Refreshing parameters...');
+				location.reload();
+			}
+
+			function cancelTask(taskId) {
+				if (confirm('Are you sure you want to cancel this task?')) {
+					fetch('/api/tasks/' + taskId, { method: 'DELETE' })
+						.then(res => res.json())
+						.then(data => {
+							if (data.success) {
+								showNotification('success', 'Task cancelled successfully');
+								location.reload();
+							} else {
+								showNotification('error', data.error || 'Failed to cancel task');
+							}
+						});
+				}
+			}
+
+			function showNotification(type, message) {
+				// Implement notification display
+				alert(`${type}: ${message}`);
+			}
+		</script>
+	}
+}
+
+templ InfoItem(label, value string) {
+	<div>
+		<dt class="text-sm text-gray-600 dark:text-dark-muted">{ label }</dt>
+		<dd class="text-sm font-medium text-gray-800 dark:text-dark-text">
+			if value != "" {
+				{ value }
+			} else {
+				<span class="text-gray-400 italic">Not available</span>
+			}
+		</dd>
+	</div>
+}
+
+templ ParameterItem(path string, param models.Parameter) {
+	<div class="flex justify-between items-start p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-dark-bg">
+		<div class="flex-1">
+			<p class="text-sm font-mono text-gray-800 dark:text-dark-text">{ path }</p>
+			<p class="text-sm text-gray-600 dark:text-dark-muted mt-1">
+				Value: <span class="font-medium">{ fmt.Sprintf("%v", param.Value) }</span>
+			</p>
+			<div class="flex items-center space-x-4 mt-1">
+				<span class="text-xs text-gray-500 dark:text-dark-muted">Type: { param.Type }</span>
+				if param.Writable {
+					<span class="text-xs text-green-600">Writable</span>
+				} else {
+					<span class="text-xs text-gray-500">Read-only</span>
+				}
+			</div>
+		</div>
+		if param.Writable {
+			<button onclick={ templ.JSFuncCall("editParameter", path) } class="ml-4 p-2 hover:bg-gray-100 dark:hover:bg-dark-bg rounded">
+				<i class="fas fa-edit text-gray-600 dark:text-dark-muted"></i>
+			</button>
+		}
+	</div>
+}
+
+templ TaskItem(task *models.Task) {
+	<div class="flex items-center justify-between p-3 rounded-lg border border-gray-200 dark:border-dark-border">
+		<div>
+			<p class="font-medium text-gray-800 dark:text-dark-text">{ task.Name }</p>
+			<p class="text-sm text-gray-600 dark:text-dark-muted">
+				Status: <span class={ getTaskStatusClass(task.Status) }>{ task.Status }</span>
+			</p>
+		</div>
+		<button onclick={ templ.JSFuncCall("cancelTask", task.ID) } class="p-2 hover:bg-gray-100 dark:hover:bg-dark-bg rounded">
+			<i class="fas fa-times text-gray-600 dark:text-dark-muted"></i>
+		</button>
+	</div>
+}
+
+templ DeviceFaultItem(fault *models.Fault) {
+	<div class="p-3 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
+		<div class="flex items-start">
+			<i class={ "fas fa-exclamation-triangle mt-0.5 mr-2 " + getSeverityColor(fault.Severity) }></i>
+			<div class="flex-1">
+				<p class="text-sm font-medium text-gray-800 dark:text-dark-text">{ fault.Code }</p>
+				<p class="text-sm text-gray-600 dark:text-dark-muted">{ fault.Message }</p>
+				<p class="text-xs text-gray-500 dark:text-dark-muted mt-1">
+					{ timeAgo(fault.Timestamp) }
+				</p>
+			</div>
+		</div>
+	</div>
+}
+
+func getStatusColor(online bool) string {
+	if online {
+		return "text-green-500"
+	}
+	return "text-red-500"
+}
+
+func getTaskStatusClass(status string) string {
+	switch status {
+	case models.TaskStatusCompleted:
+		return "text-green-600"
+	case models.TaskStatusRunning:
+		return "text-blue-600"
+	case models.TaskStatusFailed:
+		return "text-red-600"
+	default:
+		return "text-gray-600"
+	}
+}
+
+func getSeverityColor(severity string) string {
+	switch severity {
+	case models.SeverityCritical:
+		return "text-red-600"
+	case models.SeverityMajor:
+		return "text-orange-600"
+	case models.SeverityMinor:
+		return "text-yellow-600"
+	case models.SeverityWarning:
+		return "text-yellow-500"
+	default:
+		return "text-blue-500"
+	}
+}
+
+func formatLastSeen(lastSeen time.Time) string {
+	if lastSeen.IsZero() {
+		return "Never"
+	}
+
+	duration := time.Since(lastSeen)
+	switch {
+	case duration < time.Minute:
+		return "Just now"
+	case duration < time.Hour:
+		return fmt.Sprintf("%d minutes ago", int(duration.Minutes()))
+	case duration < 24*time.Hour:
+		return fmt.Sprintf("%d hours ago", int(duration.Hours()))
+	default:
+		return fmt.Sprintf("%d days ago", int(duration.Hours()/24))
+	}
+}

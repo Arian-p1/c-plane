@@ -1,0 +1,378 @@
+package templates
+
+import (
+	"fmt"
+	"github.com/nextranet/gateway/c-plane/internal/models"
+)
+
+templ OverviewPage(data OverviewData) {
+	@Page(data.Title, data.Theme, "/overview") {
+		<div class="space-y-6">
+			<!-- Statistics Cards -->
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+				@StatCard("Total Devices", data.Stats.TotalDevices, "fa-router", "text-blue-500")
+				@StatCard("Online Devices", data.Stats.OnlineDevices, "fa-wifi", "text-green-500")
+				@StatCard("Active Faults", data.Stats.ActiveFaults, "fa-exclamation-triangle", "text-yellow-500")
+				@StatCard("Critical Faults", data.Stats.CriticalFaults, "fa-exclamation-circle", "text-red-500")
+			</div>
+			<!-- Health Score and Quick Actions -->
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+				<!-- Health Score -->
+				<div class="card p-6">
+					<h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-dark-text">System Health</h3>
+					<div class="relative">
+						@HealthGauge(data.Stats.HealthScore)
+						<div class="text-center mt-4">
+							<p class="text-3xl font-bold { healthScoreColor(data.Stats.HealthScore) }">
+								{ fmt.Sprintf("%d%%", data.Stats.HealthScore) }
+							</p>
+							<p class="text-sm text-gray-600 dark:text-dark-muted">Overall Health Score</p>
+						</div>
+					</div>
+				</div>
+				<!-- Quick Actions -->
+				<div class="card p-6">
+					<h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-dark-text">Quick Actions</h3>
+					<div class="space-y-2">
+						<button onclick="refreshAllDevices()" class="w-full btn btn-primary">
+							<i class="fas fa-sync-alt mr-2"></i>
+							Refresh All Devices
+						</button>
+						<a href="/devices?status=offline" class="w-full btn btn-secondary block text-center">
+							<i class="fas fa-plug mr-2"></i>
+							View Offline Devices
+						</a>
+						<a href="/faults?severity=critical" class="w-full btn btn-danger block text-center">
+							<i class="fas fa-exclamation-circle mr-2"></i>
+							View Critical Faults
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- Charts Row -->
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+				<!-- Device Distribution by Vendor -->
+				<div class="card p-6">
+					<h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-dark-text">Devices by Vendor</h3>
+					<div class="h-64">
+						<canvas id="vendorChart"></canvas>
+					</div>
+				</div>
+				<!-- Fault Severity Distribution -->
+				<div class="card p-6">
+					<h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-dark-text">Faults by Severity</h3>
+					<div class="h-64">
+						<canvas id="faultChart"></canvas>
+					</div>
+				</div>
+			</div>
+			<!-- Recent Activity -->
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+				<!-- Recent Faults -->
+				<div class="card p-6">
+					<div class="flex items-center justify-between mb-4">
+						<h3 class="text-lg font-semibold text-gray-800 dark:text-dark-text">Recent Faults</h3>
+						<a href="/faults" class="text-sm text-accent hover:text-accent-hover">View All</a>
+					</div>
+					if len(data.RecentFaults) > 0 {
+						<div class="space-y-3">
+							for _, fault := range data.RecentFaults {
+								@FaultItem(fault)
+							}
+						</div>
+					} else {
+						<p class="text-gray-500 dark:text-dark-muted text-center py-8">No recent faults</p>
+					}
+				</div>
+			</div>
+			<!-- Critical Alerts -->
+			if len(data.CriticalFaults) > 0 {
+				<div class="card p-6 border-2 border-red-500 dark:border-red-600">
+					<div class="flex items-center mb-4">
+						<i class="fas fa-exclamation-circle text-red-500 text-xl mr-3"></i>
+						<h3 class="text-lg font-semibold text-gray-800 dark:text-dark-text">Critical Alerts</h3>
+					</div>
+					<div class="space-y-2">
+						for _, fault := range data.CriticalFaults {
+							@CriticalFaultAlert(fault)
+						}
+					</div>
+				</div>
+			}
+		</div>
+		<!-- Chart Scripts -->
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<script>
+            // Prepare chart data
+            const vendorLabels = [
+                { for vendor, _ := range data.DevicesByVendor }'{ vendor }',{ end }
+            ];
+            const vendorCounts = [
+                { for _, count := range data.DevicesByVendor }{ fmt.Sprintf("%d", count) },{ end }
+            ];
+
+            const faultCounts = {
+                critical: { fmt.Sprintf("%d", data.FaultSeverity["critical"]) },
+                major: { fmt.Sprintf("%d", data.FaultSeverity["major"]) },
+                minor: { fmt.Sprintf("%d", data.FaultSeverity["minor"]) },
+                warning: { fmt.Sprintf("%d", data.FaultSeverity["warning"]) },
+                info: { fmt.Sprintf("%d", data.FaultSeverity["info"]) }
+            };
+
+            // Vendor Chart
+            const vendorCtx = document.getElementById('vendorChart').getContext('2d');
+            const vendorData = {
+                labels: vendorLabels,
+                datasets: [{
+                    data: vendorCounts,
+                    backgroundColor: [
+                        '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'
+                    ]
+                }]
+            };
+
+            new Chart(vendorCtx, {
+                type: 'doughnut',
+                data: vendorData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                color: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#374151'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Fault Chart
+            const faultCtx = document.getElementById('faultChart').getContext('2d');
+            const faultData = {
+                labels: ['Critical', 'Major', 'Minor', 'Warning', 'Info'],
+                datasets: [{
+                    label: 'Faults',
+                    data: [
+                        faultCounts.critical,
+                        faultCounts.major,
+                        faultCounts.minor,
+                        faultCounts.warning,
+                        faultCounts.info
+                    ],
+                    backgroundColor: ['#ef4444', '#f97316', '#f59e0b', '#eab308', '#06b6d4'],
+                    borderWidth: 0
+                }]
+            };
+
+            new Chart(faultCtx, {
+                type: 'bar',
+                data: faultData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#374151'
+                            },
+                            grid: {
+                                color: document.documentElement.classList.contains('dark') ? '#334155' : '#e5e7eb'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#374151'
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            // Update stats function for WebSocket updates
+            function updateStats(data) {
+                // Update stat cards
+                document.querySelector('[data-stat="total-devices"]').textContent = data.devices.total;
+                document.querySelector('[data-stat="online-devices"]').textContent = data.devices.online;
+                document.querySelector('[data-stat="active-faults"]').textContent = data.faults.active;
+                document.querySelector('[data-stat="critical-faults"]').textContent = data.faults.critical;
+
+                // Update navigation badges
+                document.getElementById('device-count').textContent = data.devices.total;
+                if (data.faults.active > 0) {
+                    document.getElementById('fault-count').textContent = data.faults.active;
+                    document.getElementById('fault-count').classList.remove('hidden');
+                } else {
+                    document.getElementById('fault-count').classList.add('hidden');
+                }
+            }
+
+            // Refresh all devices
+            function refreshAllDevices() {
+                if (confirm('Are you sure you want to refresh all devices? This may take some time.')) {
+                    fetch('/api/devices/refresh-all', { method: 'POST' })
+                        .then(res => res.json())
+                        .then(data => {
+                            alert(data.message || 'Refresh initiated');
+                        })
+                        .catch(err => {
+                            alert('Failed to refresh devices');
+                        });
+                }
+            }
+        </script>
+	}
+}
+
+templ StatCard(title string, value int, icon string, color string) {
+	<div class="card p-6">
+		<div class="flex items-center justify-between">
+			<div>
+				<p class="text-sm text-gray-600 dark:text-dark-muted mb-1">{ title }</p>
+				<p class="text-2xl font-bold text-gray-800 dark:text-dark-text" data-stat={ toDataAttr(title) }>
+					{ fmt.Sprintf("%d", value) }
+				</p>
+			</div>
+			<div class={ "p-3 rounded-full " + bgColorClass(color) }>
+				<i class={ "fas " + icon + " text-white text-xl" }></i>
+			</div>
+		</div>
+	</div>
+}
+
+templ ServiceStatus(name string, connected bool) {
+	<div class="flex items-center justify-between">
+		<span class="text-gray-700 dark:text-dark-text">{ name }</span>
+		<span class="flex items-center">
+			if connected {
+				<i class="fas fa-check-circle text-success mr-2"></i>
+				<span class="text-success">Connected</span>
+			} else {
+				<i class="fas fa-times-circle text-danger mr-2"></i>
+				<span class="text-danger">Disconnected</span>
+			}
+		</span>
+	</div>
+}
+
+templ FaultItem(fault *models.Fault) {
+	<div class="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-dark-bg transition-colors">
+		<i class={ "fas fa-exclamation-triangle mt-1 " + severityColor(fault.Severity) }></i>
+		<div class="flex-1 min-w-0">
+			<p class="text-sm font-medium text-gray-800 dark:text-dark-text truncate">
+				{ fault.DeviceSerial } - { fault.Code }
+			</p>
+			<p class="text-xs text-gray-600 dark:text-dark-muted">
+				{ fault.Message }
+			</p>
+			<p class="text-xs text-gray-500 dark:text-dark-muted mt-1">
+				{ timeAgo(fault.Timestamp) }
+			</p>
+		</div>
+	</div>
+}
+
+templ CriticalFaultAlert(fault *models.Fault) {
+	<div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-3">
+		<div class="flex items-start">
+			<i class="fas fa-exclamation-circle text-red-500 mt-0.5 mr-3"></i>
+			<div class="flex-1">
+				<p class="text-sm font-medium text-red-800 dark:text-red-200">
+					{ fault.DeviceSerial } - { fault.Code }
+				</p>
+				<p class="text-sm text-red-700 dark:text-red-300 mt-1">
+					{ fault.Message }
+				</p>
+				<div class="mt-2">
+					<a href={ templ.URL(fmt.Sprintf("/faults/%s", fault.ID)) } class="text-xs text-red-600 dark:text-red-400 hover:underline">
+						View Details →
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+}
+
+templ HealthGauge(score int) {
+	<div class="relative w-32 h-32 mx-auto">
+		<svg class="transform -rotate-90 w-32 h-32">
+			<circle cx="64" cy="64" r="56" stroke="#e5e7eb" stroke-width="12" fill="none" class="dark:stroke-dark-border"></circle>
+			<circle
+				cx="64"
+				cy="64"
+				r="56"
+				stroke={ healthScoreColor(score) }
+				stroke-width="12"
+				fill="none"
+				stroke-dasharray={ fmt.Sprintf("%d 352", int(float64(score)*3.52)) }
+				stroke-linecap="round"
+			></circle>
+		</svg>
+	</div>
+}
+
+func healthScoreColor(score int) string {
+	switch {
+	case score >= 80:
+		return "text-success"
+	case score >= 60:
+		return "text-warning"
+	default:
+		return "text-danger"
+	}
+}
+
+func severityColor(severity string) string {
+	switch severity {
+	case "critical":
+		return "text-red-500"
+	case "major":
+		return "text-orange-500"
+	case "minor":
+		return "text-yellow-500"
+	case "warning":
+		return "text-yellow-400"
+	default:
+		return "text-blue-400"
+	}
+}
+
+func bgColorClass(color string) string {
+	switch color {
+	case "text-blue-500":
+		return "bg-blue-500"
+	case "text-green-500":
+		return "bg-green-500"
+	case "text-yellow-500":
+		return "bg-yellow-500"
+	case "text-red-500":
+		return "bg-red-500"
+	default:
+		return "bg-gray-500"
+	}
+}
+
+func toDataAttr(title string) string {
+	switch title {
+	case "Total Devices":
+		return "total-devices"
+	case "Online Devices":
+		return "online-devices"
+	case "Active Faults":
+		return "active-faults"
+	case "Critical Faults":
+		return "critical-faults"
+	default:
+		return ""
+	}
+}

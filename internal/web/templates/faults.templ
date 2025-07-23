@@ -1,0 +1,653 @@
+package templates
+
+import "fmt"
+
+templ FaultsPage(data FaultsPageData) {
+	@Page(data.Title, data.Theme, data.CurrentPath) {
+		<div class="space-y-6">
+			<!-- Page Header with Actions -->
+			<div class="flex justify-between items-center">
+				<div>
+					<h1 class="text-2xl font-bold text-gray-800 dark:text-dark-text">Faults & Alarms</h1>
+					<p class="text-sm text-gray-600 dark:text-dark-muted mt-1">
+						Showing { fmt.Sprintf("%d", len(data.Faults)) } of { fmt.Sprintf("%d", data.TotalCount) } faults
+					</p>
+				</div>
+				<div class="flex space-x-3">
+					<button onclick="refreshFaults()" class="btn btn-secondary">
+						<i class="fas fa-sync-alt mr-2"></i>
+						Refresh
+					</button>
+					<button onclick="showBulkActions()" class="btn btn-primary">
+						<i class="fas fa-tasks mr-2"></i>
+						Bulk Actions
+					</button>
+				</div>
+			</div>
+			<!-- Statistics Cards -->
+			<div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+				<div class="card p-4">
+					<div class="flex items-center justify-between">
+						<div>
+							<p class="text-sm text-gray-600 dark:text-dark-muted">Total Faults</p>
+							<p class="text-2xl font-bold text-gray-800 dark:text-dark-text">
+								{ fmt.Sprintf("%d", data.TotalCount) }
+							</p>
+						</div>
+						<i class="fas fa-exclamation-triangle text-gray-500 text-2xl"></i>
+					</div>
+				</div>
+				<div class="card p-4">
+					<div class="flex items-center justify-between">
+						<div>
+							<p class="text-sm text-gray-600 dark:text-dark-muted">Critical</p>
+							<p class="text-2xl font-bold text-red-600">
+								{ fmt.Sprintf("%d", data.SeverityStats["critical"]) }
+							</p>
+						</div>
+						<i class="fas fa-exclamation-circle text-red-500 text-2xl"></i>
+					</div>
+				</div>
+				<div class="card p-4">
+					<div class="flex items-center justify-between">
+						<div>
+							<p class="text-sm text-gray-600 dark:text-dark-muted">Major</p>
+							<p class="text-2xl font-bold text-orange-600">
+								{ fmt.Sprintf("%d", data.SeverityStats["major"]) }
+							</p>
+						</div>
+						<i class="fas fa-exclamation text-orange-500 text-2xl"></i>
+					</div>
+				</div>
+				<div class="card p-4">
+					<div class="flex items-center justify-between">
+						<div>
+							<p class="text-sm text-gray-600 dark:text-dark-muted">Minor</p>
+							<p class="text-2xl font-bold text-yellow-600">
+								{ fmt.Sprintf("%d", data.SeverityStats["minor"]) }
+							</p>
+						</div>
+						<i class="fas fa-info-circle text-yellow-500 text-2xl"></i>
+					</div>
+				</div>
+				<div class="card p-4">
+					<div class="flex items-center justify-between">
+						<div>
+							<p class="text-sm text-gray-600 dark:text-dark-muted">Active</p>
+							<p class="text-2xl font-bold text-blue-600">
+								{ fmt.Sprintf("%d", data.ActiveCount) }
+							</p>
+						</div>
+						<i class="fas fa-bell text-blue-500 text-2xl"></i>
+					</div>
+				</div>
+			</div>
+			<!-- Filters Section -->
+			<div class="card p-4">
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+					<!-- Device Filter -->
+					<div>
+						<label class="block text-sm font-medium text-gray-700 dark:text-dark-text mb-1">Device</label>
+						<input
+							type="text"
+							id="device-filter"
+							value={ data.Filters.DeviceID }
+							placeholder="Device ID or Serial"
+							class="w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text focus:ring-2 focus:ring-accent"
+						/>
+					</div>
+					<!-- Severity Filter -->
+					<div>
+						<label class="block text-sm font-medium text-gray-700 dark:text-dark-text mb-1">Severity</label>
+						<select id="severity-filter" class="w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text">
+							<option value="">All Severities</option>
+							<option value="critical" selected={ data.Filters.Severity == "critical" }>Critical</option>
+							<option value="major" selected={ data.Filters.Severity == "major" }>Major</option>
+							<option value="minor" selected={ data.Filters.Severity == "minor" }>Minor</option>
+							<option value="warning" selected={ data.Filters.Severity == "warning" }>Warning</option>
+							<option value="info" selected={ data.Filters.Severity == "info" }>Info</option>
+						</select>
+					</div>
+					<!-- Status Filter -->
+					<div>
+						<label class="block text-sm font-medium text-gray-700 dark:text-dark-text mb-1">Status</label>
+						<select id="status-filter" class="w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text">
+							<option value="">All Status</option>
+							<option value="active" selected={ data.Filters.Status == "active" }>Active</option>
+							<option value="acknowledged" selected={ data.Filters.Status == "acknowledged" }>Acknowledged</option>
+							<option value="resolved" selected={ data.Filters.Status == "resolved" }>Resolved</option>
+						</select>
+					</div>
+					<!-- Time Range Filter -->
+					<div>
+						<label class="block text-sm font-medium text-gray-700 dark:text-dark-text mb-1">Time Range</label>
+						<select id="time-filter" class="w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text">
+							<option value="">All Time</option>
+							<option value="1h">Last Hour</option>
+							<option value="24h">Last 24 Hours</option>
+							<option value="7d">Last 7 Days</option>
+							<option value="30d">Last 30 Days</option>
+						</select>
+					</div>
+					<!-- Apply Filters -->
+					<div class="flex items-end">
+						<button onclick="applyFilters()" class="w-full btn btn-primary">
+							<i class="fas fa-filter mr-2"></i>
+							Apply
+						</button>
+					</div>
+				</div>
+			</div>
+			<!-- Faults Table -->
+			<div class="card overflow-hidden">
+				<div class="overflow-x-auto">
+					<table class="w-full">
+						<thead class="bg-gray-50 dark:bg-dark-bg border-b dark:border-dark-border">
+							<tr>
+								<th class="px-6 py-3 text-left">
+									<input type="checkbox" id="select-all" class="rounded border-gray-300 dark:border-dark-border"/>
+								</th>
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">
+									Severity
+								</th>
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">
+									Device
+								</th>
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">
+									Code & Message
+								</th>
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">
+									Status
+								</th>
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">
+									Time
+								</th>
+								<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-muted uppercase tracking-wider">
+									Actions
+								</th>
+							</tr>
+						</thead>
+						<tbody class="divide-y divide-gray-200 dark:divide-dark-border">
+							for _, fault := range data.Faults {
+								@FaultRow(fault)
+							}
+						</tbody>
+					</table>
+				</div>
+				<!-- Empty State -->
+				if len(data.Faults) == 0 {
+					<div class="text-center py-12">
+						<i class="fas fa-check-circle text-green-400 text-5xl mb-4"></i>
+						<p class="text-gray-500 dark:text-dark-muted">No faults found</p>
+						<p class="text-sm text-gray-400 dark:text-dark-muted mt-1">All systems are running normally</p>
+					</div>
+				}
+			</div>
+			<!-- Pagination -->
+			if data.TotalPages > 1 {
+				<div class="flex items-center justify-between">
+					<div class="flex items-center space-x-2">
+						<span class="text-sm text-gray-700 dark:text-dark-text">
+							Page { fmt.Sprintf("%d", data.CurrentPage) } of { fmt.Sprintf("%d", data.TotalPages) }
+						</span>
+					</div>
+					<div class="flex space-x-1">
+						<!-- Previous -->
+						<button
+							onclick={ templ.JSFuncCall("goToPage", data.CurrentPage-1) }
+							disabled={ data.CurrentPage == 1 }
+							class="px-3 py-2 rounded-lg border border-gray-300 dark:border-dark-border hover:bg-gray-50 dark:hover:bg-dark-bg disabled:opacity-50 disabled:cursor-not-allowed"
+						>
+							<i class="fas fa-chevron-left"></i>
+						</button>
+						<!-- Page Numbers -->
+						for i := 1; i <= data.TotalPages; i++ {
+							if i == data.CurrentPage {
+								<button class="px-3 py-2 rounded-lg bg-accent text-white">
+									{ fmt.Sprintf("%d", i) }
+								</button>
+							} else if i == 1 || i == data.TotalPages || (i >= data.CurrentPage-2 && i <= data.CurrentPage+2) {
+								<button
+									onclick={ templ.JSFuncCall("goToPage", i) }
+									class="px-3 py-2 rounded-lg border border-gray-300 dark:border-dark-border hover:bg-gray-50 dark:hover:bg-dark-bg"
+								>
+									{ fmt.Sprintf("%d", i) }
+								</button>
+							} else if i == data.CurrentPage-3 || i == data.CurrentPage+3 {
+								<span class="px-2">...</span>
+							}
+						}
+						<!-- Next -->
+						<button
+							onclick={ templ.JSFuncCall("goToPage", data.CurrentPage+1) }
+							disabled={ data.CurrentPage == data.TotalPages }
+							class="px-3 py-2 rounded-lg border border-gray-300 dark:border-dark-border hover:bg-gray-50 dark:hover:bg-dark-bg disabled:opacity-50 disabled:cursor-not-allowed"
+						>
+							<i class="fas fa-chevron-right"></i>
+						</button>
+					</div>
+				</div>
+			}
+		</div>
+		<!-- Fault Detail Modal -->
+		<div id="fault-detail-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+			<div class="bg-white dark:bg-dark-surface rounded-lg p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+				<div class="flex justify-between items-start mb-4">
+					<h3 class="text-lg font-semibold text-gray-800 dark:text-dark-text">Fault Details</h3>
+					<button onclick="closeFaultDetail()" class="text-gray-400 hover:text-gray-600">
+						<i class="fas fa-times"></i>
+					</button>
+				</div>
+				<div id="fault-detail-content">
+					<!-- Content will be populated dynamically -->
+				</div>
+			</div>
+		</div>
+		<!-- Acknowledge Modal -->
+		<div id="acknowledge-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+			<div class="bg-white dark:bg-dark-surface rounded-lg p-6 max-w-md w-full">
+				<h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-dark-text">Acknowledge Fault</h3>
+				<form id="acknowledge-form" class="space-y-4">
+					<input type="hidden" id="acknowledge-fault-id"/>
+					<div>
+						<label class="block text-sm font-medium text-gray-700 dark:text-dark-text mb-1">Acknowledged By</label>
+						<input
+							type="text"
+							id="acknowledged-by"
+							required
+							placeholder="Your name"
+							class="w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text focus:ring-2 focus:ring-accent"
+						/>
+					</div>
+					<div>
+						<label class="block text-sm font-medium text-gray-700 dark:text-dark-text mb-1">Notes (Optional)</label>
+						<textarea
+							id="acknowledge-notes"
+							rows="3"
+							placeholder="Additional notes about the acknowledgment"
+							class="w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text focus:ring-2 focus:ring-accent"
+						></textarea>
+					</div>
+					<div class="flex justify-end space-x-3">
+						<button type="button" onclick="closeAcknowledgeModal()" class="btn btn-secondary">
+							Cancel
+						</button>
+						<button type="submit" class="btn btn-warning">
+							<i class="fas fa-check mr-2"></i>
+							Acknowledge
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- Resolve Modal -->
+		<div id="resolve-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+			<div class="bg-white dark:bg-dark-surface rounded-lg p-6 max-w-md w-full">
+				<h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-dark-text">Resolve Fault</h3>
+				<form id="resolve-form" class="space-y-4">
+					<input type="hidden" id="resolve-fault-id"/>
+					<div>
+						<label class="block text-sm font-medium text-gray-700 dark:text-dark-text mb-1">Resolved By</label>
+						<input
+							type="text"
+							id="resolved-by"
+							required
+							placeholder="Your name"
+							class="w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text focus:ring-2 focus:ring-accent"
+						/>
+					</div>
+					<div>
+						<label class="block text-sm font-medium text-gray-700 dark:text-dark-text mb-1">Resolution</label>
+						<textarea
+							id="resolution"
+							rows="3"
+							required
+							placeholder="Describe how the fault was resolved"
+							class="w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text focus:ring-2 focus:ring-accent"
+						></textarea>
+					</div>
+					<div>
+						<label class="block text-sm font-medium text-gray-700 dark:text-dark-text mb-1">Notes (Optional)</label>
+						<textarea
+							id="resolve-notes"
+							rows="2"
+							placeholder="Additional notes"
+							class="w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text focus:ring-2 focus:ring-accent"
+						></textarea>
+					</div>
+					<div class="flex justify-end space-x-3">
+						<button type="button" onclick="closeResolveModal()" class="btn btn-secondary">
+							Cancel
+						</button>
+						<button type="submit" class="btn btn-success">
+							<i class="fas fa-check-circle mr-2"></i>
+							Resolve
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- Bulk Actions Modal -->
+		<div id="bulk-actions-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+			<div class="bg-white dark:bg-dark-surface rounded-lg p-6 max-w-md w-full">
+				<h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-dark-text">Bulk Actions</h3>
+				<p class="text-sm text-gray-600 dark:text-dark-muted mb-4">
+					<span id="selected-count">0</span> faults selected
+				</p>
+				<div class="space-y-3">
+					<button onclick="bulkAcknowledge()" class="w-full btn btn-warning">
+						<i class="fas fa-check mr-2"></i>
+						Acknowledge Selected
+					</button>
+					<button onclick="bulkResolve()" class="w-full btn btn-success">
+						<i class="fas fa-check-circle mr-2"></i>
+						Resolve Selected
+					</button>
+					<button onclick="bulkExport()" class="w-full btn btn-secondary">
+						<i class="fas fa-download mr-2"></i>
+						Export Selected
+					</button>
+				</div>
+				<div class="mt-6 flex space-x-3">
+					<button onclick="closeBulkActions()" class="flex-1 btn btn-secondary">Cancel</button>
+				</div>
+			</div>
+		</div>
+		<script>
+			let selectedFaults = new Set();
+
+			function applyFilters() {
+				const params = new URLSearchParams();
+
+				const device = document.getElementById('device-filter').value;
+				if (device) params.set('deviceId', device);
+
+				const severity = document.getElementById('severity-filter').value;
+				if (severity) params.set('severity', severity);
+
+				const status = document.getElementById('status-filter').value;
+				if (status) params.set('status', status);
+
+				const timeRange = document.getElementById('time-filter').value;
+				if (timeRange) params.set('timeRange', timeRange);
+
+				window.location.href = '/faults?' + params.toString();
+			}
+
+			function goToPage(page) {
+				const url = new URL(window.location);
+				url.searchParams.set('page', page);
+				window.location.href = url.toString();
+			}
+
+			function toggleFault(faultId) {
+				if (selectedFaults.has(faultId)) {
+					selectedFaults.delete(faultId);
+				} else {
+					selectedFaults.add(faultId);
+				}
+				updateSelectedCount();
+			}
+
+			function selectAll() {
+				const selectAll = document.getElementById('select-all');
+				const checkboxes = document.querySelectorAll('input[name="fault-select"]');
+
+				checkboxes.forEach(cb => {
+					cb.checked = selectAll.checked;
+					if (selectAll.checked) {
+						selectedFaults.add(cb.value);
+					} else {
+						selectedFaults.delete(cb.value);
+					}
+				});
+
+				updateSelectedCount();
+			}
+
+			function updateSelectedCount() {
+				document.getElementById('selected-count').textContent = selectedFaults.size;
+			}
+
+			function showFaultDetail(faultId) {
+				fetch(`/api/faults/${faultId}`)
+					.then(res => res.json())
+					.then(data => {
+						document.getElementById('fault-detail-content').innerHTML = renderFaultDetail(data);
+						document.getElementById('fault-detail-modal').classList.remove('hidden');
+					})
+					.catch(() => {
+						showNotification('error', 'Failed to load fault details');
+					});
+			}
+
+			function showAcknowledgeModal(faultId) {
+				document.getElementById('acknowledge-fault-id').value = faultId;
+				document.getElementById('acknowledge-modal').classList.remove('hidden');
+			}
+
+			function showResolveModal(faultId) {
+				document.getElementById('resolve-fault-id').value = faultId;
+				document.getElementById('resolve-modal').classList.remove('hidden');
+			}
+
+			function showBulkActions() {
+				if (selectedFaults.size === 0) {
+					alert('Please select at least one fault');
+					return;
+				}
+				document.getElementById('bulk-actions-modal').classList.remove('hidden');
+			}
+
+			function closeFaultDetail() {
+				document.getElementById('fault-detail-modal').classList.add('hidden');
+			}
+
+			function closeAcknowledgeModal() {
+				document.getElementById('acknowledge-modal').classList.add('hidden');
+			}
+
+			function closeResolveModal() {
+				document.getElementById('resolve-modal').classList.add('hidden');
+			}
+
+			function closeBulkActions() {
+				document.getElementById('bulk-actions-modal').classList.add('hidden');
+			}
+
+			function refreshFaults() {
+				location.reload();
+			}
+
+			function showNotification(type, message) {
+				// Implement notification display
+				alert(`${type}: ${message}`);
+			}
+
+			// Form handlers
+			document.getElementById('acknowledge-form').addEventListener('submit', function(e) {
+				e.preventDefault();
+				const faultId = document.getElementById('acknowledge-fault-id').value;
+				const acknowledgedBy = document.getElementById('acknowledged-by').value;
+				const notes = document.getElementById('acknowledge-notes').value;
+
+				fetch(`/api/faults/${faultId}/acknowledge`, {
+					method: 'PUT',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({ acknowledgedBy, notes })
+				})
+					.then(res => res.json())
+					.then(data => {
+						if (data.success) {
+							showNotification('success', 'Fault acknowledged successfully');
+							closeAcknowledgeModal();
+							setTimeout(() => location.reload(), 1000);
+						} else {
+							showNotification('error', data.error || 'Failed to acknowledge fault');
+						}
+					});
+			});
+
+			document.getElementById('resolve-form').addEventListener('submit', function(e) {
+				e.preventDefault();
+				const faultId = document.getElementById('resolve-fault-id').value;
+				const resolvedBy = document.getElementById('resolved-by').value;
+				const resolution = document.getElementById('resolution').value;
+				const notes = document.getElementById('resolve-notes').value;
+
+				fetch(`/api/faults/${faultId}/resolve`, {
+					method: 'PUT',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({ resolvedBy, resolution, notes })
+				})
+					.then(res => res.json())
+					.then(data => {
+						if (data.success) {
+							showNotification('success', 'Fault resolved successfully');
+							closeResolveModal();
+							setTimeout(() => location.reload(), 1000);
+						} else {
+							showNotification('error', data.error || 'Failed to resolve fault');
+						}
+					});
+			});
+
+			// Initialize select all checkbox
+			document.getElementById('select-all').addEventListener('change', selectAll);
+		</script>
+	}
+}
+
+templ FaultRow(fault *FaultDisplay) {
+	<tr class="hover:bg-gray-50 dark:hover:bg-dark-bg transition-colors">
+		<td class="px-6 py-4">
+			<input
+				type="checkbox"
+				name="fault-select"
+				value={ fault.ID }
+				onchange={ templ.JSFuncCall("toggleFault", fault.ID) }
+				class="rounded border-gray-300 dark:border-dark-border"
+			/>
+		</td>
+		<td class="px-6 py-4">
+			@SeverityBadge(fault.Severity)
+		</td>
+		<td class="px-6 py-4">
+			<div>
+				<p class="font-medium text-gray-900 dark:text-dark-text">
+					{ fault.DeviceName }
+				</p>
+				<p class="text-sm text-gray-500 dark:text-dark-muted">
+					{ fault.DeviceSerial }
+				</p>
+			</div>
+		</td>
+		<td class="px-6 py-4">
+			<div>
+				<p class="font-medium text-gray-900 dark:text-dark-text">
+					{ fault.Code }
+				</p>
+				<p class="text-sm text-gray-600 dark:text-dark-muted">
+					{ fault.Message }
+				</p>
+			</div>
+		</td>
+		<td class="px-6 py-4">
+			@StatusBadge(fault.Status)
+		</td>
+		<td class="px-6 py-4">
+			<span class="text-sm text-gray-600 dark:text-dark-muted">
+				{ fault.TimeAgoText }
+			</span>
+		</td>
+		<td class="px-6 py-4">
+			<div class="flex items-center space-x-2">
+				<button
+					onclick={ templ.JSFuncCall("showFaultDetail", fault.ID) }
+					class="p-1 hover:bg-gray-100 dark:hover:bg-dark-bg rounded transition-colors"
+					title="View Details"
+				>
+					<i class="fas fa-eye text-gray-600 dark:text-dark-muted"></i>
+				</button>
+				if fault.CanAcknowledge {
+					<button
+						onclick={ templ.JSFuncCall("showAcknowledgeModal", fault.ID) }
+						class="p-1 hover:bg-yellow-50 dark:hover:bg-yellow-900/20 rounded transition-colors"
+						title="Acknowledge"
+					>
+						<i class="fas fa-check text-yellow-600"></i>
+					</button>
+				}
+				if fault.CanResolve {
+					<button
+						onclick={ templ.JSFuncCall("showResolveModal", fault.ID) }
+						class="p-1 hover:bg-green-50 dark:hover:bg-green-900/20 rounded transition-colors"
+						title="Resolve"
+					>
+						<i class="fas fa-check-circle text-green-600"></i>
+					</button>
+				}
+			</div>
+		</td>
+	</tr>
+}
+
+templ SeverityBadge(severity string) {
+	switch severity {
+		case "critical":
+			<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400">
+				<i class="fas fa-exclamation-circle mr-1"></i>
+				Critical
+			</span>
+		case "major":
+			<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400">
+				<i class="fas fa-exclamation-triangle mr-1"></i>
+				Major
+			</span>
+		case "minor":
+			<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400">
+				<i class="fas fa-exclamation mr-1"></i>
+				Minor
+			</span>
+		case "warning":
+			<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400">
+				<i class="fas fa-exclamation-triangle mr-1"></i>
+				Warning
+			</span>
+		case "info":
+			<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400">
+				<i class="fas fa-info-circle mr-1"></i>
+				Info
+			</span>
+		default:
+			<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400">
+				<i class="fas fa-question mr-1"></i>
+				Unknown
+			</span>
+	}
+}
+
+templ StatusBadge(status string) {
+	switch status {
+		case "active":
+			<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400">
+				<i class="fas fa-exclamation-circle mr-1"></i>
+				Active
+			</span>
+		case "acknowledged":
+			<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400">
+				<i class="fas fa-check mr-1"></i>
+				Acknowledged
+			</span>
+		case "resolved":
+			<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400">
+				<i class="fas fa-check-circle mr-1"></i>
+				Resolved
+			</span>
+		default:
+			<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400">
+				<i class="fas fa-question mr-1"></i>
+				Unknown
+			</span>
+	}
+}
