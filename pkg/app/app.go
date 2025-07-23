@@ -124,12 +124,13 @@ func (a *App) startNBI() error {
 	logger.InitLog.Info("Starting NBI server...")
 
 	// Set Gin mode
-	if a.cfg.Logger.Level == "debug" {
-		gin.SetMode(gin.DebugMode)
-	} else {
-		gin.SetMode(gin.ReleaseMode)
-	}
+	// if a.cfg.Logger.Level == "debug" {
+	// 	gin.SetMode(gin.DebugMode)
+	// } else {
+	// 	gin.SetMode(gin.ReleaseMode)
+	// }
 
+	gin.SetMode(gin.DebugMode)
 	// Create Gin router
 	router := gin.New()
 

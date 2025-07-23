@@ -262,28 +262,28 @@ templ Navigation(currentPath string) {
 	<ul class="space-y-2">
 		<li>
 			<a href="/overview" class={ navItemClass(currentPath, "/overview") }>
-				<i class="fas fa-dashboard mr-3 flex-shrink-0"></i>
+				<i class="fas fa-dashboard mr-3 flex-shrink-0 w-5 text-center"></i>
 				<span class="flex-1 min-w-0">Overview</span>
 			</a>
 		</li>
 		<li>
 			<a href="/devices" class={ navItemClass(currentPath, "/devices") }>
-				<i class="fas fa-router mr-3 flex-shrink-0"></i>
+				<i class="fas fa-router mr-3 flex-shrink-0 w-5 text-center"></i>
 				<span class="flex-1 min-w-0 truncate">Devices</span>
 				<span id="device-count" class="ml-2 bg-gray-200 dark:bg-dark-bg text-gray-700 dark:text-dark-muted px-2 py-1 rounded-full text-xs flex-shrink-0">0</span>
 			</a>
 		</li>
 		<li>
-			<a href="/files" class={ navItemClass(currentPath, "/files") }>
-				<i class="fas fa-file mr-3 flex-shrink-0"></i>
-				<span class="flex-1 min-w-0 truncate">Files</span>
+			<a href="/faults" class={ navItemClass(currentPath, "/faults") }>
+				<i class="fas fa-exclamation-triangle mr-3 flex-shrink-0 w-5 text-center"></i>
+				<span class="flex-1 min-w-0 truncate">Faults</span>
+				<span id="fault-count" class="ml-2 bg-danger text-white px-2 py-1 rounded-full text-xs flex-shrink-0 hidden">0</span>
 			</a>
 		</li>
 		<li>
-			<a href="/faults" class={ navItemClass(currentPath, "/faults") }>
-				<i class="fas fa-exclamation-triangle mr-3 flex-shrink-0"></i>
-				<span class="flex-1 min-w-0 truncate">Faults</span>
-				<span id="fault-count" class="ml-2 bg-danger text-white px-2 py-1 rounded-full text-xs flex-shrink-0 hidden">0</span>
+			<a href="/files" class={ navItemClass(currentPath, "/files") }>
+				<i class="fas fa-file mr-3 flex-shrink-0 w-5 text-center"></i>
+				<span class="flex-1 min-w-0 truncate">Files</span>
 			</a>
 		</li>
 	</ul>

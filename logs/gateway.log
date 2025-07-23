@@ -943,3 +943,117 @@ time="2025-07-23T14:46:24+03:30" level=info msg="Shutting down NBI server..." co
 time="2025-07-23T14:46:24+03:30" level=info msg="Shutting down UI server..." component=INIT
 time="2025-07-23T14:46:24+03:30" level=info msg="All services stopped gracefully" component=INIT
 time="2025-07-23T14:46:24+03:30" level=info msg="Application stopped successfully" component=INIT
+time="2025-07-23T15:00:01+03:30" level=info msg="Logger initialized with level: debug" component=INIT
+time="2025-07-23T15:00:01+03:30" level=info msg="Starting Nextranet Gateway services..." component=INIT
+time="2025-07-23T15:00:01+03:30" level=info msg="Initializing GenieACS service..." component=GENIEACS
+time="2025-07-23T15:00:31+03:30" level=error msg="CWMP service not available" component=GENIEACS
+time="2025-07-23T15:00:49+03:30" level=info msg="Logger initialized with level: debug" component=INIT
+time="2025-07-23T15:00:49+03:30" level=info msg="Starting Nextranet Gateway services..." component=INIT
+time="2025-07-23T15:00:49+03:30" level=info msg="Initializing GenieACS service..." component=GENIEACS
+time="2025-07-23T15:01:19+03:30" level=error msg="CWMP service not available" component=GENIEACS
+time="2025-07-23T15:02:25+03:30" level=info msg="Logger initialized with level: debug" component=INIT
+time="2025-07-23T15:02:25+03:30" level=info msg="Starting Nextranet Gateway services..." component=INIT
+time="2025-07-23T15:02:25+03:30" level=info msg="Initializing GenieACS service..." component=GENIEACS
+time="2025-07-23T15:03:14+03:30" level=info msg="Logger initialized with level: trace" component=INIT
+time="2025-07-23T15:03:14+03:30" level=info msg="Starting Nextranet Gateway services..." component=INIT
+time="2025-07-23T15:03:14+03:30" level=info msg="Initializing GenieACS service..." component=GENIEACS
+time="2025-07-23T15:03:44+03:30" level=error msg="CWMP service not available" component=GENIEACS
+time="2025-07-23T15:04:28+03:30" level=info msg="Logger initialized with level: trace" component=INIT
+time="2025-07-23T15:04:28+03:30" level=info msg="Starting Nextranet Gateway services..." component=INIT
+time="2025-07-23T15:04:28+03:30" level=info msg="Initializing GenieACS service..." component=GENIEACS
+time="2025-07-23T15:04:58+03:30" level=error msg="CWMP service not available" component=GENIEACS
+time="2025-07-23T15:05:28+03:30" level=error msg="NBI service not available" component=GENIEACS
+time="2025-07-23T15:05:58+03:30" level=error msg="FS service not available" component=GENIEACS
+time="2025-07-23T15:05:58+03:30" level=fatal msg="Failed to start application: failed to initialize GenieACS service: failed to connect to GenieACS: FS service not available" component=INIT
+time="2025-07-23T15:07:42+03:30" level=info msg="Logger initialized with level: trace" component=INIT
+time="2025-07-23T15:07:42+03:30" level=info msg="Starting Nextranet Gateway services..." component=INIT
+time="2025-07-23T15:07:42+03:30" level=info msg="Initializing GenieACS service..." component=GENIEACS
+time="2025-07-23T15:07:53+03:30" level=info msg="Logger initialized with level: trace" component=INIT
+time="2025-07-23T15:07:53+03:30" level=info msg="Debug mode enabled" component=INIT
+time="2025-07-23T15:07:53+03:30" level=info msg="Starting Nextranet Gateway services..." component=INIT
+time="2025-07-23T15:07:53+03:30" level=info msg="Initializing GenieACS service..." component=GENIEACS
+time="2025-07-23T15:08:23+03:30" level=error msg="CWMP service not available" component=GENIEACS
+time="2025-07-23T15:08:53+03:30" level=error msg="NBI service not available" component=GENIEACS
+time="2025-07-23T15:09:23+03:30" level=error msg="FS service not available" component=GENIEACS
+time="2025-07-23T15:09:23+03:30" level=fatal msg="Failed to start application: failed to initialize GenieACS service: failed to connect to GenieACS: FS service not available" component=INIT
+time="2025-07-23T15:10:28+03:30" level=info msg="Logger initialized with level: debug" component=INIT
+time="2025-07-23T15:10:28+03:30" level=info msg="Debug mode enabled" component=INIT
+time="2025-07-23T15:10:28+03:30" level=info msg="Starting Nextranet Gateway services..." component=INIT
+time="2025-07-23T15:10:28+03:30" level=info msg="Initializing GenieACS service..." component=GENIEACS
+time="2025-07-23T15:54:46+03:30" level=info msg="Logger initialized with level: debug" component=INIT
+time="2025-07-23T15:54:46+03:30" level=info msg="Debug mode enabled" component=INIT
+time="2025-07-23T15:54:46+03:30" level=info msg="Starting Nextranet Gateway services..." component=INIT
+time="2025-07-23T15:54:46+03:30" level=info msg="Initializing GenieACS service..." component=GENIEACS
+time="2025-07-23T15:54:49+03:30" level=info msg="GenieACS service initialized successfully" component=GENIEACS
+time="2025-07-23T15:54:49+03:30" level=info msg="Starting UI server..." component=INIT
+time="2025-07-23T15:54:49+03:30" level=info msg="Starting GenieACS monitoring..." component=GENIEACS
+time="2025-07-23T15:54:49+03:30" level=info msg="Starting NBI server..." component=INIT
+time="2025-07-23T15:54:49+03:30" level=info msg="UI server listening on 0.0.0.0:8081" component=INIT
+time="2025-07-23T15:54:49+03:30" level=info msg="NBI server listening on 0.0.0.0:8080" component=INIT
+time="2025-07-23T15:54:51+03:30" level=info msg="All services started successfully" component=INIT
+time="2025-07-23T15:54:56+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       6.333µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/\"" component=HTTP
+time="2025-07-23T15:55:00+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  1.304873417s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/overview\"" component=WEB
+time="2025-07-23T15:55:00+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|    4.017167ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-23T15:55:00+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      79.041µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-23T15:55:17+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|    1.289083ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/faults\"" component=WEB
+time="2025-07-23T15:55:17+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     100.167µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-23T15:55:17+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m| 17.014488792s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-23T15:55:17+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      32.167µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-23T15:55:25+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  6.028079875s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices\"" component=WEB
+time="2025-07-23T15:55:25+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      98.708µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-23T15:55:25+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  7.417811125s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-23T15:55:25+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      76.125µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-23T15:55:33+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  2.178942625s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/48BF74-FAP-13020001611777P0015\"" component=WEB
+time="2025-07-23T15:55:33+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     124.583µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-23T15:55:33+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      39.208µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-23T15:55:33+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  7.873058125s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-23T15:55:40+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  7.498728709s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-23T15:55:42+03:30" level=error msg="Failed to get device: device not found" component=WEB
+time="2025-07-23T15:55:42+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|  663.574542ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE-FDD_N2-FA2091957816\"" component=WEB
+time="2025-07-23T15:55:42+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  2.050866791s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-23T15:55:57+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  2.642682834s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/202BC1-BM632w-000000\"" component=WEB
+time="2025-07-23T15:55:57+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      94.417µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-23T15:55:57+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      49.542µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-23T15:55:57+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  6.338463542s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-23T15:56:22+03:30" level=info msg="Received signal: interrupt" component=INIT
+time="2025-07-23T15:56:22+03:30" level=info msg="Stopping application..." component=INIT
+time="2025-07-23T15:56:22+03:30" level=info msg="Shutting down NBI server..." component=INIT
+time="2025-07-23T15:56:22+03:30" level=info msg="Stopping GenieACS monitoring..." component=GENIEACS
+time="2025-07-23T15:56:22+03:30" level=error msg="NBI server error: http: Server closed" component=INIT
+time="2025-07-23T15:56:22+03:30" level=info msg="Shutting down UI server..." component=INIT
+time="2025-07-23T15:56:22+03:30" level=error msg="UI server error: http: Server closed" component=INIT
+time="2025-07-23T15:56:22+03:30" level=info msg="All services stopped gracefully" component=INIT
+time="2025-07-23T15:56:23+03:30" level=info msg="Received signal: interrupt, shutting down..." component=INIT
+time="2025-07-23T15:56:23+03:30" level=info msg="Stopping application..." component=INIT
+time="2025-07-23T15:56:23+03:30" level=info msg="Shutting down NBI server..." component=INIT
+time="2025-07-23T15:56:23+03:30" level=info msg="Shutting down UI server..." component=INIT
+time="2025-07-23T15:56:23+03:30" level=info msg="All services stopped gracefully" component=INIT
+time="2025-07-23T15:56:23+03:30" level=info msg="Application stopped successfully" component=INIT
+time="2025-07-23T15:56:31+03:30" level=info msg="Logger initialized with level: debug" component=INIT
+time="2025-07-23T15:56:31+03:30" level=info msg="Starting Nextranet Gateway services..." component=INIT
+time="2025-07-23T15:56:31+03:30" level=info msg="Initializing GenieACS service..." component=GENIEACS
+time="2025-07-23T15:56:33+03:30" level=info msg="GenieACS service initialized successfully" component=GENIEACS
+time="2025-07-23T15:56:33+03:30" level=info msg="Starting UI server..." component=INIT
+time="2025-07-23T15:56:33+03:30" level=info msg="Starting NBI server..." component=INIT
+time="2025-07-23T15:56:33+03:30" level=info msg="Starting GenieACS monitoring..." component=GENIEACS
+time="2025-07-23T15:56:33+03:30" level=info msg="NBI server listening on 0.0.0.0:8080" component=INIT
+time="2025-07-23T15:56:33+03:30" level=info msg="UI server listening on 0.0.0.0:8081" component=INIT
+time="2025-07-23T15:56:35+03:30" level=info msg="All services started successfully" component=INIT
+time="2025-07-23T15:56:40+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     2.248569s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/202BC1-BM632w-000000\"" component=WEB
+time="2025-07-23T15:56:40+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  2.219026708s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-23T15:56:40+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|    1.839042ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-23T15:56:40+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|       74.75µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-23T15:57:12+03:30" level=info msg="Received signal: interrupt" component=INIT
+time="2025-07-23T15:57:12+03:30" level=info msg="Stopping application..." component=INIT
+time="2025-07-23T15:57:12+03:30" level=info msg="Shutting down NBI server..." component=INIT
+time="2025-07-23T15:57:12+03:30" level=info msg="Stopping GenieACS monitoring..." component=GENIEACS
+time="2025-07-23T15:57:12+03:30" level=error msg="NBI server error: http: Server closed" component=INIT
+time="2025-07-23T15:57:12+03:30" level=info msg="Shutting down UI server..." component=INIT
+time="2025-07-23T15:57:12+03:30" level=error msg="UI server error: http: Server closed" component=INIT
+time="2025-07-23T15:57:12+03:30" level=info msg="All services stopped gracefully" component=INIT
+time="2025-07-23T15:57:13+03:30" level=info msg="Received signal: interrupt, shutting down..." component=INIT
+time="2025-07-23T15:57:13+03:30" level=info msg="Stopping application..." component=INIT
+time="2025-07-23T15:57:13+03:30" level=info msg="Shutting down NBI server..." component=INIT
+time="2025-07-23T15:57:13+03:30" level=info msg="Shutting down UI server..." component=INIT
+time="2025-07-23T15:57:13+03:30" level=info msg="All services stopped gracefully" component=INIT
+time="2025-07-23T15:57:13+03:30" level=info msg="Application stopped successfully" component=INIT

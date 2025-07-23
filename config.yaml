@@ -48,7 +48,7 @@ web:
 # Database Configuration
 database:
   type: "mongodb" # mongodb, postgresql, mysql
-  url: "mongodb://localhost:27017"
+  url: "mongodb://192.168.25.35:27017"
   name: "genieacs"
   authType: "" # Options: "", "scram-sha-1", "scram-sha-256"
   username: ""
@@ -61,9 +61,9 @@ database:
 
 # GenieACS Services Configuration
 genieacs:
-  cwmpUrl: "http://192.168.205.223:7547" # CWMP/TR-069 service
-  nbiUrl: "http://192.168.205.223:7557" # NBI API service
-  fsUrl: "http://192.168.205.223:7567" # File service
+  cwmpUrl: "http://192.168.25.35:7547" # CWMP/TR-069 service
+  nbiUrl: "http://192.168.25.35:7557" # NBI API service
+  fsUrl: "http://192.168.25.35:7567" # File service
   username: "admin" # Optional: GenieACS API username
   password: "admin" # Optional: GenieACS API password
   timeout: 30s
