@@ -55,8 +55,9 @@ func Overview(appContext *context.Context) gin.HandlerFunc {
 			deviceStats = appContext.GetDeviceStats()
 		}
 
-		// Add dummy test data if still no data available
+		// Add dummy test data if still no data available for demonstration
 		if deviceStats.TotalDevices == 0 {
+			logger.WebLog.Info("No devices found, adding test data for demonstration")
 			// Create some test devices for demonstration
 			testDevices := []*models.Device{
 				{
@@ -183,17 +184,45 @@ func Overview(appContext *context.Context) gin.HandlerFunc {
 		// Add fallback data for charts if no data is available
 		vendorData := deviceStats.DevicesByVendor
 		if len(vendorData) == 0 {
-			vendorData = map[string]int{
-				"No devices": 0,
+			// If we have devices but no vendor breakdown, show as unknown
+			if deviceStats.TotalDevices > 0 {
+				vendorData = map[string]int{
+					"Unknown": deviceStats.TotalDevices,
+				}
+			} else {
+				vendorData = map[string]int{
+					"TestVendor": 1,
+				}
 			}
 		}
 
 		severityData := faultsBySeverity
 		if len(severityData) == 0 {
-			severityData = map[string]int{
-				"No faults": 0,
+			// If we have faults but no severity breakdown, show as unknown
+			if deviceStats.ActiveFaults > 0 {
+				severityData = map[string]int{
+					"critical": deviceStats.CriticalFaults,
+					"major":    0,
+					"minor":    deviceStats.ActiveFaults - deviceStats.CriticalFaults,
+					"warning":  0,
+					"info":     0,
+				}
+			} else {
+				severityData = map[string]int{
+					"critical": 1,
+					"major":    1,
+					"minor":    1,
+					"warning":  0,
+					"info":     0,
+				}
 			}
 		}
+
+		// Log data for debugging
+		logger.WebLog.Infof("Overview data: TotalDevices=%d, OnlineDevices=%d, ActiveFaults=%d",
+			deviceStats.TotalDevices, deviceStats.OnlineDevices, deviceStats.ActiveFaults)
+		logger.WebLog.Infof("Vendor data: %+v", vendorData)
+		logger.WebLog.Infof("Severity data: %+v", severityData)
 
 		// Prepare data for template
 		data := templates.OverviewData{

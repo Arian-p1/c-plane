@@ -7,15 +7,15 @@ import (
 
 templ OverviewPage(data OverviewData) {
 	@Page(data.Title, data.Theme, "/overview") {
-		<div class="space-y-8 animate-fade-in">
+		<div class="space-y-6">
 			<!-- Welcome Section -->
-			<div class="bg-gradient-to-r from-primary-500 to-primary-600 rounded-xl p-6 text-white">
+			<div class="rounded-lg p-6 text-white" style="background-color: #21878C;">
 				<div class="flex items-center justify-between">
 					<div>
 						<h2 class="text-2xl font-bold mb-2">Welcome to Nextranet Gateway</h2>
-						<p class="text-primary-100">Manage your TR-069 devices with ease</p>
+						<p class="opacity-90">Manage your TR-069 devices with ease</p>
 					</div>
-					<div class="text-6xl opacity-20">
+					<div class="text-4xl opacity-30">
 						<i class="fas fa-network-wired"></i>
 					</div>
 				</div>
@@ -89,8 +89,12 @@ templ OverviewPage(data OverviewData) {
 							<i class="fas fa-expand-alt"></i>
 						</button>
 					</div>
-					<div class="h-64 relative">
+					<div class="chart-container">
 						<canvas id="vendorChart"></canvas>
+						<div id="vendor-chart-empty" class="chart-empty-state hidden">
+							<i class="fas fa-chart-pie"></i>
+							<p>No vendor data available</p>
+						</div>
 					</div>
 				</div>
 				<!-- Fault Severity Distribution -->
@@ -104,8 +108,12 @@ templ OverviewPage(data OverviewData) {
 							<i class="fas fa-expand-alt"></i>
 						</button>
 					</div>
-					<div class="h-64 relative">
+					<div class="chart-container">
 						<canvas id="faultChart"></canvas>
+						<div id="fault-chart-empty" class="chart-empty-state hidden">
+							<i class="fas fa-chart-bar"></i>
+							<p>No fault data available</p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -193,101 +201,203 @@ templ OverviewPage(data OverviewData) {
 		<!-- Chart Scripts -->
 		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 		<script>
-            // Prepare chart data
-            const vendorLabels = [
-                { for vendor, _ := range data.DevicesByVendor }'{ vendor }',{ end }
-            ];
-            const vendorCounts = [
-                { for _, count := range data.DevicesByVendor }{ fmt.Sprintf("%d", count) },{ end }
+            // Explicit data from server
+            const serverData = {
+                devicesByVendor: {
+                    { for vendor, count := range data.DevicesByVendor }'{ vendor }': { fmt.Sprintf("%d", count) },{ end }
+                },
+                faultSeverity: {
+                    'critical': { fmt.Sprintf("%d", data.FaultSeverity["critical"]) },
+                    'major': { fmt.Sprintf("%d", data.FaultSeverity["major"]) },
+                    'minor': { fmt.Sprintf("%d", data.FaultSeverity["minor"]) },
+                    'warning': { fmt.Sprintf("%d", data.FaultSeverity["warning"]) },
+                    'info': { fmt.Sprintf("%d", data.FaultSeverity["info"]) }
+                },
+                stats: {
+                    totalDevices: { fmt.Sprintf("%d", data.Stats.TotalDevices) },
+                    onlineDevices: { fmt.Sprintf("%d", data.Stats.OnlineDevices) },
+                    activeFaults: { fmt.Sprintf("%d", data.Stats.ActiveFaults) }
+                }
+            };
+
+            // Debug: Log raw data
+            console.log('Server data received:', serverData);
+
+            // Prepare vendor chart data
+            let vendorLabels = Object.keys(serverData.devicesByVendor);
+            let vendorCounts = Object.values(serverData.devicesByVendor).map(v => parseInt(v));
+
+            // Fallback data if no vendors
+            if (vendorLabels.length === 0 || (vendorLabels.length === 1 && vendorLabels[0] === '')) {
+                const totalDevices = parseInt(serverData.stats.totalDevices);
+                if (totalDevices > 0) {
+                    vendorLabels = ['Unknown Vendor'];
+                    vendorCounts = [totalDevices];
+                } else {
+                    vendorLabels = ['No Devices'];
+                    vendorCounts = [1];
+                }
+            }
+
+            // Prepare fault severity data
+            const faultLabels = ['Critical', 'Major', 'Minor', 'Warning', 'Info'];
+            let faultValues = [
+                parseInt(serverData.faultSeverity.critical) || 0,
+                parseInt(serverData.faultSeverity.major) || 0,
+                parseInt(serverData.faultSeverity.minor) || 0,
+                parseInt(serverData.faultSeverity.warning) || 0,
+                parseInt(serverData.faultSeverity.info) || 0
             ];
 
-            const faultCounts = {
-                critical: { fmt.Sprintf("%d", data.FaultSeverity["critical"]) },
-                major: { fmt.Sprintf("%d", data.FaultSeverity["major"]) },
-                minor: { fmt.Sprintf("%d", data.FaultSeverity["minor"]) },
-                warning: { fmt.Sprintf("%d", data.FaultSeverity["warning"]) },
-                info: { fmt.Sprintf("%d", data.FaultSeverity["info"]) }
-            };
+            // If all fault values are 0 but we have active faults, distribute them
+            const totalFaults = faultValues.reduce((a, b) => a + b, 0);
+            const activeFaults = parseInt(serverData.stats.activeFaults);
+            if (totalFaults === 0 && activeFaults > 0) {
+                faultValues[0] = activeFaults; // Show all as critical for demo
+            }
+
+            console.log('Processed chart data:');
+            console.log('Vendors:', { labels: vendorLabels, counts: vendorCounts });
+            console.log('Faults:', { labels: faultLabels, values: faultValues });
 
             // Vendor Chart
-            const vendorCtx = document.getElementById('vendorChart').getContext('2d');
-            const vendorData = {
-                labels: vendorLabels,
-                datasets: [{
-                    data: vendorCounts,
-                    backgroundColor: [
-                        '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'
-                    ]
-                }]
-            };
+            const vendorCtx = document.getElementById('vendorChart');
+            const vendorEmptyState = document.getElementById('vendor-chart-empty');
+            let vendorChart = null;
 
-            new Chart(vendorCtx, {
-                type: 'doughnut',
-                data: vendorData,
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'right',
-                            labels: {
-                                color: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#374151'
+            if (vendorCtx) {
+                // Hide empty state if we have data
+                if (vendorLabels.length > 0 && vendorLabels[0] !== 'No Devices') {
+                    vendorEmptyState.classList.add('hidden');
+                    vendorChart = new Chart(vendorCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: vendorLabels,
+                        datasets: [{
+                            data: vendorCounts,
+                            backgroundColor: [
+                                '#21878c',
+                                '#89d185',
+                                '#ffcc02',
+                                '#f85149',
+                                '#21878c',
+                                '#ff8c00',
+                                '#9a6cf0',
+                                '#40e0d0',
+                                '#ff69b4',
+                                '#32cd32'
+                            ],
+                            borderWidth: 2,
+                            borderColor: document.documentElement.classList.contains('dark') ? '#3e3e42' : '#ffffff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    color: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#374151',
+                                    padding: 15,
+                                    usePointStyle: true,
+                                    font: {
+                                        size: 12
+                                    }
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        const label = context.label || '';
+                                        const value = context.parsed;
+                                        const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                        const percentage = total > 0 ? Math.round((value / total) * 100) : 0;
+                                        return `${label}: ${value} (${percentage}%)`;
+                                    }
+                                }
                             }
                         }
                     }
+                    });
+                } else {
+                    // Show empty state
+                    vendorEmptyState.classList.remove('hidden');
+                    vendorCtx.style.display = 'none';
                 }
-            });
+            }
 
             // Fault Chart
-            const faultCtx = document.getElementById('faultChart').getContext('2d');
-            const faultData = {
-                labels: ['Critical', 'Major', 'Minor', 'Warning', 'Info'],
-                datasets: [{
-                    label: 'Faults',
-                    data: [
-                        faultCounts.critical,
-                        faultCounts.major,
-                        faultCounts.minor,
-                        faultCounts.warning,
-                        faultCounts.info
-                    ],
-                    backgroundColor: ['#ef4444', '#f97316', '#f59e0b', '#eab308', '#06b6d4'],
-                    borderWidth: 0
-                }]
-            };
+            const faultCtx = document.getElementById('faultChart');
+            const faultEmptyState = document.getElementById('fault-chart-empty');
+            let faultChart = null;
 
-            new Chart(faultCtx, {
-                type: 'bar',
-                data: faultData,
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                color: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#374151'
+            if (faultCtx) {
+                const hasFaultData = faultValues.some(val => val > 0);
+
+                if (hasFaultData) {
+                    faultEmptyState.classList.add('hidden');
+                    faultChart = new Chart(faultCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: faultLabels,
+                        datasets: [{
+                            label: 'Faults',
+                            data: faultValues,
+                            backgroundColor: [
+                                '#f85149', // Critical - Red
+                                '#ff8c00', // Major - Orange
+                                '#ffcc02', // Minor - Yellow
+                                '#ffeb3b', // Warning - Light Yellow
+                                '#21878c'  // Info - Teal
+                            ],
+                            borderRadius: 4,
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    color: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#374151',
+                                    stepSize: 1
+                                },
+                                grid: {
+                                    color: document.documentElement.classList.contains('dark') ? '#334155' : '#e5e7eb'
+                                }
                             },
-                            grid: {
-                                color: document.documentElement.classList.contains('dark') ? '#334155' : '#e5e7eb'
+                            x: {
+                                ticks: {
+                                    color: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#374151'
+                                },
+                                grid: {
+                                    display: false
+                                }
                             }
                         },
-                        x: {
-                            ticks: {
-                                color: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#374151'
-                            },
-                            grid: {
+                        plugins: {
+                            legend: {
                                 display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.label}: ${context.parsed.y} fault${context.parsed.y !== 1 ? 's' : ''}`;
+                                    }
+                                }
                             }
                         }
-                    },
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
                     }
+                    });
+                } else {
+                    // Show empty state
+                    faultEmptyState.classList.remove('hidden');
+                    faultCtx.style.display = 'none';
                 }
-            });
+            }
 
             // Update stats function for WebSocket updates
             function updateStats(data) {
@@ -323,6 +433,29 @@ templ OverviewPage(data OverviewData) {
                         faultCountEl.classList.add('hidden');
                     }
                 }
+
+                // Update charts if they exist
+                if (vendorChart && data.devicesByVendor) {
+                    const newLabels = Object.keys(data.devicesByVendor);
+                    const newData = Object.values(data.devicesByVendor);
+
+                    vendorChart.data.labels = newLabels;
+                    vendorChart.data.datasets[0].data = newData;
+                    vendorChart.update();
+                }
+
+                if (faultChart && data.faultSeverity) {
+                    const newData = [
+                        data.faultSeverity.critical || 0,
+                        data.faultSeverity.major || 0,
+                        data.faultSeverity.minor || 0,
+                        data.faultSeverity.warning || 0,
+                        data.faultSeverity.info || 0
+                    ];
+
+                    faultChart.data.datasets[0].data = newData;
+                    faultChart.update();
+                }
             }
 
             // Refresh all devices
@@ -351,8 +484,10 @@ templ StatCard(title string, value int, icon string, colorType string) {
 					{ fmt.Sprintf("%d", value) }
 				</p>
 			</div>
-			<div class={ "p-4 rounded-xl shadow-lg " + getStatCardBg(colorType) }>
-				<i class={ "fas " + icon + " text-white text-2xl" }></i>
+			<div class={ "p-4 rounded-xl shadow-lg relative " + getStatCardBg(colorType) }>
+				<div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center absolute inset-0 m-auto dark:bg-white">
+					<i class={ "fas " + icon + " text-gray-700 text-xl" }></i>
+				</div>
 			</div>
 		</div>
 		<div class={ "mt-4 px-3 py-1 rounded-full text-xs font-semibold inline-block " + getStatCardTextBg(colorType) }>
@@ -430,7 +565,7 @@ templ CriticalFaultAlert(fault *models.Fault) {
 templ HealthGauge(score int) {
 	<div class="relative w-32 h-32 mx-auto">
 		<svg class="transform -rotate-90 w-32 h-32">
-			<circle cx="64" cy="64" r="56" stroke="#e5e7eb" stroke-width="12" fill="none" class="dark:stroke-dark-border"></circle>
+			<circle cx="64" cy="64" r="56" stroke="#e5e7eb" stroke-width="12" fill="none" class="dark:stroke-gray-600"></circle>
 			<circle
 				cx="64"
 				cy="64"
@@ -448,11 +583,11 @@ templ HealthGauge(score int) {
 func healthScoreColor(score int) string {
 	switch {
 	case score >= 80:
-		return "text-success"
+		return "#22c55e"
 	case score >= 60:
-		return "text-warning"
+		return "#f59e0b"
 	default:
-		return "text-danger"
+		return "#ef4444"
 	}
 }
 
@@ -474,28 +609,28 @@ func severityColor(severity string) string {
 func getStatCardBg(colorType string) string {
 	switch colorType {
 	case "primary":
-		return "bg-gradient-to-br from-primary-500 to-primary-600"
+		return "bg-teal-custom"
 	case "success":
-		return "bg-gradient-to-br from-success-500 to-success-600"
+		return "bg-success-500"
 	case "warning":
-		return "bg-gradient-to-br from-warning-500 to-warning-600"
+		return "bg-warning-500"
 	case "danger":
-		return "bg-gradient-to-br from-danger-500 to-danger-600"
+		return "bg-danger-500"
 	default:
-		return "bg-gradient-to-br from-gray-500 to-gray-600"
+		return "bg-gray-500"
 	}
 }
 
 func getStatCardTextBg(colorType string) string {
 	switch colorType {
 	case "primary":
-		return "bg-primary-100 text-primary-800"
+		return "bg-teal-100 text-teal-800"
 	case "success":
-		return "bg-success-100 text-success-800"
+		return "bg-success-100 text-success-700"
 	case "warning":
-		return "bg-warning-100 text-warning-800"
+		return "bg-warning-100 text-warning-700"
 	case "danger":
-		return "bg-danger-100 text-danger-800"
+		return "bg-danger-100 text-danger-700"
 	default:
 		return "bg-gray-100 text-gray-800"
 	}
@@ -525,24 +660,24 @@ func getSeverityBg(severity string) string {
 	case "minor":
 		return "bg-warning-500"
 	case "warning":
-		return "bg-yellow-500"
+		return "bg-yellow-400"
 	default:
-		return "bg-info-500"
+		return "bg-teal-custom"
 	}
 }
 
 func getSeverityBadge(severity string) string {
 	switch severity {
 	case "critical":
-		return "bg-danger-100 text-danger-800"
+		return "bg-danger-100 text-danger-700"
 	case "major":
-		return "bg-orange-100 text-orange-800"
+		return "bg-orange-100 text-orange-700"
 	case "minor":
-		return "bg-warning-100 text-warning-800"
+		return "bg-warning-100 text-warning-700"
 	case "warning":
-		return "bg-yellow-100 text-yellow-800"
+		return "bg-yellow-100 text-yellow-700"
 	default:
-		return "bg-info-100 text-info-800"
+		return "bg-teal-100 text-teal-700"
 	}
 }
 

@@ -46,7 +46,7 @@ func OverviewPage(data OverviewData) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"space-y-8 animate-fade-in\"><!-- Welcome Section --><div class=\"bg-gradient-to-r from-primary-500 to-primary-600 rounded-xl p-6 text-white\"><div class=\"flex items-center justify-between\"><div><h2 class=\"text-2xl font-bold mb-2\">Welcome to Nextranet Gateway</h2><p class=\"text-primary-100\">Manage your TR-069 devices with ease</p></div><div class=\"text-6xl opacity-20\"><i class=\"fas fa-network-wired\"></i></div></div></div><!-- Statistics Cards --><div class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"space-y-6\"><!-- Welcome Section --><div class=\"rounded-lg p-6 text-white\" style=\"background-color: #21878C;\"><div class=\"flex items-center justify-between\"><div><h2 class=\"text-2xl font-bold mb-2\">Welcome to Nextranet Gateway</h2><p class=\"opacity-90\">Manage your TR-069 devices with ease</p></div><div class=\"text-4xl opacity-30\"><i class=\"fas fa-network-wired\"></i></div></div></div><!-- Statistics Cards --><div class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -87,7 +87,7 @@ func OverviewPage(data OverviewData) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</p><p class=\"text-gray-600 dark:text-gray-400\">Overall Health Score</p></div></div><!-- Quick Actions --><div class=\"card p-8\"><h3 class=\"text-xl font-bold mb-6 text-gray-800 dark:text-gray-200 flex items-center gap-2\"><i class=\"fas fa-bolt text-warning-500\"></i> Quick Actions</h3><div class=\"space-y-4\"><button onclick=\"refreshAllDevices()\" class=\"w-full btn btn-primary text-left\"><i class=\"fas fa-sync-alt mr-3\"></i><div><div class=\"font-semibold\">Refresh All Devices</div><div class=\"text-xs opacity-75\">Update device status</div></div></button> <a href=\"/devices?status=offline\" class=\"w-full btn btn-secondary block\"><i class=\"fas fa-plug mr-3\"></i><div><div class=\"font-semibold\">View Offline Devices</div><div class=\"text-xs opacity-75\">Check disconnected devices</div></div></a> <a href=\"/faults?severity=critical\" class=\"w-full btn btn-danger block\"><i class=\"fas fa-exclamation-circle mr-3\"></i><div><div class=\"font-semibold\">View Critical Faults</div><div class=\"text-xs opacity-75\">Resolve urgent issues</div></div></a></div></div></div><!-- Charts Row --><div class=\"grid grid-cols-1 lg:grid-cols-2 gap-8\"><!-- Device Distribution by Vendor --><div class=\"card p-6 hover:shadow-xl transition-all duration-300\"><div class=\"flex items-center justify-between mb-6\"><h3 class=\"text-lg font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2\"><i class=\"fas fa-chart-pie text-primary-500\"></i> Devices by Vendor</h3><button class=\"text-gray-400 hover:text-gray-600 dark:hover:text-gray-300\"><i class=\"fas fa-expand-alt\"></i></button></div><div class=\"h-64 relative\"><canvas id=\"vendorChart\"></canvas></div></div><!-- Fault Severity Distribution --><div class=\"card p-6 hover:shadow-xl transition-all duration-300\"><div class=\"flex items-center justify-between mb-6\"><h3 class=\"text-lg font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2\"><i class=\"fas fa-chart-bar text-warning-500\"></i> Faults by Severity</h3><button class=\"text-gray-400 hover:text-gray-600 dark:hover:text-gray-300\"><i class=\"fas fa-expand-alt\"></i></button></div><div class=\"h-64 relative\"><canvas id=\"faultChart\"></canvas></div></div></div><!-- Recent Activity --><div class=\"grid grid-cols-1 lg:grid-cols-2 gap-8\"><!-- Recent Faults --><div class=\"card p-6\"><div class=\"flex items-center justify-between mb-6\"><h3 class=\"text-lg font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2\"><i class=\"fas fa-history text-danger-500\"></i> Recent Faults</h3><a href=\"/faults\" class=\"text-sm text-primary-500 hover:text-primary-600 font-medium flex items-center gap-1\">View All <i class=\"fas fa-arrow-right text-xs\"></i></a></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</p><p class=\"text-gray-600 dark:text-gray-400\">Overall Health Score</p></div></div><!-- Quick Actions --><div class=\"card p-8\"><h3 class=\"text-xl font-bold mb-6 text-gray-800 dark:text-gray-200 flex items-center gap-2\"><i class=\"fas fa-bolt text-warning-500\"></i> Quick Actions</h3><div class=\"space-y-4\"><button onclick=\"refreshAllDevices()\" class=\"w-full btn btn-primary text-left\"><i class=\"fas fa-sync-alt mr-3\"></i><div><div class=\"font-semibold\">Refresh All Devices</div><div class=\"text-xs opacity-75\">Update device status</div></div></button> <a href=\"/devices?status=offline\" class=\"w-full btn btn-secondary block\"><i class=\"fas fa-plug mr-3\"></i><div><div class=\"font-semibold\">View Offline Devices</div><div class=\"text-xs opacity-75\">Check disconnected devices</div></div></a> <a href=\"/faults?severity=critical\" class=\"w-full btn btn-danger block\"><i class=\"fas fa-exclamation-circle mr-3\"></i><div><div class=\"font-semibold\">View Critical Faults</div><div class=\"text-xs opacity-75\">Resolve urgent issues</div></div></a></div></div></div><!-- Charts Row --><div class=\"grid grid-cols-1 lg:grid-cols-2 gap-8\"><!-- Device Distribution by Vendor --><div class=\"card p-6 hover:shadow-xl transition-all duration-300\"><div class=\"flex items-center justify-between mb-6\"><h3 class=\"text-lg font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2\"><i class=\"fas fa-chart-pie text-primary-500\"></i> Devices by Vendor</h3><button class=\"text-gray-400 hover:text-gray-600 dark:hover:text-gray-300\"><i class=\"fas fa-expand-alt\"></i></button></div><div class=\"chart-container\"><canvas id=\"vendorChart\"></canvas><div id=\"vendor-chart-empty\" class=\"chart-empty-state hidden\"><i class=\"fas fa-chart-pie\"></i><p>No vendor data available</p></div></div></div><!-- Fault Severity Distribution --><div class=\"card p-6 hover:shadow-xl transition-all duration-300\"><div class=\"flex items-center justify-between mb-6\"><h3 class=\"text-lg font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2\"><i class=\"fas fa-chart-bar text-warning-500\"></i> Faults by Severity</h3><button class=\"text-gray-400 hover:text-gray-600 dark:hover:text-gray-300\"><i class=\"fas fa-expand-alt\"></i></button></div><div class=\"chart-container\"><canvas id=\"faultChart\"></canvas><div id=\"fault-chart-empty\" class=\"chart-empty-state hidden\"><i class=\"fas fa-chart-bar\"></i><p>No fault data available</p></div></div></div></div><!-- Recent Activity --><div class=\"grid grid-cols-1 lg:grid-cols-2 gap-8\"><!-- Recent Faults --><div class=\"card p-6\"><div class=\"flex items-center justify-between mb-6\"><h3 class=\"text-lg font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2\"><i class=\"fas fa-history text-danger-500\"></i> Recent Faults</h3><a href=\"/faults\" class=\"text-sm text-primary-500 hover:text-primary-600 font-medium flex items-center gap-1\">View All <i class=\"fas fa-arrow-right text-xs\"></i></a></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -132,7 +132,7 @@ func OverviewPage(data OverviewData) templ.Component {
 					return templ_7745c5c3_Err
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "</div><!-- Chart Scripts --> <script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script> <script>\n            // Prepare chart data\n            const vendorLabels = [\n                { for vendor, _ := range data.DevicesByVendor }'{ vendor }',{ end }\n            ];\n            const vendorCounts = [\n                { for _, count := range data.DevicesByVendor }{ fmt.Sprintf(\"%d\", count) },{ end }\n            ];\n\n            const faultCounts = {\n                critical: { fmt.Sprintf(\"%d\", data.FaultSeverity[\"critical\"]) },\n                major: { fmt.Sprintf(\"%d\", data.FaultSeverity[\"major\"]) },\n                minor: { fmt.Sprintf(\"%d\", data.FaultSeverity[\"minor\"]) },\n                warning: { fmt.Sprintf(\"%d\", data.FaultSeverity[\"warning\"]) },\n                info: { fmt.Sprintf(\"%d\", data.FaultSeverity[\"info\"]) }\n            };\n\n            // Vendor Chart\n            const vendorCtx = document.getElementById('vendorChart').getContext('2d');\n            const vendorData = {\n                labels: vendorLabels,\n                datasets: [{\n                    data: vendorCounts,\n                    backgroundColor: [\n                        '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'\n                    ]\n                }]\n            };\n\n            new Chart(vendorCtx, {\n                type: 'doughnut',\n                data: vendorData,\n                options: {\n                    responsive: true,\n                    maintainAspectRatio: false,\n                    plugins: {\n                        legend: {\n                            position: 'right',\n                            labels: {\n                                color: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#374151'\n                            }\n                        }\n                    }\n                }\n            });\n\n            // Fault Chart\n            const faultCtx = document.getElementById('faultChart').getContext('2d');\n            const faultData = {\n                labels: ['Critical', 'Major', 'Minor', 'Warning', 'Info'],\n                datasets: [{\n                    label: 'Faults',\n                    data: [\n                        faultCounts.critical,\n                        faultCounts.major,\n                        faultCounts.minor,\n                        faultCounts.warning,\n                        faultCounts.info\n                    ],\n                    backgroundColor: ['#ef4444', '#f97316', '#f59e0b', '#eab308', '#06b6d4'],\n                    borderWidth: 0\n                }]\n            };\n\n            new Chart(faultCtx, {\n                type: 'bar',\n                data: faultData,\n                options: {\n                    responsive: true,\n                    maintainAspectRatio: false,\n                    scales: {\n                        y: {\n                            beginAtZero: true,\n                            ticks: {\n                                color: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#374151'\n                            },\n                            grid: {\n                                color: document.documentElement.classList.contains('dark') ? '#334155' : '#e5e7eb'\n                            }\n                        },\n                        x: {\n                            ticks: {\n                                color: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#374151'\n                            },\n                            grid: {\n                                display: false\n                            }\n                        }\n                    },\n                    plugins: {\n                        legend: {\n                            display: false\n                        }\n                    }\n                }\n            });\n\n            // Update stats function for WebSocket updates\n            function updateStats(data) {\n                // Update stat cards\n                const totalDevicesEl = document.querySelector('[data-stat=\"total-devices\"]');\n                const onlineDevicesEl = document.querySelector('[data-stat=\"online-devices\"]');\n                const activeFaultsEl = document.querySelector('[data-stat=\"active-faults\"]');\n                const criticalFaultsEl = document.querySelector('[data-stat=\"critical-faults\"]');\n\n                if (totalDevicesEl && data.devices) totalDevicesEl.textContent = data.devices.total || 0;\n                if (onlineDevicesEl && data.devices) onlineDevicesEl.textContent = data.devices.online || 0;\n                if (activeFaultsEl && data.faults) activeFaultsEl.textContent = data.faults.active || 0;\n                if (criticalFaultsEl && data.faults) criticalFaultsEl.textContent = data.faults.critical || 0;\n\n                // Update navigation badges\n                const deviceCountEl = document.getElementById('device-count');\n                const faultCountEl = document.getElementById('fault-count');\n\n                if (deviceCountEl && data.devices) {\n                    const totalDevices = data.devices.total || 0;\n                    deviceCountEl.textContent = totalDevices;\n                    if (totalDevices > 0) {\n                        deviceCountEl.classList.remove('hidden');\n                    }\n                }\n\n                if (faultCountEl && data.faults) {\n                    const activeFaults = data.faults.active || 0;\n                    faultCountEl.textContent = activeFaults;\n                    if (activeFaults > 0) {\n                        faultCountEl.classList.remove('hidden');\n                    } else {\n                        faultCountEl.classList.add('hidden');\n                    }\n                }\n            }\n\n            // Refresh all devices\n            function refreshAllDevices() {\n                if (confirm('Are you sure you want to refresh all devices? This may take some time.')) {\n                    fetch('/api/devices/refresh-all', { method: 'POST' })\n                        .then(res => res.json())\n                        .then(data => {\n                            alert(data.message || 'Refresh initiated');\n                        })\n                        .catch(err => {\n                            alert('Failed to refresh devices');\n                        });\n                }\n            }\n        </script>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "</div><!-- Chart Scripts --> <script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script> <script>\n            // Explicit data from server\n            const serverData = {\n                devicesByVendor: {\n                    { for vendor, count := range data.DevicesByVendor }'{ vendor }': { fmt.Sprintf(\"%d\", count) },{ end }\n                },\n                faultSeverity: {\n                    'critical': { fmt.Sprintf(\"%d\", data.FaultSeverity[\"critical\"]) },\n                    'major': { fmt.Sprintf(\"%d\", data.FaultSeverity[\"major\"]) },\n                    'minor': { fmt.Sprintf(\"%d\", data.FaultSeverity[\"minor\"]) },\n                    'warning': { fmt.Sprintf(\"%d\", data.FaultSeverity[\"warning\"]) },\n                    'info': { fmt.Sprintf(\"%d\", data.FaultSeverity[\"info\"]) }\n                },\n                stats: {\n                    totalDevices: { fmt.Sprintf(\"%d\", data.Stats.TotalDevices) },\n                    onlineDevices: { fmt.Sprintf(\"%d\", data.Stats.OnlineDevices) },\n                    activeFaults: { fmt.Sprintf(\"%d\", data.Stats.ActiveFaults) }\n                }\n            };\n\n            // Debug: Log raw data\n            console.log('Server data received:', serverData);\n\n            // Prepare vendor chart data\n            let vendorLabels = Object.keys(serverData.devicesByVendor);\n            let vendorCounts = Object.values(serverData.devicesByVendor).map(v => parseInt(v));\n\n            // Fallback data if no vendors\n            if (vendorLabels.length === 0 || (vendorLabels.length === 1 && vendorLabels[0] === '')) {\n                const totalDevices = parseInt(serverData.stats.totalDevices);\n                if (totalDevices > 0) {\n                    vendorLabels = ['Unknown Vendor'];\n                    vendorCounts = [totalDevices];\n                } else {\n                    vendorLabels = ['No Devices'];\n                    vendorCounts = [1];\n                }\n            }\n\n            // Prepare fault severity data\n            const faultLabels = ['Critical', 'Major', 'Minor', 'Warning', 'Info'];\n            let faultValues = [\n                parseInt(serverData.faultSeverity.critical) || 0,\n                parseInt(serverData.faultSeverity.major) || 0,\n                parseInt(serverData.faultSeverity.minor) || 0,\n                parseInt(serverData.faultSeverity.warning) || 0,\n                parseInt(serverData.faultSeverity.info) || 0\n            ];\n\n            // If all fault values are 0 but we have active faults, distribute them\n            const totalFaults = faultValues.reduce((a, b) => a + b, 0);\n            const activeFaults = parseInt(serverData.stats.activeFaults);\n            if (totalFaults === 0 && activeFaults > 0) {\n                faultValues[0] = activeFaults; // Show all as critical for demo\n            }\n\n            console.log('Processed chart data:');\n            console.log('Vendors:', { labels: vendorLabels, counts: vendorCounts });\n            console.log('Faults:', { labels: faultLabels, values: faultValues });\n\n            // Vendor Chart\n            const vendorCtx = document.getElementById('vendorChart');\n            const vendorEmptyState = document.getElementById('vendor-chart-empty');\n            let vendorChart = null;\n\n            if (vendorCtx) {\n                // Hide empty state if we have data\n                if (vendorLabels.length > 0 && vendorLabels[0] !== 'No Devices') {\n                    vendorEmptyState.classList.add('hidden');\n                    vendorChart = new Chart(vendorCtx, {\n                    type: 'doughnut',\n                    data: {\n                        labels: vendorLabels,\n                        datasets: [{\n                            data: vendorCounts,\n                            backgroundColor: [\n                                '#21878c',\n                                '#89d185',\n                                '#ffcc02',\n                                '#f85149',\n                                '#21878c',\n                                '#ff8c00',\n                                '#9a6cf0',\n                                '#40e0d0',\n                                '#ff69b4',\n                                '#32cd32'\n                            ],\n                            borderWidth: 2,\n                            borderColor: document.documentElement.classList.contains('dark') ? '#3e3e42' : '#ffffff'\n                        }]\n                    },\n                    options: {\n                        responsive: true,\n                        maintainAspectRatio: false,\n                        plugins: {\n                            legend: {\n                                position: 'bottom',\n                                labels: {\n                                    color: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#374151',\n                                    padding: 15,\n                                    usePointStyle: true,\n                                    font: {\n                                        size: 12\n                                    }\n                                }\n                            },\n                            tooltip: {\n                                callbacks: {\n                                    label: function(context) {\n                                        const label = context.label || '';\n                                        const value = context.parsed;\n                                        const total = context.dataset.data.reduce((a, b) => a + b, 0);\n                                        const percentage = total > 0 ? Math.round((value / total) * 100) : 0;\n                                        return `${label}: ${value} (${percentage}%)`;\n                                    }\n                                }\n                            }\n                        }\n                    }\n                    });\n                } else {\n                    // Show empty state\n                    vendorEmptyState.classList.remove('hidden');\n                    vendorCtx.style.display = 'none';\n                }\n            }\n\n            // Fault Chart\n            const faultCtx = document.getElementById('faultChart');\n            const faultEmptyState = document.getElementById('fault-chart-empty');\n            let faultChart = null;\n\n            if (faultCtx) {\n                const hasFaultData = faultValues.some(val => val > 0);\n\n                if (hasFaultData) {\n                    faultEmptyState.classList.add('hidden');\n                    faultChart = new Chart(faultCtx, {\n                    type: 'bar',\n                    data: {\n                        labels: faultLabels,\n                        datasets: [{\n                            label: 'Faults',\n                            data: faultValues,\n                            backgroundColor: [\n                                '#f85149', // Critical - Red\n                                '#ff8c00', // Major - Orange\n                                '#ffcc02', // Minor - Yellow\n                                '#ffeb3b', // Warning - Light Yellow\n                                '#21878c'  // Info - Teal\n                            ],\n                            borderRadius: 4,\n                            borderWidth: 0\n                        }]\n                    },\n                    options: {\n                        responsive: true,\n                        maintainAspectRatio: false,\n                        scales: {\n                            y: {\n                                beginAtZero: true,\n                                ticks: {\n                                    color: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#374151',\n                                    stepSize: 1\n                                },\n                                grid: {\n                                    color: document.documentElement.classList.contains('dark') ? '#334155' : '#e5e7eb'\n                                }\n                            },\n                            x: {\n                                ticks: {\n                                    color: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#374151'\n                                },\n                                grid: {\n                                    display: false\n                                }\n                            }\n                        },\n                        plugins: {\n                            legend: {\n                                display: false\n                            },\n                            tooltip: {\n                                callbacks: {\n                                    label: function(context) {\n                                        return `${context.label}: ${context.parsed.y} fault${context.parsed.y !== 1 ? 's' : ''}`;\n                                    }\n                                }\n                            }\n                        }\n                    }\n                    });\n                } else {\n                    // Show empty state\n                    faultEmptyState.classList.remove('hidden');\n                    faultCtx.style.display = 'none';\n                }\n            }\n\n            // Update stats function for WebSocket updates\n            function updateStats(data) {\n                // Update stat cards\n                const totalDevicesEl = document.querySelector('[data-stat=\"total-devices\"]');\n                const onlineDevicesEl = document.querySelector('[data-stat=\"online-devices\"]');\n                const activeFaultsEl = document.querySelector('[data-stat=\"active-faults\"]');\n                const criticalFaultsEl = document.querySelector('[data-stat=\"critical-faults\"]');\n\n                if (totalDevicesEl && data.devices) totalDevicesEl.textContent = data.devices.total || 0;\n                if (onlineDevicesEl && data.devices) onlineDevicesEl.textContent = data.devices.online || 0;\n                if (activeFaultsEl && data.faults) activeFaultsEl.textContent = data.faults.active || 0;\n                if (criticalFaultsEl && data.faults) criticalFaultsEl.textContent = data.faults.critical || 0;\n\n                // Update navigation badges\n                const deviceCountEl = document.getElementById('device-count');\n                const faultCountEl = document.getElementById('fault-count');\n\n                if (deviceCountEl && data.devices) {\n                    const totalDevices = data.devices.total || 0;\n                    deviceCountEl.textContent = totalDevices;\n                    if (totalDevices > 0) {\n                        deviceCountEl.classList.remove('hidden');\n                    }\n                }\n\n                if (faultCountEl && data.faults) {\n                    const activeFaults = data.faults.active || 0;\n                    faultCountEl.textContent = activeFaults;\n                    if (activeFaults > 0) {\n                        faultCountEl.classList.remove('hidden');\n                    } else {\n                        faultCountEl.classList.add('hidden');\n                    }\n                }\n\n                // Update charts if they exist\n                if (vendorChart && data.devicesByVendor) {\n                    const newLabels = Object.keys(data.devicesByVendor);\n                    const newData = Object.values(data.devicesByVendor);\n\n                    vendorChart.data.labels = newLabels;\n                    vendorChart.data.datasets[0].data = newData;\n                    vendorChart.update();\n                }\n\n                if (faultChart && data.faultSeverity) {\n                    const newData = [\n                        data.faultSeverity.critical || 0,\n                        data.faultSeverity.major || 0,\n                        data.faultSeverity.minor || 0,\n                        data.faultSeverity.warning || 0,\n                        data.faultSeverity.info || 0\n                    ];\n\n                    faultChart.data.datasets[0].data = newData;\n                    faultChart.update();\n                }\n            }\n\n            // Refresh all devices\n            function refreshAllDevices() {\n                if (confirm('Are you sure you want to refresh all devices? This may take some time.')) {\n                    fetch('/api/devices/refresh-all', { method: 'POST' })\n                        .then(res => res.json())\n                        .then(data => {\n                            alert(data.message || 'Refresh initiated');\n                        })\n                        .catch(err => {\n                            alert('Failed to refresh devices');\n                        });\n                }\n            }\n        </script>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -174,7 +174,7 @@ func StatCard(title string, value int, icon string, colorType string) templ.Comp
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 349, Col: 80}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 482, Col: 80}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
@@ -187,7 +187,7 @@ func StatCard(title string, value int, icon string, colorType string) templ.Comp
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(toDataAttr(title))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 350, Col: 139}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 483, Col: 139}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
@@ -200,7 +200,7 @@ func StatCard(title string, value int, icon string, colorType string) templ.Comp
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%d", value))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 351, Col: 31}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 484, Col: 31}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
@@ -210,7 +210,7 @@ func StatCard(title string, value int, icon string, colorType string) templ.Comp
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var8 = []any{"p-4 rounded-xl shadow-lg " + getStatCardBg(colorType)}
+		var templ_7745c5c3_Var8 = []any{"p-4 rounded-xl shadow-lg relative " + getStatCardBg(colorType)}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var8...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -228,11 +228,11 @@ func StatCard(title string, value int, icon string, colorType string) templ.Comp
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "\"><div class=\"w-8 h-8 bg-white rounded-lg flex items-center justify-center absolute inset-0 m-auto dark:bg-white\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var10 = []any{"fas " + icon + " text-white text-2xl"}
+		var templ_7745c5c3_Var10 = []any{"fas " + icon + " text-gray-700 text-xl"}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var10...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -250,7 +250,7 @@ func StatCard(title string, value int, icon string, colorType string) templ.Comp
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "\"></i></div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "\"></i></div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -279,7 +279,7 @@ func StatCard(title string, value int, icon string, colorType string) templ.Comp
 		var templ_7745c5c3_Var14 string
 		templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(getStatCardLabel(colorType))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 359, Col: 32}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 494, Col: 32}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 		if templ_7745c5c3_Err != nil {
@@ -321,7 +321,7 @@ func ServiceStatus(name string, connected bool) templ.Component {
 		var templ_7745c5c3_Var16 string
 		templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(name)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 366, Col: 55}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 501, Col: 55}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
 		if templ_7745c5c3_Err != nil {
@@ -422,7 +422,7 @@ func FaultItem(fault *models.Fault) templ.Component {
 		var templ_7745c5c3_Var22 string
 		templ_7745c5c3_Var22, templ_7745c5c3_Err = templ.JoinStringErrs(fault.DeviceSerial)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 387, Col: 25}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 522, Col: 25}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var22))
 		if templ_7745c5c3_Err != nil {
@@ -457,7 +457,7 @@ func FaultItem(fault *models.Fault) templ.Component {
 		var templ_7745c5c3_Var25 string
 		templ_7745c5c3_Var25, templ_7745c5c3_Err = templ.JoinStringErrs(fault.Severity)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 390, Col: 21}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 525, Col: 21}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var25))
 		if templ_7745c5c3_Err != nil {
@@ -470,7 +470,7 @@ func FaultItem(fault *models.Fault) templ.Component {
 		var templ_7745c5c3_Var26 string
 		templ_7745c5c3_Var26, templ_7745c5c3_Err = templ.JoinStringErrs(fault.Message)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 394, Col: 19}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 529, Col: 19}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var26))
 		if templ_7745c5c3_Err != nil {
@@ -483,7 +483,7 @@ func FaultItem(fault *models.Fault) templ.Component {
 		var templ_7745c5c3_Var27 string
 		templ_7745c5c3_Var27, templ_7745c5c3_Err = templ.JoinStringErrs(timeAgo(fault.Timestamp))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 399, Col: 31}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 534, Col: 31}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var27))
 		if templ_7745c5c3_Err != nil {
@@ -525,7 +525,7 @@ func CriticalFaultAlert(fault *models.Fault) templ.Component {
 		var templ_7745c5c3_Var29 string
 		templ_7745c5c3_Var29, templ_7745c5c3_Err = templ.JoinStringErrs(fault.DeviceSerial)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 415, Col: 25}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 550, Col: 25}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var29))
 		if templ_7745c5c3_Err != nil {
@@ -538,7 +538,7 @@ func CriticalFaultAlert(fault *models.Fault) templ.Component {
 		var templ_7745c5c3_Var30 string
 		templ_7745c5c3_Var30, templ_7745c5c3_Err = templ.JoinStringErrs(fault.Code)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 415, Col: 42}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 550, Col: 42}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var30))
 		if templ_7745c5c3_Err != nil {
@@ -551,7 +551,7 @@ func CriticalFaultAlert(fault *models.Fault) templ.Component {
 		var templ_7745c5c3_Var31 string
 		templ_7745c5c3_Var31, templ_7745c5c3_Err = templ.JoinStringErrs(fault.Message)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 418, Col: 20}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 553, Col: 20}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var31))
 		if templ_7745c5c3_Err != nil {
@@ -564,7 +564,7 @@ func CriticalFaultAlert(fault *models.Fault) templ.Component {
 		var templ_7745c5c3_Var32 templ.SafeURL
 		templ_7745c5c3_Var32, templ_7745c5c3_Err = templ.JoinURLErrs(templ.URL(fmt.Sprintf("/faults/%s", fault.ID)))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 421, Col: 61}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 556, Col: 61}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var32))
 		if templ_7745c5c3_Err != nil {
@@ -599,14 +599,14 @@ func HealthGauge(score int) templ.Component {
 			templ_7745c5c3_Var33 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 44, "<div class=\"relative w-32 h-32 mx-auto\"><svg class=\"transform -rotate-90 w-32 h-32\"><circle cx=\"64\" cy=\"64\" r=\"56\" stroke=\"#e5e7eb\" stroke-width=\"12\" fill=\"none\" class=\"dark:stroke-dark-border\"></circle> <circle cx=\"64\" cy=\"64\" r=\"56\" stroke=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 44, "<div class=\"relative w-32 h-32 mx-auto\"><svg class=\"transform -rotate-90 w-32 h-32\"><circle cx=\"64\" cy=\"64\" r=\"56\" stroke=\"#e5e7eb\" stroke-width=\"12\" fill=\"none\" class=\"dark:stroke-gray-600\"></circle> <circle cx=\"64\" cy=\"64\" r=\"56\" stroke=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var34 string
 		templ_7745c5c3_Var34, templ_7745c5c3_Err = templ.JoinStringErrs(healthScoreColor(score))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 438, Col: 36}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 573, Col: 36}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var34))
 		if templ_7745c5c3_Err != nil {
@@ -619,7 +619,7 @@ func HealthGauge(score int) templ.Component {
 		var templ_7745c5c3_Var35 string
 		templ_7745c5c3_Var35, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%d 352", int(float64(score)*3.52)))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 441, Col: 70}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/templates/overview.templ`, Line: 576, Col: 70}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var35))
 		if templ_7745c5c3_Err != nil {
@@ -636,11 +636,11 @@ func HealthGauge(score int) templ.Component {
 func healthScoreColor(score int) string {
 	switch {
 	case score >= 80:
-		return "text-success"
+		return "#22c55e"
 	case score >= 60:
-		return "text-warning"
+		return "#f59e0b"
 	default:
-		return "text-danger"
+		return "#ef4444"
 	}
 }
 
@@ -662,28 +662,28 @@ func severityColor(severity string) string {
 func getStatCardBg(colorType string) string {
 	switch colorType {
 	case "primary":
-		return "bg-gradient-to-br from-primary-500 to-primary-600"
+		return "bg-teal-custom"
 	case "success":
-		return "bg-gradient-to-br from-success-500 to-success-600"
+		return "bg-success-500"
 	case "warning":
-		return "bg-gradient-to-br from-warning-500 to-warning-600"
+		return "bg-warning-500"
 	case "danger":
-		return "bg-gradient-to-br from-danger-500 to-danger-600"
+		return "bg-danger-500"
 	default:
-		return "bg-gradient-to-br from-gray-500 to-gray-600"
+		return "bg-gray-500"
 	}
 }
 
 func getStatCardTextBg(colorType string) string {
 	switch colorType {
 	case "primary":
-		return "bg-primary-100 text-primary-800"
+		return "bg-teal-100 text-teal-800"
 	case "success":
-		return "bg-success-100 text-success-800"
+		return "bg-success-100 text-success-700"
 	case "warning":
-		return "bg-warning-100 text-warning-800"
+		return "bg-warning-100 text-warning-700"
 	case "danger":
-		return "bg-danger-100 text-danger-800"
+		return "bg-danger-100 text-danger-700"
 	default:
 		return "bg-gray-100 text-gray-800"
 	}
@@ -713,24 +713,24 @@ func getSeverityBg(severity string) string {
 	case "minor":
 		return "bg-warning-500"
 	case "warning":
-		return "bg-yellow-500"
+		return "bg-yellow-400"
 	default:
-		return "bg-info-500"
+		return "bg-teal-custom"
 	}
 }
 
 func getSeverityBadge(severity string) string {
 	switch severity {
 	case "critical":
-		return "bg-danger-100 text-danger-800"
+		return "bg-danger-100 text-danger-700"
 	case "major":
-		return "bg-orange-100 text-orange-800"
+		return "bg-orange-100 text-orange-700"
 	case "minor":
-		return "bg-warning-100 text-warning-800"
+		return "bg-warning-100 text-warning-700"
 	case "warning":
-		return "bg-yellow-100 text-yellow-800"
+		return "bg-yellow-100 text-yellow-700"
 	default:
-		return "bg-info-100 text-info-800"
+		return "bg-teal-100 text-teal-700"
 	}
 }
 
