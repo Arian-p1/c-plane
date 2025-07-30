@@ -2644,3 +2644,601 @@ time="2025-07-26T19:52:13+03:30" level=info msg="Shutting down NBI server..." co
 time="2025-07-26T19:52:13+03:30" level=info msg="Shutting down UI server..." component=INIT
 time="2025-07-26T19:52:13+03:30" level=info msg="All services stopped gracefully" component=INIT
 time="2025-07-26T19:52:13+03:30" level=info msg="Application stopped successfully" component=INIT
+time="2025-07-27T09:09:50+03:30" level=info msg="Logger initialized with level: debug" component=INIT
+time="2025-07-27T09:09:50+03:30" level=info msg="Starting Nextranet Gateway services..." component=INIT
+time="2025-07-27T09:09:50+03:30" level=info msg="Initializing GenieACS service..." component=GENIEACS
+time="2025-07-27T09:09:50+03:30" level=error msg="CWMP service not available" component=GENIEACS
+time="2025-07-27T09:09:50+03:30" level=error msg="NBI service not available" component=GENIEACS
+time="2025-07-27T09:09:50+03:30" level=error msg="FS service not available" component=GENIEACS
+time="2025-07-27T09:09:50+03:30" level=fatal msg="Failed to start application: failed to initialize GenieACS service: failed to connect to GenieACS: FS service not available" component=INIT
+time="2025-07-27T09:09:52+03:30" level=info msg="Logger initialized with level: debug" component=INIT
+time="2025-07-27T09:09:52+03:30" level=info msg="Starting Nextranet Gateway services..." component=INIT
+time="2025-07-27T09:09:52+03:30" level=info msg="Initializing GenieACS service..." component=GENIEACS
+time="2025-07-27T09:09:52+03:30" level=error msg="CWMP service not available" component=GENIEACS
+time="2025-07-27T09:09:52+03:30" level=error msg="NBI service not available" component=GENIEACS
+time="2025-07-27T09:09:52+03:30" level=error msg="FS service not available" component=GENIEACS
+time="2025-07-27T09:09:52+03:30" level=fatal msg="Failed to start application: failed to initialize GenieACS service: failed to connect to GenieACS: FS service not available" component=INIT
+time="2025-07-27T09:09:54+03:30" level=info msg="Logger initialized with level: debug" component=INIT
+time="2025-07-27T09:09:54+03:30" level=info msg="Starting Nextranet Gateway services..." component=INIT
+time="2025-07-27T09:09:54+03:30" level=info msg="Initializing GenieACS service..." component=GENIEACS
+time="2025-07-27T09:09:54+03:30" level=error msg="CWMP service not available" component=GENIEACS
+time="2025-07-27T09:09:54+03:30" level=error msg="NBI service not available" component=GENIEACS
+time="2025-07-27T09:09:54+03:30" level=error msg="FS service not available" component=GENIEACS
+time="2025-07-27T09:09:54+03:30" level=fatal msg="Failed to start application: failed to initialize GenieACS service: failed to connect to GenieACS: FS service not available" component=INIT
+time="2025-07-27T13:29:35+03:30" level=info msg="Logger initialized with level: debug" component=INIT
+time="2025-07-27T13:29:35+03:30" level=info msg="Starting Nextranet Gateway services..." component=INIT
+time="2025-07-27T13:29:35+03:30" level=info msg="Initializing GenieACS service..." component=GENIEACS
+time="2025-07-27T13:29:35+03:30" level=error msg="CWMP service not available" component=GENIEACS
+time="2025-07-27T13:29:36+03:30" level=error msg="NBI service not available" component=GENIEACS
+time="2025-07-27T13:29:36+03:30" level=error msg="FS service not available" component=GENIEACS
+time="2025-07-27T13:29:36+03:30" level=fatal msg="Failed to start application: failed to initialize GenieACS service: failed to connect to GenieACS: FS service not available" component=INIT
+time="2025-07-27T13:31:17+03:30" level=info msg="Logger initialized with level: debug" component=INIT
+time="2025-07-27T13:31:17+03:30" level=info msg="Starting Nextranet Gateway services..." component=INIT
+time="2025-07-27T13:31:17+03:30" level=info msg="Initializing GenieACS service..." component=GENIEACS
+time="2025-07-27T13:31:20+03:30" level=info msg="GenieACS service initialized successfully" component=GENIEACS
+time="2025-07-27T13:31:20+03:30" level=info msg="Starting GenieACS monitoring..." component=GENIEACS
+time="2025-07-27T13:31:20+03:30" level=info msg="Starting NBI server..." component=INIT
+time="2025-07-27T13:31:20+03:30" level=info msg="Starting UI server..." component=INIT
+time="2025-07-27T13:31:20+03:30" level=info msg="NBI server listening on 0.0.0.0:8080" component=INIT
+time="2025-07-27T13:31:20+03:30" level=info msg="UI server listening on 0.0.0.0:8081" component=INIT
+time="2025-07-27T13:31:22+03:30" level=info msg="All services started successfully" component=INIT
+time="2025-07-27T13:32:33+03:30" level=info msg="Overview data: TotalDevices=3, OnlineDevices=1, ActiveFaults=2" component=WEB
+time="2025-07-27T13:32:33+03:30" level=info msg="Vendor data: map[Comba:1 Huawei Technologies Co., Ltd.:1 Unknown:1]" component=WEB
+time="2025-07-27T13:32:33+03:30" level=info msg="Severity data: map[info:2]" component=WEB
+time="2025-07-27T13:32:33+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  1.469142625s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/overview\"" component=WEB
+time="2025-07-27T13:32:33+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|    4.631667ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-27T13:32:33+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|    4.564666ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-27T13:32:34+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      84.958µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T13:32:34+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      18.917µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T13:32:34+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      10.208µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T13:32:34+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         416ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T13:32:34+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|      24.334µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/favicon.png\"" component=WEB
+time="2025-07-27T13:32:39+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  999.268167ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices\"" component=WEB
+time="2025-07-27T13:32:39+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  5.445040917s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T13:32:39+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     176.166µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-27T13:32:39+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      75.333µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-27T13:32:39+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      34.417µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T13:32:39+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      12.042µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T13:32:39+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|       7.333µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T13:32:39+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         167ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T13:32:43+03:30" level=error msg="Failed to get device: device not found" component=WEB
+time="2025-07-27T13:32:43+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|    292.1215ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE-FDD_N2-FA2091957816\"" component=WEB
+time="2025-07-27T13:32:43+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  3.866254167s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T13:32:43+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         167ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/favicon.ico\"" component=WEB
+time="2025-07-27T13:33:12+03:30" level=error msg="Failed to get device: device not found" component=WEB
+time="2025-07-27T13:33:12+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|    463.7195ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE-FDD_N2-FA2091957816\"" component=WEB
+time="2025-07-27T13:33:15+03:30" level=error msg="Failed to get device: device not found" component=WEB
+time="2025-07-27T13:33:15+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|  357.527333ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE-FDD_N2-FA2091957816\"" component=WEB
+time="2025-07-27T13:33:16+03:30" level=error msg="Failed to get device: device not found" component=WEB
+time="2025-07-27T13:33:16+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|  289.313125ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE-FDD_N2-FA2091957816\"" component=WEB
+time="2025-07-27T13:33:17+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         417ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T13:33:24+03:30" level=error msg="Failed to refresh device: failed to create task: No such device" component=WEB
+time="2025-07-27T13:33:24+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|  518.503084ms |       127.0.0.1 |\x1b[97;46m POST    \x1b[0m \"/api/devices/00271D-LTE-FDD_N2-FA2091957816/refresh\"" component=WEB
+time="2025-07-27T13:33:57+03:30" level=error msg="Failed to get device: device not found" component=WEB
+time="2025-07-27T13:33:57+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|  699.187875ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE-FDD_N2-FA2091957816\"" component=WEB
+time="2025-07-27T13:33:57+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m| 39.872246625s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T13:33:59+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         250ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T13:34:01+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     769.125µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/faults\"" component=WEB
+time="2025-07-27T13:34:01+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  2.439003958s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T13:34:01+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      70.125µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-27T13:34:01+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      82.791µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-27T13:34:01+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      66.208µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T13:34:01+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      17.291µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T13:34:01+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      15.625µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T13:34:01+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         125ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T13:58:48+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|   1.11068275s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices\"" component=WEB
+time="2025-07-27T13:58:48+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|        24m47s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T13:58:48+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      93.333µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-27T13:58:48+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     150.459µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-27T13:58:48+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      32.916µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T13:58:48+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|       15.25µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T13:58:48+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|       13.75µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T13:58:49+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         416ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T13:58:56+03:30" level=error msg="Failed to get device: device not found" component=WEB
+time="2025-07-27T13:58:56+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|  521.394667ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE-FDD_N2-FA2091957816\"" component=WEB
+time="2025-07-27T13:58:56+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  7.196175708s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T13:58:58+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         208ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:04:55+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  2.096653833s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/48BF74-FAP-13020001611777P0015\"" component=WEB
+time="2025-07-27T14:04:55+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     121.334µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-27T14:04:55+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|         124µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-27T14:04:55+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      29.959µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:04:55+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|       14.25µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:04:55+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      15.875µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:04:55+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         459ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:04:55+03:30" level=error msg="Failed to get device: device not found" component=WEB
+time="2025-07-27T14:04:55+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|  754.831208ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE-FDD_N2-FA2091957816\"" component=WEB
+time="2025-07-27T14:04:55+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|         5m57s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T14:05:05+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         292ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:05:11+03:30" level=error msg="Failed to get device: device not found" component=WEB
+time="2025-07-27T14:05:11+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|  532.781208ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE-FDD_N2-FA2091957816\"" component=WEB
+time="2025-07-27T14:05:11+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  6.249946667s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T14:05:19+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         208ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:05:23+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     190.125µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-27T14:05:23+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         291ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/.well-known/appspecific/com.chrome.devtools.json\"" component=WEB
+time="2025-07-27T14:05:28+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     980.572ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices\"" component=WEB
+time="2025-07-27T14:05:28+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  9.576287666s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T14:05:28+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         208ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/.well-known/appspecific/com.chrome.devtools.json\"" component=WEB
+time="2025-07-27T14:05:28+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      167.25µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-27T14:05:28+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     161.875µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-27T14:05:28+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      42.125µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:05:28+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|       23.25µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:05:28+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      12.334µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:05:28+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         208ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:07:55+03:30" level=error msg="Failed to get device: device not found" component=WEB
+time="2025-07-27T14:07:55+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|  596.391875ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE-FDD_N2-FA2091957816\"" component=WEB
+time="2025-07-27T14:07:55+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         125ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/.well-known/appspecific/com.chrome.devtools.json\"" component=WEB
+time="2025-07-27T14:07:55+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|         2m27s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T14:07:59+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         166ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/.well-known/appspecific/com.chrome.devtools.json\"" component=WEB
+time="2025-07-27T14:07:59+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         375ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:08:03+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  2.041046625s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/48BF74-FAP-13020001611777P0015\"" component=WEB
+time="2025-07-27T14:08:03+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         292ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/.well-known/appspecific/com.chrome.devtools.json\"" component=WEB
+time="2025-07-27T14:08:03+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     275.167µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-27T14:08:03+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      74.125µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-27T14:08:03+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      24.875µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:08:03+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      11.292µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:08:03+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      10.208µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:08:03+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  4.050100333s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T14:08:03+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         167ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:08:25+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         209ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/.well-known/appspecific/com.chrome.devtools.json\"" component=WEB
+time="2025-07-27T14:08:25+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  22.32817225s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T14:08:25+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         250ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:08:28+03:30" level=error msg="Failed to get device: device not found" component=WEB
+time="2025-07-27T14:08:28+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|  702.266583ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE-FDD_N2-FA2091957816\"" component=WEB
+time="2025-07-27T14:08:28+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         250ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/.well-known/appspecific/com.chrome.devtools.json\"" component=WEB
+time="2025-07-27T14:08:28+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  3.252529666s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T14:08:50+03:30" level=error msg="Failed to get device: device not found" component=WEB
+time="2025-07-27T14:08:50+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|  645.281042ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/FA2091957816\"" component=WEB
+time="2025-07-27T14:08:50+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         208ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/.well-known/appspecific/com.chrome.devtools.json\"" component=WEB
+time="2025-07-27T14:08:52+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         292ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/.well-known/appspecific/com.chrome.devtools.json\"" component=WEB
+time="2025-07-27T14:08:54+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         375ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/.well-known/appspecific/com.chrome.devtools.json\"" component=WEB
+time="2025-07-27T14:08:54+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         209ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:10:35+03:30" level=error msg="Failed to get device: device not found" component=WEB
+time="2025-07-27T14:10:35+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|  642.292959ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE-FDD_N2-FA2091957816\"" component=WEB
+time="2025-07-27T14:10:35+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         167ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/.well-known/appspecific/com.chrome.devtools.json\"" component=WEB
+time="2025-07-27T14:10:35+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|         1m40s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T14:10:42+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  2.482574041s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/48BF74-FAP-13020001611777P0015\"" component=WEB
+time="2025-07-27T14:10:42+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         209ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/.well-known/appspecific/com.chrome.devtools.json\"" component=WEB
+time="2025-07-27T14:10:42+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|       63.25µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-27T14:10:42+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      84.166µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-27T14:10:43+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|        34.5µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:10:43+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      19.125µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:10:43+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      14.375µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:10:43+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         375ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:11:05+03:30" level=error msg="Failed to get device: device not found" component=WEB
+time="2025-07-27T14:11:05+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|  541.937083ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE-FDD_N2-FA2091957816\"" component=WEB
+time="2025-07-27T14:11:05+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         209ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/.well-known/appspecific/com.chrome.devtools.json\"" component=WEB
+time="2025-07-27T14:11:05+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|    22.445944s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T14:11:07+03:30" level=error msg="Failed to get device: device not found" component=WEB
+time="2025-07-27T14:11:07+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|  288.207333ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE-FDD_N2-FA2091957816\"" component=WEB
+time="2025-07-27T14:11:07+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         250ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/.well-known/appspecific/com.chrome.devtools.json\"" component=WEB
+time="2025-07-27T14:11:50+03:30" level=error msg="Failed to get device: device not found" component=WEB
+time="2025-07-27T14:11:50+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|   668.58375ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE-FDD_N2-FA2091957816\"" component=WEB
+time="2025-07-27T14:11:50+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         208ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/.well-known/appspecific/com.chrome.devtools.json\"" component=WEB
+time="2025-07-27T14:11:53+03:30" level=error msg="Failed to get device: device not found" component=WEB
+time="2025-07-27T14:11:53+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|  673.041291ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE-FDD_N2-FA2091957816\"" component=WEB
+time="2025-07-27T14:11:53+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         167ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/.well-known/appspecific/com.chrome.devtools.json\"" component=WEB
+time="2025-07-27T14:12:43+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  2.373166334s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE%2DFDD_N2-FA2091957816\"" component=WEB
+time="2025-07-27T14:12:43+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         167ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/.well-known/appspecific/com.chrome.devtools.json\"" component=WEB
+time="2025-07-27T14:12:43+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     123.541µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-27T14:12:43+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      88.541µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-27T14:12:43+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      36.208µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:12:43+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      23.083µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:12:43+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      12.542µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:12:43+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         250ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:13:08+03:30" level=error msg="Failed to get device config: failed to get device: device not found" component=WEB
+time="2025-07-27T14:13:08+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|  643.219833ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-27T14:13:24+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         250ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/.well-known/appspecific/com.chrome.devtools.json\"" component=WEB
+time="2025-07-27T14:13:29+03:30" level=error msg="Failed to get device config: failed to get device: device not found" component=WEB
+time="2025-07-27T14:13:29+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|  782.646875ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-27T14:13:29+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         208ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/.well-known/appspecific/com.chrome.devtools.json\"" component=WEB
+time="2025-07-27T14:17:22+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|        6.75µs |             ::1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE%2DFDD_N2-FA2091957816\"" component=HTTP
+time="2025-07-27T14:17:22+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       4.292µs |             ::1 |\x1b[97;44m GET     \x1b[0m \"/favicon.ico\"" component=HTTP
+time="2025-07-27T14:17:38+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       7.375µs |             ::1 |\x1b[97;44m GET     \x1b[0m \"/\"" component=HTTP
+time="2025-07-27T14:18:18+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       6.541µs |             ::1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE%2DFDD_N2-FA2091957816\"" component=HTTP
+time="2025-07-27T14:18:43+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       7.208µs |             ::1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE%2DFDD_N2-FA2091957816\"" component=HTTP
+time="2025-07-27T14:19:43+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       5.375µs |             ::1 |\x1b[0m CONNECT \x1b[0m \"\"" component=HTTP
+time="2025-07-27T14:19:43+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       3.042µs |             ::1 |\x1b[0m CONNECT \x1b[0m \"\"" component=HTTP
+time="2025-07-27T14:19:43+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       2.667µs |             ::1 |\x1b[97;44m GET     \x1b[0m \"/\"" component=HTTP
+time="2025-07-27T14:19:43+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       3.792µs |             ::1 |\x1b[97;44m GET     \x1b[0m \"/favicon.ico\"" component=HTTP
+time="2025-07-27T14:19:46+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       6.875µs |             ::1 |\x1b[97;44m GET     \x1b[0m \"/\"" component=HTTP
+time="2025-07-27T14:19:46+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       3.208µs |             ::1 |\x1b[0m CONNECT \x1b[0m \"\"" component=HTTP
+time="2025-07-27T14:19:46+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       6.291µs |             ::1 |\x1b[97;44m GET     \x1b[0m \"/\"" component=HTTP
+time="2025-07-27T14:19:47+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       6.334µs |             ::1 |\x1b[97;44m GET     \x1b[0m \"/\"" component=HTTP
+time="2025-07-27T14:20:07+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       6.542µs |             ::1 |\x1b[0m CONNECT \x1b[0m \"\"" component=HTTP
+time="2025-07-27T14:20:07+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       3.375µs |             ::1 |\x1b[97;44m GET     \x1b[0m \"/\"" component=HTTP
+time="2025-07-27T14:20:44+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       7.917µs |             ::1 |\x1b[97;44m GET     \x1b[0m \"/\"" component=HTTP
+time="2025-07-27T14:20:48+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|      16.042µs |             ::1 |\x1b[97;44m GET     \x1b[0m \"/\"" component=HTTP
+time="2025-07-27T14:20:48+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       6.208µs |             ::1 |\x1b[97;44m GET     \x1b[0m \"/?constructor[prototype][a42e5579]=x8ikox55&constructor.prototype.b1a3fd5b=x8ikox55&__proto__.ccd80966=x8ikox55&__proto__[dcb52823]=x8ikox55&constrconstructoructor[prototype][a55a1ee1]=x8ikox55&constrconstructoructor.prototype.b2f55e1f=x8ikox55&__pro__proto__to__.eab10255=x8ikox55&__pro__proto__to__[f33fdea1]=x8ikox55\"" component=HTTP
+time="2025-07-27T14:22:20+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       4.125µs |             ::1 |\x1b[0m CONNECT \x1b[0m \"\"" component=HTTP
+time="2025-07-27T14:22:20+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       2.333µs |             ::1 |\x1b[0m CONNECT \x1b[0m \"\"" component=HTTP
+time="2025-07-27T14:22:23+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       3.292µs |             ::1 |\x1b[0m CONNECT \x1b[0m \"\"" component=HTTP
+time="2025-07-27T14:22:24+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       5.625µs |             ::1 |\x1b[0m CONNECT \x1b[0m \"\"" component=HTTP
+time="2025-07-27T14:23:38+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|      14.958µs |             ::1 |\x1b[0m CONNECT \x1b[0m \"\"" component=HTTP
+time="2025-07-27T14:23:39+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       3.958µs |             ::1 |\x1b[0m CONNECT \x1b[0m \"\"" component=HTTP
+time="2025-07-27T14:23:39+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       3.834µs |             ::1 |\x1b[0m CONNECT \x1b[0m \"\"" component=HTTP
+time="2025-07-27T14:23:40+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       3.041µs |             ::1 |\x1b[0m CONNECT \x1b[0m \"\"" component=HTTP
+time="2025-07-27T14:23:41+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       3.792µs |             ::1 |\x1b[0m CONNECT \x1b[0m \"\"" component=HTTP
+time="2025-07-27T14:24:08+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|       2.917µs |             ::1 |\x1b[0m CONNECT \x1b[0m \"\"" component=HTTP
+time="2025-07-27T14:24:09+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         7.5µs |             ::1 |\x1b[0m CONNECT \x1b[0m \"\"" component=HTTP
+time="2025-07-27T14:25:19+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  2.217043625s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/48BF74-FAP-13020001611777P0015\"" component=WEB
+time="2025-07-27T14:25:19+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|        20m24s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T14:25:19+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     121.791µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-27T14:25:19+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     341.459µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-27T14:25:19+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      37.625µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:25:19+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      20.291µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:25:19+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|       11.25µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:25:19+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         208ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:25:57+03:30" level=error msg="Failed to render devices page: context canceled" component=WEB
+time="2025-07-27T14:25:57+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|  1.006274584s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices\"" component=WEB
+time="2025-07-27T14:25:58+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  975.077208ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices\"" component=WEB
+time="2025-07-27T14:25:58+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m| 38.477056375s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T14:25:58+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      75.792µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-27T14:25:58+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     151.959µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-27T14:25:58+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      55.625µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:25:58+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      26.291µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:25:58+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      26.917µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:25:58+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         167ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:26:02+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  1.509628541s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/48BF74-FAP-13020001611777P0015\"" component=WEB
+time="2025-07-27T14:26:02+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|    3.9239655s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T14:26:02+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     247.958µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-27T14:26:02+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     468.042µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-27T14:26:02+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      48.875µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:26:02+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|       11.25µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:26:02+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|       10.25µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:26:02+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|          83ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:26:08+03:30" level=error msg="Failed to get device config: failed to get device: device not found" component=WEB
+time="2025-07-27T14:26:08+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|  711.776667ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-27T14:27:56+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     869.084µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/faults\"" component=WEB
+time="2025-07-27T14:27:56+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|         1m54s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T14:27:56+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      60.666µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-27T14:27:56+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     119.167µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-27T14:27:56+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      30.125µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:27:56+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      21.959µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:27:56+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|       8.625µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:27:56+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         208ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:28:12+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  914.652667ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices\"" component=WEB
+time="2025-07-27T14:28:12+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m| 15.947050791s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T14:28:12+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     169.416µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-27T14:28:12+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      95.666µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-27T14:28:12+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      34.417µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:28:12+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      30.458µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:28:12+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      19.042µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:28:12+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         250ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:28:15+03:30" level=error msg="Failed to get device: device not found" component=WEB
+time="2025-07-27T14:28:15+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|  279.247375ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE-FDD_N2-FA2091957816\"" component=WEB
+time="2025-07-27T14:28:15+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  3.505898375s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T14:29:00+03:30" level=error msg="Failed to get device: failed to fetch device: Get \"http://192.168.25.35:7557/devices?query=%7B%22_id%22%3A%2200271D-LTE%252DFDD_N2-FA2091957816%22%7D\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" component=WEB
+time="2025-07-27T14:29:00+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m| 30.001499041s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE%2DFDD_N2-FA2091957816\"" component=WEB
+time="2025-07-27T14:29:30+03:30" level=error msg="Failed to get device: failed to fetch device: Get \"http://192.168.25.35:7557/devices?query=%7B%22_id%22%3A%2200271D-LTE%252DFDD_N2-FA2091957816%22%7D\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" component=WEB
+time="2025-07-27T14:29:30+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m| 30.001357708s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE%2DFDD_N2-FA2091957816\"" component=WEB
+time="2025-07-27T14:29:38+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  6.812242291s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE%2DFDD_N2-FA2091957816\"" component=WEB
+time="2025-07-27T14:29:38+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     138.084µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-27T14:29:38+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     325.459µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-27T14:29:38+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      30.459µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:29:38+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|       17.25µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:29:38+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      12.959µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:29:38+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         250ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:34:48+03:30" level=error msg="Failed to get device: device not found" component=WEB
+time="2025-07-27T14:34:48+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|  666.865791ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE-FDD_N2-FA2091957816\"" component=WEB
+time="2025-07-27T14:34:51+03:30" level=error msg="Failed to get device config: failed to get device: device not found" component=WEB
+time="2025-07-27T14:34:51+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|  646.479625ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-27T14:34:51+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         167ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/.well-known/appspecific/com.chrome.devtools.json\"" component=WEB
+time="2025-07-27T14:35:24+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  803.190542ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices\"" component=WEB
+time="2025-07-27T14:35:24+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|         5m45s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T14:35:24+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|       126.5µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-27T14:35:24+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      99.041µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-27T14:35:24+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      39.542µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:35:24+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      17.125µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:35:24+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|       8.333µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:35:24+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         250ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:35:36+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  2.151272125s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/48BF74-FAP-13020001611777P0015\"" component=WEB
+time="2025-07-27T14:35:36+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m| 11.633695834s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T14:35:36+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      71.625µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-27T14:35:36+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      78.375µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-27T14:35:36+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      27.709µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:35:36+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      14.583µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:35:36+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|       8.542µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:35:36+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         166ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:35:37+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  666.711333ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T14:35:37+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         167ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:35:40+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|    1.7737865s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/202BC1-BM632w-000000\"" component=WEB
+time="2025-07-27T14:35:40+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  3.049017417s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T14:35:40+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     133.417µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-27T14:35:40+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     115.917µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-27T14:35:40+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      20.417µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:35:40+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|          83ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:35:40+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|          17µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:35:40+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      23.834µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:35:47+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  7.253393584s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T14:35:47+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         250ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:36:09+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  2.152866958s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/48BF74-FAP-13020001611777P0015\"" component=WEB
+time="2025-07-27T14:36:09+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|   21.5904095s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T14:36:09+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|         104µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-27T14:36:09+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      90.125µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-27T14:36:09+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|        36.5µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:36:09+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      17.917µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:36:09+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|       15.75µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:36:09+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         209ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:36:14+03:30" level=error msg="Failed to get device config: failed to get device: device not found" component=WEB
+time="2025-07-27T14:36:14+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|  500.211458ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-27T14:36:19+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  620.436459ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices\"" component=WEB
+time="2025-07-27T14:36:19+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m| 10.446270375s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T14:36:19+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|       69.75µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-27T14:36:19+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     105.125µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-27T14:36:19+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      23.042µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:36:19+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      19.875µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:36:19+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|       14.25µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:36:19+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         208ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:36:23+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|    2.2504795s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/202BC1-BM632w-000000\"" component=WEB
+time="2025-07-27T14:36:23+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  4.319251834s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T14:36:23+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     107.583µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-27T14:36:23+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|         121µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-27T14:36:23+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      30.333µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:36:23+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|       22.25µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:36:23+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      16.125µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T14:36:23+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         208ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T14:36:28+03:30" level=error msg="Failed to get device config: failed to get device: device not found" component=WEB
+time="2025-07-27T14:36:28+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|  298.597959ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-27T14:43:32+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|        30m48s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T14:43:32+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|          7m8s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T16:11:38+03:30" level=info msg="Received signal: interrupt" component=INIT
+time="2025-07-27T16:11:38+03:30" level=info msg="Stopping application..." component=INIT
+time="2025-07-27T16:11:38+03:30" level=info msg="Shutting down NBI server..." component=INIT
+time="2025-07-27T16:11:38+03:30" level=info msg="Stopping GenieACS monitoring..." component=GENIEACS
+time="2025-07-27T16:11:38+03:30" level=error msg="NBI server error: http: Server closed" component=INIT
+time="2025-07-27T16:11:38+03:30" level=info msg="Shutting down UI server..." component=INIT
+time="2025-07-27T16:11:38+03:30" level=error msg="UI server error: http: Server closed" component=INIT
+time="2025-07-27T16:11:38+03:30" level=info msg="All services stopped gracefully" component=INIT
+time="2025-07-27T16:11:38+03:30" level=info msg="Received signal: interrupt, shutting down..." component=INIT
+time="2025-07-27T16:11:38+03:30" level=info msg="Stopping application..." component=INIT
+time="2025-07-27T16:11:38+03:30" level=info msg="Shutting down NBI server..." component=INIT
+time="2025-07-27T16:11:38+03:30" level=info msg="Shutting down UI server..." component=INIT
+time="2025-07-27T16:11:38+03:30" level=info msg="All services stopped gracefully" component=INIT
+time="2025-07-27T16:11:38+03:30" level=info msg="Application stopped successfully" component=INIT
+time="2025-07-27T16:15:54+03:30" level=info msg="Logger initialized with level: debug" component=INIT
+time="2025-07-27T16:15:54+03:30" level=info msg="Starting Nextranet Gateway services..." component=INIT
+time="2025-07-27T16:15:54+03:30" level=info msg="Initializing GenieACS service..." component=GENIEACS
+time="2025-07-27T16:15:57+03:30" level=info msg="GenieACS service initialized successfully" component=GENIEACS
+time="2025-07-27T16:15:57+03:30" level=info msg="Starting UI server..." component=INIT
+time="2025-07-27T16:15:57+03:30" level=info msg="Starting NBI server..." component=INIT
+time="2025-07-27T16:15:57+03:30" level=info msg="Starting GenieACS monitoring..." component=GENIEACS
+time="2025-07-27T16:15:57+03:30" level=info msg="UI server listening on 0.0.0.0:8081" component=INIT
+time="2025-07-27T16:15:57+03:30" level=info msg="NBI server listening on 0.0.0.0:8080" component=INIT
+time="2025-07-27T16:15:59+03:30" level=info msg="All services started successfully" component=INIT
+time="2025-07-27T16:16:05+03:30" level=error msg="Failed to get device config: failed to get device: device not found" component=WEB
+time="2025-07-27T16:16:05+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|  850.187375ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-27T16:16:11+03:30" level=error msg="Failed to get device config: failed to get device: device not found" component=WEB
+time="2025-07-27T16:16:11+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|  698.002458ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-27T16:16:15+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  1.946332125s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/202BC1-BM632w-000000\"" component=WEB
+time="2025-07-27T16:16:15+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  3.305703167s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-27T16:16:15+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|    2.678916ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-27T16:16:15+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|        2.67ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-27T16:16:15+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      41.333µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T16:16:15+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|       9.291µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T16:16:15+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|       7.084µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-27T16:16:16+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         208ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-27T16:16:22+03:30" level=error msg="Failed to get device config: failed to get device: device not found" component=WEB
+time="2025-07-27T16:16:22+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|  539.275375ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-27T16:25:29+03:30" level=info msg="Received signal: interrupt" component=INIT
+time="2025-07-27T16:25:29+03:30" level=info msg="Stopping application..." component=INIT
+time="2025-07-27T16:25:29+03:30" level=info msg="Shutting down NBI server..." component=INIT
+time="2025-07-27T16:25:29+03:30" level=error msg="NBI server error: http: Server closed" component=INIT
+time="2025-07-27T16:25:29+03:30" level=info msg="Shutting down UI server..." component=INIT
+time="2025-07-27T16:25:29+03:30" level=error msg="UI server error: http: Server closed" component=INIT
+time="2025-07-27T16:25:29+03:30" level=info msg="Stopping GenieACS monitoring..." component=GENIEACS
+time="2025-07-27T16:25:29+03:30" level=info msg="All services stopped gracefully" component=INIT
+time="2025-07-27T16:25:30+03:30" level=info msg="Received signal: interrupt, shutting down..." component=INIT
+time="2025-07-27T16:25:30+03:30" level=info msg="Stopping application..." component=INIT
+time="2025-07-27T16:25:30+03:30" level=info msg="Shutting down NBI server..." component=INIT
+time="2025-07-27T16:25:30+03:30" level=info msg="Shutting down UI server..." component=INIT
+time="2025-07-27T16:25:30+03:30" level=info msg="All services stopped gracefully" component=INIT
+time="2025-07-27T16:25:30+03:30" level=info msg="Application stopped successfully" component=INIT
+time="2025-07-27T16:25:34+03:30" level=info msg="Logger initialized with level: debug" component=INIT
+time="2025-07-27T16:25:34+03:30" level=info msg="Starting Nextranet Gateway services..." component=INIT
+time="2025-07-27T16:25:34+03:30" level=info msg="Initializing GenieACS service..." component=GENIEACS
+time="2025-07-27T16:25:36+03:30" level=info msg="GenieACS service initialized successfully" component=GENIEACS
+time="2025-07-27T16:25:36+03:30" level=info msg="Starting UI server..." component=INIT
+time="2025-07-27T16:25:36+03:30" level=info msg="Starting NBI server..." component=INIT
+time="2025-07-27T16:25:36+03:30" level=info msg="Starting GenieACS monitoring..." component=GENIEACS
+time="2025-07-27T16:25:36+03:30" level=info msg="UI server listening on 0.0.0.0:8081" component=INIT
+time="2025-07-27T16:25:36+03:30" level=info msg="NBI server listening on 0.0.0.0:8080" component=INIT
+time="2025-07-27T16:25:38+03:30" level=info msg="All services started successfully" component=INIT
+time="2025-07-27T16:25:42+03:30" level=error msg="Failed to get device config: failed to get device: device not found" component=WEB
+time="2025-07-27T16:25:42+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|  776.688458ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-27T16:30:49+03:30" level=error msg="Failed to get device config: failed to get device: device not found" component=WEB
+time="2025-07-27T16:30:49+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|  803.214667ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-27T16:30:53+03:30" level=info msg="Received signal: interrupt" component=INIT
+time="2025-07-27T16:30:53+03:30" level=info msg="Stopping application..." component=INIT
+time="2025-07-27T16:30:53+03:30" level=info msg="Shutting down NBI server..." component=INIT
+time="2025-07-27T16:30:53+03:30" level=info msg="Stopping GenieACS monitoring..." component=GENIEACS
+time="2025-07-27T16:30:53+03:30" level=error msg="NBI server error: http: Server closed" component=INIT
+time="2025-07-27T16:30:53+03:30" level=info msg="Shutting down UI server..." component=INIT
+time="2025-07-27T16:30:53+03:30" level=error msg="UI server error: http: Server closed" component=INIT
+time="2025-07-27T16:30:53+03:30" level=info msg="All services stopped gracefully" component=INIT
+time="2025-07-27T16:30:54+03:30" level=info msg="Received signal: interrupt, shutting down..." component=INIT
+time="2025-07-27T16:30:54+03:30" level=info msg="Stopping application..." component=INIT
+time="2025-07-27T16:30:54+03:30" level=info msg="Shutting down NBI server..." component=INIT
+time="2025-07-27T16:30:54+03:30" level=info msg="Shutting down UI server..." component=INIT
+time="2025-07-27T16:30:54+03:30" level=info msg="All services stopped gracefully" component=INIT
+time="2025-07-27T16:30:54+03:30" level=info msg="Application stopped successfully" component=INIT
+time="2025-07-27T16:30:56+03:30" level=info msg="Logger initialized with level: debug" component=INIT
+time="2025-07-27T16:30:56+03:30" level=info msg="Starting Nextranet Gateway services..." component=INIT
+time="2025-07-27T16:30:56+03:30" level=info msg="Initializing GenieACS service..." component=GENIEACS
+time="2025-07-27T16:30:59+03:30" level=info msg="GenieACS service initialized successfully" component=GENIEACS
+time="2025-07-27T16:30:59+03:30" level=info msg="Starting UI server..." component=INIT
+time="2025-07-27T16:30:59+03:30" level=info msg="Starting GenieACS monitoring..." component=GENIEACS
+time="2025-07-27T16:30:59+03:30" level=info msg="Starting NBI server..." component=INIT
+time="2025-07-27T16:30:59+03:30" level=info msg="UI server listening on 0.0.0.0:8081" component=INIT
+time="2025-07-27T16:30:59+03:30" level=info msg="NBI server listening on 0.0.0.0:8080" component=INIT
+time="2025-07-27T16:31:01+03:30" level=info msg="All services started successfully" component=INIT
+time="2025-07-27T16:31:03+03:30" level=error msg="Failed to get device config: failed to get device parameters: unexpected status code: 405" component=WEB
+time="2025-07-27T16:31:03+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|  1.020985917s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-27T16:31:21+03:30" level=error msg="Failed to get device config: failed to get device parameters: unexpected status code: 405" component=WEB
+time="2025-07-27T16:31:21+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|  1.379620791s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-27T16:31:25+03:30" level=error msg="Failed to get device config: failed to get device parameters: unexpected status code: 405" component=WEB
+time="2025-07-27T16:31:25+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|  1.395733667s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-27T16:32:31+03:30" level=error msg="Failed to get device config: failed to get device parameters: unexpected status code: 405" component=WEB
+time="2025-07-27T16:32:31+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|  1.341670375s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-27T16:38:06+03:30" level=error msg="Failed to get device config: failed to get device parameters: unexpected status code: 405" component=WEB
+time="2025-07-27T16:38:06+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|  1.340205125s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-27T16:38:19+03:30" level=info msg="Received signal: interrupt" component=INIT
+time="2025-07-27T16:38:19+03:30" level=info msg="Stopping application..." component=INIT
+time="2025-07-27T16:38:19+03:30" level=info msg="Shutting down NBI server..." component=INIT
+time="2025-07-27T16:38:19+03:30" level=info msg="Stopping GenieACS monitoring..." component=GENIEACS
+time="2025-07-27T16:38:19+03:30" level=error msg="NBI server error: http: Server closed" component=INIT
+time="2025-07-27T16:38:19+03:30" level=info msg="Shutting down UI server..." component=INIT
+time="2025-07-27T16:38:19+03:30" level=error msg="UI server error: http: Server closed" component=INIT
+time="2025-07-27T16:38:19+03:30" level=info msg="All services stopped gracefully" component=INIT
+time="2025-07-27T16:38:19+03:30" level=info msg="Received signal: interrupt, shutting down..." component=INIT
+time="2025-07-27T16:38:19+03:30" level=info msg="Stopping application..." component=INIT
+time="2025-07-27T16:38:19+03:30" level=info msg="Shutting down NBI server..." component=INIT
+time="2025-07-27T16:38:19+03:30" level=info msg="Shutting down UI server..." component=INIT
+time="2025-07-27T16:38:19+03:30" level=info msg="All services stopped gracefully" component=INIT
+time="2025-07-27T16:38:19+03:30" level=info msg="Application stopped successfully" component=INIT
+time="2025-07-27T16:39:53+03:30" level=info msg="Logger initialized with level: debug" component=INIT
+time="2025-07-27T16:39:53+03:30" level=info msg="Starting Nextranet Gateway services..." component=INIT
+time="2025-07-27T16:39:53+03:30" level=info msg="Initializing GenieACS service..." component=GENIEACS
+time="2025-07-27T16:39:55+03:30" level=info msg="GenieACS service initialized successfully" component=GENIEACS
+time="2025-07-27T16:39:55+03:30" level=info msg="Starting NBI server..." component=INIT
+time="2025-07-27T16:39:55+03:30" level=info msg="Starting UI server..." component=INIT
+time="2025-07-27T16:39:55+03:30" level=info msg="Starting GenieACS monitoring..." component=GENIEACS
+time="2025-07-27T16:39:55+03:30" level=info msg="NBI server listening on 0.0.0.0:8080" component=INIT
+time="2025-07-27T16:40:02+03:30" level=info msg="All services started successfully" component=INIT
+time="2025-07-27T16:40:02+03:30" level=info msg="UI server listening on 0.0.0.0:8081" component=INIT
+time="2025-07-27T16:41:23+03:30" level=error msg="Failed to get device config: failed to get device parameters: unexpected status code: 405" component=WEB
+time="2025-07-27T16:41:23+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m| 55.195061083s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-27T16:41:45+03:30" level=error msg="Failed to get device config: failed to get device parameters: unexpected status code: 405" component=WEB
+time="2025-07-27T16:41:45+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m| 21.615523709s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-27T16:44:32+03:30" level=error msg="Failed to get device config: failed to get device parameters: unexpected status code: 405" component=WEB
+time="2025-07-27T16:44:32+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|  1.349537083s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-27T16:44:42+03:30" level=info msg="Logger initialized with level: debug" component=INIT
+time="2025-07-27T16:44:42+03:30" level=info msg="Starting Nextranet Gateway services..." component=INIT
+time="2025-07-27T16:44:42+03:30" level=info msg="Initializing GenieACS service..." component=GENIEACS
+time="2025-07-27T16:44:45+03:30" level=info msg="GenieACS service initialized successfully" component=GENIEACS
+time="2025-07-27T16:44:45+03:30" level=info msg="Starting GenieACS monitoring..." component=GENIEACS
+time="2025-07-27T16:44:45+03:30" level=info msg="Starting UI server..." component=INIT
+time="2025-07-27T16:44:45+03:30" level=info msg="Starting NBI server..." component=INIT
+time="2025-07-27T16:44:45+03:30" level=info msg="UI server listening on 0.0.0.0:8081" component=INIT
+time="2025-07-27T16:44:45+03:30" level=info msg="NBI server listening on 0.0.0.0:8080" component=INIT
+time="2025-07-27T16:44:47+03:30" level=info msg="All services started successfully" component=INIT
+time="2025-07-27T16:44:51+03:30" level=error msg="Failed to get device config: failed to get device parameters: unexpected status code: 405" component=WEB
+time="2025-07-27T16:44:51+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|  1.103746375s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-27T16:45:06+03:30" level=error msg="Failed to get device config: failed to get device parameters: unexpected status code: 405" component=WEB
+time="2025-07-27T16:45:06+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|  1.269045875s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-27T16:46:41+03:30" level=error msg="Failed to get device config: failed to get device: failed to fetch device: Get \"http://192.168.25.35:7557/devices?query=%7B%22_id%22%3A%22202BC1-BM632w-000000%22%7D\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)" component=WEB
+time="2025-07-27T16:46:41+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|          1m7s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-27T16:47:03+03:30" level=error msg="Failed to get device config: failed to get device parameters: unexpected status code: 405" component=WEB
+time="2025-07-27T16:47:03+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|         1m47s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-27T16:55:29+03:30" level=info msg="Logger initialized with level: debug" component=INIT
+time="2025-07-27T16:55:29+03:30" level=info msg="Starting Nextranet Gateway services..." component=INIT
+time="2025-07-27T16:55:29+03:30" level=info msg="Initializing GenieACS service..." component=GENIEACS
+time="2025-07-27T16:55:31+03:30" level=info msg="GenieACS service initialized successfully" component=GENIEACS
+time="2025-07-27T16:55:31+03:30" level=info msg="Starting UI server..." component=INIT
+time="2025-07-27T16:55:31+03:30" level=info msg="Starting NBI server..." component=INIT
+time="2025-07-27T16:55:31+03:30" level=info msg="Starting GenieACS monitoring..." component=GENIEACS
+time="2025-07-27T16:55:31+03:30" level=info msg="NBI server listening on 0.0.0.0:8080" component=INIT
+time="2025-07-27T16:55:31+03:30" level=info msg="UI server listening on 0.0.0.0:8081" component=INIT
+time="2025-07-27T16:55:33+03:30" level=info msg="All services started successfully" component=INIT
+time="2025-07-27T17:03:17+03:30" level=error msg="Failed to get device config: failed to get device parameters: unexpected status code: 405" component=WEB
+time="2025-07-27T17:03:17+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|         7m34s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-27T17:03:17+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|    2.185958ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-30T11:37:06+03:30" level=info msg="Logger initialized with level: debug" component=INIT
+time="2025-07-30T11:37:06+03:30" level=info msg="Starting Nextranet Gateway services..." component=INIT
+time="2025-07-30T11:37:06+03:30" level=info msg="Initializing GenieACS service..." component=GENIEACS
+time="2025-07-30T11:37:08+03:30" level=info msg="GenieACS service initialized successfully" component=GENIEACS
+time="2025-07-30T11:37:08+03:30" level=info msg="Starting UI server..." component=INIT
+time="2025-07-30T11:37:08+03:30" level=info msg="Starting NBI server..." component=INIT
+time="2025-07-30T11:37:08+03:30" level=info msg="Starting GenieACS monitoring..." component=GENIEACS
+time="2025-07-30T11:37:08+03:30" level=info msg="NBI server listening on 0.0.0.0:8080" component=INIT
+time="2025-07-30T11:37:08+03:30" level=info msg="UI server listening on 0.0.0.0:8081" component=INIT
+time="2025-07-30T11:37:10+03:30" level=info msg="All services started successfully" component=INIT
+time="2025-07-30T11:37:29+03:30" level=info msg="Overview data: TotalDevices=3, OnlineDevices=1, ActiveFaults=3" component=WEB
+time="2025-07-30T11:37:29+03:30" level=info msg="Vendor data: map[Comba:1 Huawei Technologies Co., Ltd.:1 Unknown:1]" component=WEB
+time="2025-07-30T11:37:29+03:30" level=info msg="Severity data: map[info:2 major:1]" component=WEB
+time="2025-07-30T11:37:29+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  1.752438792s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/overview\"" component=WEB
+time="2025-07-30T11:37:30+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|    4.250541ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-30T11:37:30+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     4.18425ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-30T11:37:31+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     188.167µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-30T11:37:31+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      24.541µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-30T11:37:31+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      10.083µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-30T11:37:45+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         333ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-30T11:37:45+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|      12.625µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/favicon.png\"" component=WEB
+time="2025-07-30T11:37:54+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  957.881791ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices\"" component=WEB
+time="2025-07-30T11:37:54+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m| 22.826202334s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-30T11:37:54+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      91.708µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-30T11:37:54+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      80.709µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-30T11:37:54+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      33.916µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-30T11:37:54+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      17.708µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-30T11:37:54+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      10.167µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-30T11:37:54+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         208ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-30T11:37:57+03:30" level=error msg="Failed to get device: device not found" component=WEB
+time="2025-07-30T11:37:57+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|  342.385625ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE-FDD_N2-FA2091957816\"" component=WEB
+time="2025-07-30T11:37:57+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|   3.22818875s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-30T11:37:57+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         458ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/favicon.ico\"" component=WEB
+time="2025-07-30T11:38:01+03:30" level=error msg="Failed to get device: device not found" component=WEB
+time="2025-07-30T11:38:01+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|   297.37675ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE-FDD_N2-FA2091957816\"" component=WEB
+time="2025-07-30T11:38:24+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  2.149718333s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE%2DFDD_N2-FA2091957816\"" component=WEB
+time="2025-07-30T11:38:24+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     119.666µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-30T11:38:24+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     106.375µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-30T11:38:24+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|        44.5µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-30T11:38:24+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      17.208µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-30T11:38:24+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|          24µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-30T11:38:24+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         250ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-30T11:38:32+03:30" level=error msg="Failed to get device config: failed to get device parameters: unexpected status code: 405" component=WEB
+time="2025-07-30T11:38:32+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|    902.3655ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-30T12:35:08+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|        56m43s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-30T13:54:46+03:30" level=error msg="Failed to get device config: failed to get device parameters: unexpected status code: 405" component=WEB
+time="2025-07-30T13:54:46+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|  981.667125ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/devices/{ data.Device.ID }/config/download\"" component=WEB
+time="2025-07-30T13:54:52+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|   2.46979925s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE%2DFDD_N2-FA2091957816\"" component=WEB
+time="2025-07-30T13:54:52+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|         32m7s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-30T13:54:52+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     141.792µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-30T13:54:52+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     129.791µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-30T13:54:52+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      22.292µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-30T13:54:52+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      22.375µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-30T13:54:52+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|       8.375µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-30T13:54:52+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         375ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-30T14:02:40+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  1.104285959s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices\"" component=WEB
+time="2025-07-30T14:02:40+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|         7m48s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-30T14:02:40+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      73.333µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-30T14:02:40+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      68.666µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-30T14:02:41+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      37.584µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-30T14:02:41+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      19.417µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-30T14:02:41+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      19.458µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-30T14:02:41+03:30" level=info msg="Overview data: TotalDevices=3, OnlineDevices=1, ActiveFaults=3" component=WEB
+time="2025-07-30T14:02:41+03:30" level=info msg="Vendor data: map[Comba:1 Huawei Technologies Co., Ltd.:1 Unknown:1]" component=WEB
+time="2025-07-30T14:02:41+03:30" level=info msg="Severity data: map[info:2 major:1]" component=WEB
+time="2025-07-30T14:02:41+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     308.959µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/overview\"" component=WEB
+time="2025-07-30T14:02:41+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|   71.495833ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-30T14:02:41+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|     116.917µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-30T14:02:41+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      86.791µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-30T14:02:41+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      31.292µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-30T14:02:41+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|          15µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-30T14:02:41+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|       11.75µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-30T14:02:41+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         584ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-30T14:02:43+03:30" level=error msg="Failed to render devices page: context canceled" component=WEB
+time="2025-07-30T14:02:43+03:30" level=info msg="\x1b[97;41m 500 \x1b[0m|  1.158724666s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices\"" component=WEB
+time="2025-07-30T14:02:44+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|   1.34810175s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices\"" component=WEB
+time="2025-07-30T14:02:44+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  2.834498709s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-30T14:02:44+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|    1.556375ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/nextranet 1.png\"" component=WEB
+time="2025-07-30T14:02:44+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|    1.539416ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/static/styles.css\"" component=WEB
+time="2025-07-30T14:02:44+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|      34.958µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-30T14:02:44+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|        20.5µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-30T14:02:44+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|       8.083µs |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/api/stats/realtime\"" component=WEB
+time="2025-07-30T14:02:44+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|         167ns |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/sw.js\"" component=WEB
+time="2025-07-30T14:02:49+03:30" level=error msg="Failed to get device: device not found" component=WEB
+time="2025-07-30T14:02:49+03:30" level=info msg="\x1b[90;43m 404 \x1b[0m|   707.41775ms |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/devices/00271D-LTE-FDD_N2-FA2091957816\"" component=WEB
+time="2025-07-30T14:02:49+03:30" level=info msg="\x1b[97;42m 200 \x1b[0m|  5.286502291s |       127.0.0.1 |\x1b[97;44m GET     \x1b[0m \"/ws\"" component=WEB
+time="2025-07-30T14:05:12+03:30" level=info msg="Received signal: interrupt" component=INIT
+time="2025-07-30T14:05:12+03:30" level=info msg="Stopping application..." component=INIT
+time="2025-07-30T14:05:12+03:30" level=info msg="Shutting down NBI server..." component=INIT
+time="2025-07-30T14:05:12+03:30" level=info msg="Stopping GenieACS monitoring..." component=GENIEACS
+time="2025-07-30T14:05:12+03:30" level=error msg="NBI server error: http: Server closed" component=INIT
+time="2025-07-30T14:05:12+03:30" level=info msg="Shutting down UI server..." component=INIT
+time="2025-07-30T14:05:12+03:30" level=error msg="UI server error: http: Server closed" component=INIT
+time="2025-07-30T14:05:12+03:30" level=info msg="All services stopped gracefully" component=INIT
+time="2025-07-30T14:05:12+03:30" level=info msg="Received signal: interrupt, shutting down..." component=INIT
+time="2025-07-30T14:05:12+03:30" level=info msg="Stopping application..." component=INIT
+time="2025-07-30T14:05:12+03:30" level=info msg="Shutting down NBI server..." component=INIT
+time="2025-07-30T14:05:12+03:30" level=info msg="Shutting down UI server..." component=INIT
+time="2025-07-30T14:05:12+03:30" level=info msg="All services stopped gracefully" component=INIT
+time="2025-07-30T14:05:12+03:30" level=info msg="Application stopped successfully" component=INIT

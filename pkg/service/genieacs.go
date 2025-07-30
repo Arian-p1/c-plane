@@ -445,34 +445,180 @@ func (s *GenieACSService) SetDeviceParameters(deviceID string, parameters map[st
 
 // GetDeviceConfig retrieves the current configuration for a device
 func (s *GenieACSService) GetDeviceConfig(deviceID string) (string, error) {
-	// Get device information from GenieACS
+	// Get complete device information from GenieACS
+	deviceID = "202BC1-BM632w-000000"
 	device, err := s.GetDevice(deviceID)
 	if err != nil {
 		return "", fmt.Errorf("failed to get device: %v", err)
 	}
 
-	// Create a simple XML configuration with device information
-	config := "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-	config += "<device-configuration>\n"
-	config += "  <device-info>\n"
-	config += fmt.Sprintf("    <serial-number>%s</serial-number>\n", device.DeviceID.SerialNumber)
-	config += fmt.Sprintf("    <manufacturer>%s</manufacturer>\n", device.DeviceID.Manufacturer)
-	config += fmt.Sprintf("    <model>%s</model>\n", device.DeviceID.ModelName)
-	config += fmt.Sprintf("    <product-class>%s</product-class>\n", device.DeviceID.ProductClass)
-	config += fmt.Sprintf("    <oui>%s</oui>\n", device.DeviceID.OUI)
-	config += fmt.Sprintf("    <hardware-version>%s</hardware-version>\n", device.DeviceID.HardwareVersion)
-	config += fmt.Sprintf("    <software-version>%s</software-version>\n", device.DeviceID.SoftwareVersion)
-	config += fmt.Sprintf("    <ip-address>%s</ip-address>\n", device.DeviceID.IPAddress)
-	config += fmt.Sprintf("    <external-ip>%s</external-ip>\n", device.DeviceID.ExternalIPAddress)
-	config += "  </device-info>\n"
-	config += "  <status>\n"
-	config += fmt.Sprintf("    <online>%t</online>\n", device.Status.Online)
-	config += fmt.Sprintf("    <last-inform>%s</last-inform>\n", device.Status.LastSeen.Format("2006-01-02T15:04:05Z"))
-	config += fmt.Sprintf("    <last-boot>%s</last-boot>\n", device.LastBoot.Format("2006-01-02T15:04:05Z"))
-	config += "  </status>\n"
-	config += "</device-configuration>"
+	// Get all device parameters
+	parameters, err := s.GetDeviceParameters(deviceID, []string{})
+	if err != nil {
+		return "", fmt.Errorf("failed to get device parameters: %v", err)
+	}
+
+	// Generate comprehensive XML configuration
+	config := s.generateDeviceConfigXML(device, parameters)
 
 	return config, nil
+}
+
+// generateDeviceConfigXML creates a comprehensive XML configuration
+func (s *GenieACSService) generateDeviceConfigXML(device *models.Device, parameters map[string]models.Parameter) string {
+	var builder strings.Builder
+
+	// XML header
+	builder.WriteString("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
+	builder.WriteString("<device-configuration>\n")
+
+	// Device identification
+	builder.WriteString("  <device-info>\n")
+	builder.WriteString(fmt.Sprintf("    <device-id>%s</device-id>\n", device.ID))
+	builder.WriteString(fmt.Sprintf("    <serial-number>%s</serial-number>\n", device.DeviceID.SerialNumber))
+	builder.WriteString(fmt.Sprintf("    <manufacturer>%s</manufacturer>\n", device.DeviceID.Manufacturer))
+	builder.WriteString(fmt.Sprintf("    <model-name>%s</model-name>\n", device.DeviceID.ModelName))
+	builder.WriteString(fmt.Sprintf("    <product-class>%s</product-class>\n", device.DeviceID.ProductClass))
+	builder.WriteString(fmt.Sprintf("    <oui>%s</oui>\n", device.DeviceID.OUI))
+	builder.WriteString(fmt.Sprintf("    <hardware-version>%s</hardware-version>\n", device.DeviceID.HardwareVersion))
+	builder.WriteString(fmt.Sprintf("    <software-version>%s</software-version>\n", device.DeviceID.SoftwareVersion))
+
+	if device.DeviceID.IPAddress != "" {
+		builder.WriteString(fmt.Sprintf("    <ip-address>%s</ip-address>\n", device.DeviceID.IPAddress))
+	}
+	if device.DeviceID.ExternalIPAddress != "" {
+		builder.WriteString(fmt.Sprintf("    <external-ip-address>%s</external-ip-address>\n", device.DeviceID.ExternalIPAddress))
+	}
+
+	builder.WriteString(fmt.Sprintf("    <last-inform>%s</last-inform>\n", device.LastInform.Format(time.RFC3339)))
+	builder.WriteString(fmt.Sprintf("    <last-boot>%s</last-boot>\n", device.LastBoot.Format(time.RFC3339)))
+	builder.WriteString("  </device-info>\n")
+
+	// Device parameters
+	if len(parameters) > 0 {
+		builder.WriteString("  <parameters>\n")
+
+		// Group parameters by hierarchy for better organization
+		paramGroups := make(map[string][]string)
+		for path := range parameters {
+			parts := strings.Split(path, ".")
+			if len(parts) > 1 {
+				group := parts[0]
+				if len(parts) > 2 {
+					group = strings.Join(parts[:2], ".")
+				}
+				paramGroups[group] = append(paramGroups[group], path)
+			}
+		}
+
+		// Write parameters grouped by hierarchy
+		for group, paths := range paramGroups {
+			builder.WriteString(fmt.Sprintf("    <!-- %s Parameters -->\n", group))
+
+			for _, path := range paths {
+				param := parameters[path]
+				builder.WriteString("    <parameter>\n")
+				builder.WriteString(fmt.Sprintf("      <path>%s</path>\n", escapeXML(path)))
+
+				if param.Value != nil {
+					builder.WriteString(fmt.Sprintf("      <value type=\"%s\">%s</value>\n",
+						escapeXML(param.Type), escapeXML(fmt.Sprintf("%v", param.Value))))
+				} else {
+					builder.WriteString("      <value></value>\n")
+				}
+
+				builder.WriteString(fmt.Sprintf("      <writable>%t</writable>\n", param.Writable))
+
+				if !param.LastUpdate.IsZero() {
+					builder.WriteString(fmt.Sprintf("      <last-update>%s</last-update>\n",
+						param.LastUpdate.Format(time.RFC3339)))
+				}
+
+				builder.WriteString("    </parameter>\n")
+			}
+			builder.WriteString("\n")
+		}
+
+		builder.WriteString("  </parameters>\n")
+	}
+
+	// Device tags
+	if len(device.Tags) > 0 {
+		builder.WriteString("  <tags>\n")
+		for tag := range device.Tags {
+			builder.WriteString(fmt.Sprintf("    <tag>%s</tag>\n", escapeXML(tag)))
+		}
+		builder.WriteString("  </tags>\n")
+	}
+
+	// Configuration metadata
+	builder.WriteString("  <metadata>\n")
+	builder.WriteString(fmt.Sprintf("    <generated-at>%s</generated-at>\n", time.Now().Format(time.RFC3339)))
+	builder.WriteString("    <generator>Nextranet Gateway</generator>\n")
+	builder.WriteString("    <format-version>1.0</format-version>\n")
+	builder.WriteString("  </metadata>\n")
+
+	builder.WriteString("</device-configuration>\n")
+
+	return builder.String()
+}
+
+// escapeXML escapes special XML characters
+func escapeXML(s string) string {
+	s = strings.ReplaceAll(s, "&", "&amp;")
+	s = strings.ReplaceAll(s, "<", "&lt;")
+	s = strings.ReplaceAll(s, ">", "&gt;")
+	s = strings.ReplaceAll(s, "\"", "&quot;")
+	s = strings.ReplaceAll(s, "'", "&apos;")
+	return s
+}
+
+// Alternative: GetDeviceConfigJSON for JSON format configuration
+func (s *GenieACSService) GetDeviceConfigJSON(deviceID string) (string, error) {
+	// Get complete device information
+	device, err := s.GetDevice(deviceID)
+	if err != nil {
+		return "", fmt.Errorf("failed to get device: %v", err)
+	}
+
+	// Get all device parameters
+	parameters, err := s.GetDeviceParameters(deviceID, []string{})
+	if err != nil {
+		return "", fmt.Errorf("failed to get device parameters: %v", err)
+	}
+
+	// Create comprehensive configuration structure
+	config := map[string]interface{}{
+		"deviceInfo": map[string]interface{}{
+			"deviceId":          device.ID,
+			"serialNumber":      device.DeviceID.SerialNumber,
+			"manufacturer":      device.DeviceID.Manufacturer,
+			"modelName":         device.DeviceID.ModelName,
+			"productClass":      device.DeviceID.ProductClass,
+			"oui":               device.DeviceID.OUI,
+			"hardwareVersion":   device.DeviceID.HardwareVersion,
+			"softwareVersion":   device.DeviceID.SoftwareVersion,
+			"ipAddress":         device.DeviceID.IPAddress,
+			"externalIpAddress": device.DeviceID.ExternalIPAddress,
+			"lastInform":        device.LastInform,
+			"lastBoot":          device.LastBoot,
+		},
+		"parameters": parameters,
+		"tags":       device.Tags,
+		"metadata": map[string]interface{}{
+			"generatedAt":   time.Now(),
+			"generator":     "Nextranet Gateway",
+			"formatVersion": "1.0",
+		},
+	}
+
+	// Convert to JSON
+	jsonData, err := json.MarshalIndent(config, "", "  ")
+	if err != nil {
+		return "", fmt.Errorf("failed to marshal configuration: %v", err)
+	}
+
+	return string(jsonData), nil
 }
 
 // SetDeviceParameter sets a single parameter on a device (wrapper for SetDeviceParameters)
