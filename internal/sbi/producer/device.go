@@ -112,6 +112,11 @@ func GetDevice(appContext *context.Context) gin.HandlerFunc {
 			})
 			return
 		}
+		// fmt.Println("d id: ", deviceID)
+		// if deviceID == "00271D-LTE%2DFDD_N2-FA2091957816" {
+		// 	deviceID = "00271D-LTE%252DFDD_N2-FA2091957816"
+		// }
+		// fmt.Println("after d id: ", deviceID)
 
 		cfg := factory.GetConfig()
 		genieService := service.NewGenieACSService(cfg.GenieACS, appContext)

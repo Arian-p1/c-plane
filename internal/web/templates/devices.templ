@@ -1,6 +1,13 @@
 package templates
 
-import "fmt"
+import (
+	"fmt"
+	"net/url"
+)
+
+func urlEncodeDeviceID(deviceID string) string {
+	return url.QueryEscape(deviceID)
+}
 
 templ DevicesPage(data DevicesPageData) {
 	@Page(data.Title, data.Theme, data.CurrentPath) {
@@ -316,7 +323,7 @@ templ DeviceRow(device *DeviceDisplay) {
 		</td>
 		<td class="px-6 py-4">
 			<div>
-				<a href={ templ.URL(fmt.Sprintf("/devices/%s", device.ID)) } class="text-accent hover:text-accent-hover font-medium">
+				<a href={ templ.URL(fmt.Sprintf("/devices/%s", urlEncodeDeviceID(device.ID))) } class="text-accent hover:text-accent-hover font-medium">
 					{ device.DeviceID.SerialNumber }
 				</a>
 				<p class="text-sm text-gray-600 dark:text-gray-500">

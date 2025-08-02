@@ -3,6 +3,7 @@ package handlers
 import (
 	"fmt"
 	"net/http"
+	"net/url"
 	"strconv"
 	"strings"
 	"time"
@@ -142,15 +143,18 @@ func Devices(appContext *context.Context) gin.HandlerFunc {
 func DeviceDetail(appContext *context.Context) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		deviceID := c.Param("deviceId")
-		if deviceID == "" {
-			c.Redirect(http.StatusFound, "/devices")
+
+		// With:
+		deviceID, err := url.QueryUnescape(c.Param("deviceId"))
+		if err != nil {
+			logger.WebLog.Errorf("Failed to decode device ID: %v", err)
+			c.String(http.StatusBadRequest, "Invalid device ID")
 			return
 		}
 
 		// Get device from GenieACS
 		cfg := factory.GetConfig()
 		genieService := service.NewGenieACSService(cfg.GenieACS, appContext)
-
 		device, err := genieService.GetDevice(deviceID)
 		if err != nil {
 			logger.WebLog.Errorf("Failed to get device: %v", err)
